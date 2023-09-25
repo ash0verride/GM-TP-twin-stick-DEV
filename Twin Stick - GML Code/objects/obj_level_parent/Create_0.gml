@@ -1,0 +1,16 @@
+enum FACE_TYPE
+{
+	TOP_LEFT,
+	TOP,
+	TOP_RIGHT,
+	RIGHT,
+	BOTTOM_RIGHT,
+	BOTTOM,
+	BOTTOM_LEFT,
+	LEFT,
+	CENTRE,
+	SIZE
+}
+
+curr_face_type = FACE_TYPE.SIZE;
+cell_sprite = [];
