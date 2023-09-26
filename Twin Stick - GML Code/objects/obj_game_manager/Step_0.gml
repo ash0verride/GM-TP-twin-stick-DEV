@@ -1,4 +1,4 @@
-if(curr_game_type == GAME_TYPE.SINGLE_PLAYER)
+if(curr_game_type == GAME_TYPE.SINGLE_PLAYER && curr_game_state == GAME_STATE.PLAYING)
 {
 	var _x_adjust = room_width / 2;
 	var _cam_x = clamp(obj_player.x, _x_adjust, (arena_grid_width * cell_width) - _x_adjust);

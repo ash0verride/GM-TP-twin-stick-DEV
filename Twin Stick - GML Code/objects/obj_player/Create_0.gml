@@ -3,13 +3,16 @@ player_id = 0;
 controller_deadzone = 0.05;
 mouse_prev_x = mouse_x;
 mouse_prev_y = mouse_y;
-is_mouse_aiming = true;
+is_mouse_aiming = false;
 
+wall_buffer = 250;
 rotation_speed = 0.25;
-move_drag = 0.9;
+speed_dropoff = 0.9;
 move_speed = 1;
+max_speed = 5;
 
-direction = 0;
+direction = image_angle;
+
 hspeed = 0;
 vspeed = 0;
 
@@ -29,4 +32,7 @@ create_projectile = function()
 	var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
 	_new_projectile.owner = self;	
 	_new_projectile.correct_self();
+	
+	sprite_index = spr_player_shooting;
+	image_index = 0;
 }

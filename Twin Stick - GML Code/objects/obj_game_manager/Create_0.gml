@@ -12,10 +12,18 @@ enum GAME_TYPE
 	SIZE
 }
 
+enum GAME_STATE
+{
+	PLAYING,
+	PAUSED,
+	SIZE
+}
+
 randomise();
 
 curr_level_type = choose(LEVEL_TYPE.GRASS, LEVEL_TYPE.STONE);
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
+curr_game_state = GAME_STATE.PLAYING;
 
 arena_grid_width = irandom_range(4, 8);
 arena_grid_height = irandom_range(3, 6);
@@ -107,5 +115,6 @@ if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
 {
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
 	_player.player_id = 0;
-	_player.direction = 0;
+	//_player.direction = point_direction(_player.x, _player.y, mouse_x, mouse_y);
+	//_player.image_angle = _player.direction;
 }

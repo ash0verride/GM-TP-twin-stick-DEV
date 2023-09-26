@@ -1,13 +1,13 @@
-if (x < 250 || x > (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - 250)
+if (x < wall_buffer || x > (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer)
 {
-	x = clamp(x, 250, (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - 250);
-	hspeed *= -0.5;
+	x = clamp(x, wall_buffer, (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer);
+	hspeed *= -speed_dropoff;
 }
 
-if (y < 250 || y > (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - 250)
+if (y < wall_buffer || y > (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer)
 {
-	y = clamp(y, 250, (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - 250);
-	vspeed *= -0.5;
+	y = clamp(y, wall_buffer, (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer);
+	vspeed *= -speed_dropoff;
 }
 
 mouse_prev_x = mouse_x;

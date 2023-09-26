@@ -14,3 +14,6 @@ image_xscale = _scale;
 image_yscale = _scale;
 
 image_angle = random_range(0, 360);
+
+speed_dropoff = 0.5;
+wall_buffer = 200;
