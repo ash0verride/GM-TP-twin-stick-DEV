@@ -214,6 +214,86 @@ wave_incoming = function()
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_wave_incoming);
 }
 
+wave_new_wave = function()
+{
+	var _enemy_rate = 0.75;
+	var _enemy_edge_offset = 240;
+	var _enemy_cell_buffer_width = cell_width / 3;
+	var _enemy_cell_buffer_height = cell_height / 3;
+	
+	var _enemy_count = round((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
+	
+	var _enemy_array_pos_x = [];
+	var _enemy_array_pos_y = [];
+	var _enemy_array_count = 0;
+	
+	for (var _i = 0; _i < _enemy_count; _i++)
+	{
+		var _new_search = true;
+		
+		var _can_place = true;
+		var _tries = 0;
+		var _max_tries = 60;
+		
+		while(_new_search)
+		{
+			_new_search = false;
+			
+			var _new_enemy_x = random_range(_enemy_edge_offset, (cell_width * arena_grid_width) - _enemy_edge_offset);
+			var _new_enemy_y = random_range(_enemy_edge_offset, (cell_height * arena_grid_height) - _enemy_edge_offset);
+			
+			with(obj_player)
+			{
+				if ((_new_enemy_x > x - _enemy_cell_buffer_width && _new_enemy_x < x + _enemy_cell_buffer_width) || (_new_enemy_y > y - _enemy_cell_buffer_height && _new_enemy_y < y + _enemy_cell_buffer_height))
+				{
+					_new_search = true;
+				}
+				else
+				{
+					with(obj_enemy)
+					{
+						if ((_new_enemy_x > x - _enemy_cell_buffer_width && _new_enemy_x < x + _enemy_cell_buffer_width) && (_new_enemy_y > y - _enemy_cell_buffer_height && _new_enemy_y < y + _enemy_cell_buffer_height))
+						{
+							_new_search = true;
+						}
+						else
+						{
+							for (var _j = 0; _j < _enemy_array_count; _j++)
+							{
+								if ((_new_enemy_x >  _enemy_array_pos_x[_j] - _enemy_cell_buffer_width && _new_enemy_x < _enemy_array_pos_x[_j] + _enemy_cell_buffer_width) && (_new_enemy_y > _enemy_array_pos_y[_j] - _enemy_cell_buffer_height && _new_enemy_y < _enemy_array_pos_y[_j] + _enemy_cell_buffer_height))
+								{
+									_new_search = true;
+								}
+							}
+						}
+					}
+				}
+			}
+			
+			_tries++;
+			
+			if (_tries >= _max_tries && _new_search)
+			{
+				_new_search = false;
+				_can_place = false;
+			}
+
+		}
+
+		if (_can_place)
+		{
+			_enemy_array_pos_x[_enemy_array_count] = _new_enemy_x;
+			_enemy_array_pos_y[_enemy_array_count] = _new_enemy_y;
+			_enemy_array_count++;
+		}
+	}
+	
+	for (var _i = 0; _i < _enemy_array_count; _i++)
+	{
+		layer_sequence_create("Instances", _enemy_array_pos_x[_i], _enemy_array_pos_y[_i], seq_spawn_enemy);
+	}
+}
+
 lose_game = function()
 {
 	curr_game_state = GAME_STATE.ENDED;
