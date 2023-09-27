@@ -3,6 +3,7 @@ speed_dropoff = 0.5;
 wall_buffer = 180;
 
 speed = 20;
+last_speed = speed;
 
 correct_self = function()
 {

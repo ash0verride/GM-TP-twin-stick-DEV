@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_button_main_retry",
+  "name": "obj_button_continue",
   "spriteId": {
     "name": "spr_green_box_small",
     "path": "sprites/spr_green_box_small/spr_green_box_small.yy",

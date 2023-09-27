@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_lose_banner",
+  "name": "obj_banner_pause",
   "spriteId": {
-    "name": "spr_banner_red",
-    "path": "sprites/spr_banner_red/spr_banner_red.yy",
+    "name": "spr_banner_black",
+    "path": "sprites/spr_banner_black/spr_banner_black.yy",
   },
   "solid": false,
   "visible": true,

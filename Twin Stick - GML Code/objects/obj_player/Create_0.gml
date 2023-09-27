@@ -1,4 +1,5 @@
 player_id = 0;
+player_score = 0;
 
 controller_deadzone = 0.05;
 mouse_prev_x = mouse_x;
@@ -15,6 +16,10 @@ direction = image_angle;
 
 hspeed = 0;
 vspeed = 0;
+
+last_speed = speed;
+
+last_image_speed = image_speed;
 
 create_projectile = function()
 {

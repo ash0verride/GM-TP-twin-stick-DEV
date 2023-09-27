@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Ground Tiles",
-    "path": "folders/Sprites/Ground Tiles.yy",
+    "name": "UI",
+    "path": "folders/Sprites/UI.yy",
   },
 }
