@@ -1,18 +1,33 @@
-//draw_sprite(spr_vignette, 0, 0, 0);
-
 if(curr_game_state == GAME_STATE.PLAYING)
-{
-	if(curr_game_type == GAME_TYPE.SINGLE_PLAYER)
+{		
+	with (obj_player)
 	{
-		draw_set_font(score_font);
-		draw_set_color(score_colour);
-		draw_set_alpha(score_alpha);
-		draw_set_halign(score_halign);
-		draw_set_valign(score_valign);
+		if (player_id == 0)
+		{
+			draw_sprite(spr_hud_background, 0, 0, 0);
+			
+			if (player_health > 0)
+			{
+				draw_sprite(spr_hud_health_normal, 0, 86, 40);
+				if (player_health > 1)
+				{
+					draw_sprite(spr_hud_health_normal, 0, 237, 40);	
+					if (player_health > 2)
+					{
+						draw_sprite(spr_hud_health_edge, 0, 385, 40);	
+					}
+				}
+			}
+			
+			draw_set_font(obj_game_manager.score_font);
+			draw_set_color(obj_game_manager.score_colour);
+			draw_set_alpha(obj_game_manager.score_alpha);
+			draw_set_halign(obj_game_manager.score_halign);
+			draw_set_valign(obj_game_manager.score_valign);
 		
-		var _score_text = string(obj_player.player_score);
-		draw_text(room_width / 2, 64, _score_text);
+			draw_text(room_width / 2, 64, string(player_score));
 		
-		draw_set_alpha(1.0);
+			draw_set_alpha(1.0);
+		}
 	}
 }

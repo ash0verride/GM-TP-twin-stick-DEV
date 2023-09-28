@@ -1,5 +1,8 @@
 player_id = 0;
 player_score = 0;
+player_health = 3;
+player_curr_ammo = 3;
+player_max_ammo = 3;
 
 controller_deadzone = 0.05;
 is_mouse_aiming = false;
