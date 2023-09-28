@@ -15,4 +15,6 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	draw_set_alpha(image_alpha);
 	
 	draw_text_transformed(x, y + 32, text_2, image_xscale, image_yscale, image_angle)
+	
+	draw_set_alpha(1.0);
 }

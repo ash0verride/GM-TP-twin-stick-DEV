@@ -1,4 +1,5 @@
 target = noone;
+max_speed = 2.5;
 
 lock_target = function()
 {

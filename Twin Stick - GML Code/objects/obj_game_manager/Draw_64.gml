@@ -1,5 +1,4 @@
-draw_set_alpha(1);
-draw_sprite(spr_vignette, 0, 0, 0);
+//draw_sprite(spr_vignette, 0, 0, 0);
 
 if(curr_game_state == GAME_STATE.PLAYING)
 {
@@ -13,5 +12,7 @@ if(curr_game_state == GAME_STATE.PLAYING)
 		
 		var _score_text = string(obj_player.player_score);
 		draw_text(room_width / 2, 64, _score_text);
+		
+		draw_set_alpha(1.0);
 	}
 }

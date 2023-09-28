@@ -126,15 +126,14 @@ if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
 {
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
 	_player.player_id = 0;
-	//_player.direction = point_direction(_player.x, _player.y, mouse_x, mouse_y);
-	//_player.image_angle = _player.direction;
+	_player.image_angle = 270;
+	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
 }
 else
 {
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
 	_player.player_id = 0;
-	//_player.direction = point_direction(_player.x, _player.y, mouse_x, mouse_y);
-	//_player.image_angle = _player.direction;
+	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
 	
 	// ?? MORE PLAYERS
 }
@@ -223,9 +222,23 @@ wave_new_wave = function()
 	
 	var _enemy_count = round((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
 	
-	var _enemy_array_pos_x = [];
-	var _enemy_array_pos_y = [];
-	var _enemy_array_count = 0;
+	var _position_array_pos_x = [];
+	var _position_array_pos_y = [];
+	var _position_array_count = 0;
+	
+	with (obj_player)
+	{
+		_position_array_pos_x[_position_array_count] = x;
+		_position_array_pos_y[_position_array_count] = y;
+		_position_array_count++;
+	}
+	
+	with (obj_enemy)
+	{
+		_position_array_pos_x[_position_array_count] = x;
+		_position_array_pos_y[_position_array_count] = y;
+		_position_array_count++;
+	}
 	
 	for (var _i = 0; _i < _enemy_count; _i++)
 	{
@@ -242,31 +255,11 @@ wave_new_wave = function()
 			var _new_enemy_x = random_range(_enemy_edge_offset, (cell_width * arena_grid_width) - _enemy_edge_offset);
 			var _new_enemy_y = random_range(_enemy_edge_offset, (cell_height * arena_grid_height) - _enemy_edge_offset);
 			
-			with(obj_player)
+			for (var _j = 0; _j < _position_array_count; _j++)
 			{
-				if ((_new_enemy_x > x - _enemy_cell_buffer_width && _new_enemy_x < x + _enemy_cell_buffer_width) || (_new_enemy_y > y - _enemy_cell_buffer_height && _new_enemy_y < y + _enemy_cell_buffer_height))
+				if (point_in_rectangle(_new_enemy_x, _new_enemy_y, _position_array_pos_x[_j] - _enemy_cell_buffer_width, _position_array_pos_y[_j] - _enemy_cell_buffer_height, _position_array_pos_x[_j] + _enemy_cell_buffer_width, _position_array_pos_y[_j] + _enemy_cell_buffer_height))
 				{
 					_new_search = true;
-				}
-				else
-				{
-					with(obj_enemy)
-					{
-						if ((_new_enemy_x > x - _enemy_cell_buffer_width && _new_enemy_x < x + _enemy_cell_buffer_width) && (_new_enemy_y > y - _enemy_cell_buffer_height && _new_enemy_y < y + _enemy_cell_buffer_height))
-						{
-							_new_search = true;
-						}
-						else
-						{
-							for (var _j = 0; _j < _enemy_array_count; _j++)
-							{
-								if ((_new_enemy_x >  _enemy_array_pos_x[_j] - _enemy_cell_buffer_width && _new_enemy_x < _enemy_array_pos_x[_j] + _enemy_cell_buffer_width) && (_new_enemy_y > _enemy_array_pos_y[_j] - _enemy_cell_buffer_height && _new_enemy_y < _enemy_array_pos_y[_j] + _enemy_cell_buffer_height))
-								{
-									_new_search = true;
-								}
-							}
-						}
-					}
 				}
 			}
 			
@@ -274,23 +267,18 @@ wave_new_wave = function()
 			
 			if (_tries >= _max_tries && _new_search)
 			{
-				_new_search = false;
 				_can_place = false;
+				_new_search = false;
 			}
-
 		}
 
 		if (_can_place)
 		{
-			_enemy_array_pos_x[_enemy_array_count] = _new_enemy_x;
-			_enemy_array_pos_y[_enemy_array_count] = _new_enemy_y;
-			_enemy_array_count++;
+			layer_sequence_create("Instances", _new_enemy_x, _new_enemy_y, seq_spawn_enemy);
+			_position_array_pos_x[_position_array_count] = _new_enemy_x;
+			_position_array_pos_y[_position_array_count] = _new_enemy_y;
+			_position_array_count++;
 		}
-	}
-	
-	for (var _i = 0; _i < _enemy_array_count; _i++)
-	{
-		layer_sequence_create("Instances", _enemy_array_pos_x[_i], _enemy_array_pos_y[_i], seq_spawn_enemy);
 	}
 }
 

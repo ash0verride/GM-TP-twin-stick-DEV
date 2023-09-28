@@ -2,9 +2,9 @@ player_id = 0;
 player_score = 0;
 
 controller_deadzone = 0.05;
+is_mouse_aiming = false;
 mouse_prev_x = mouse_x;
 mouse_prev_y = mouse_y;
-is_mouse_aiming = false;
 
 wall_buffer = 250;
 rotation_speed = 0.25;
