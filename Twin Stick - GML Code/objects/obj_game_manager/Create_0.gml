@@ -33,6 +33,8 @@ arena_grid_height = irandom_range(3, 6);
 cell_width = 512;
 cell_height = 512;
 
+grid = mp_grid_create(0,0, arena_grid_width * 8, arena_grid_height * 8, cell_width / 8, cell_height / 8);
+
 score_font = fnt_luckiest_guy_48;
 score_colour = c_white;
 score_alpha = 0.75;
@@ -138,6 +140,72 @@ else
 	// ?? MORE PLAYERS
 }
 
+var _obstacle_rate = 0.2;
+var _obstacle_edge_offset = 480;
+var _obstacle_cell_buffer_width = cell_width * 1.5;
+var _obstacle_cell_buffer_height = cell_height * 1.5;
+
+var _obstacle_count = round(arena_grid_width * arena_grid_height * _obstacle_rate);
+	
+for (var _i = 0; _i < _obstacle_count; _i++)
+{
+	var _new_search = true;
+	var _can_place = true;
+	var _tries = 0;
+	var _max_tries = 60;
+	
+	var _new_obstacle_x = 0;
+	var _new_obstacle_y = 0;
+	
+	while (_new_search)
+	{
+		_new_search = false;
+	
+		_new_obstacle_x = random_range(_obstacle_edge_offset, (cell_width * arena_grid_width) - _obstacle_edge_offset);
+		_new_obstacle_y = random_range(_obstacle_edge_offset, (cell_height * arena_grid_height) - _obstacle_edge_offset);
+		
+		with (obj_player)
+		{
+			if (point_in_rectangle(_new_obstacle_x, _new_obstacle_y, x - _obstacle_cell_buffer_width, y - _obstacle_cell_buffer_height, x + _obstacle_cell_buffer_width, y + _obstacle_cell_buffer_height))
+			{
+				_new_search = true;
+			}
+		}
+		
+		if (_new_search == false)
+		{
+			with (obj_obstacle)
+			{
+				if (point_in_rectangle(_new_obstacle_x, _new_obstacle_y, x - _obstacle_cell_buffer_width, y - _obstacle_cell_buffer_height, x + _obstacle_cell_buffer_width, y + _obstacle_cell_buffer_height))
+				{
+					_new_search = true;
+				}
+			}
+		}
+		
+		_tries++;
+			
+		if (_tries >= _max_tries && _new_search)
+		{
+			_can_place = false;
+			_new_search = false;
+		}
+	}
+	
+	if (_can_place)
+	{
+		instance_create_layer(_new_obstacle_x, _new_obstacle_y, "Obstacles", obj_obstacle);
+	}
+}
+
+var _add_grid_obstacles = function()
+{
+	 mp_grid_add_instances(grid, obj_obstacle, true);
+}
+
+call_later(1, time_source_units_frames, _add_grid_obstacles);
+
+
 pause_game = function()
 {
 	if (curr_game_state == GAME_STATE.PLAYING)
@@ -233,6 +301,13 @@ wave_new_wave = function()
 		_position_array_count++;
 	}
 	
+	with (obj_obstacle)
+	{
+		_position_array_pos_x[_position_array_count] = x;
+		_position_array_pos_y[_position_array_count] = y;
+		_position_array_count++;
+	}
+	
 	with (obj_enemy)
 	{
 		_position_array_pos_x[_position_array_count] = x;
@@ -243,7 +318,6 @@ wave_new_wave = function()
 	for (var _i = 0; _i < _enemy_count; _i++)
 	{
 		var _new_search = true;
-		
 		var _can_place = true;
 		var _tries = 0;
 		var _max_tries = 60;

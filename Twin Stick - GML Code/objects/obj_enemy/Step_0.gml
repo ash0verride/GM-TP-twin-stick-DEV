@@ -3,7 +3,14 @@ switch(obj_game_manager.curr_game_state)
 	case GAME_STATE.ENDED:
 		speed *= speed_dropoff;
 	case GAME_STATE.PLAYING:
-		var _dir = point_direction(x, y, target.x, target.y);
+	
+		if (point_distance(x, y, next_node_x, next_node_y) <= node_threshold)
+		{
+			next_node_x = target.x;
+			next_node_y = target.y;
+		}
+		
+		var _dir = point_direction(x, y, next_node_x, next_node_y);
 	
 		var _attraction_x = lengthdir_x(1, _dir);
 		var _attraction_y = lengthdir_y(1, _dir);

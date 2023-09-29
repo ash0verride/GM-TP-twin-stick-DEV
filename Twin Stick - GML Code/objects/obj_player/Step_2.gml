@@ -1,4 +1,4 @@
-if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
+if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 {
 	if (x < wall_buffer || x > (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer)
 	{

@@ -39,7 +39,7 @@ create_projectile = function()
 
 	var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
 	_new_projectile.owner = self;	
-	_new_projectile.correct_self();
+	_new_projectile.correct_player();
 	
 	sprite_index = spr_player_shooting;
 	image_index = 0;

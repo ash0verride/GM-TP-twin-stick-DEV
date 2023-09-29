@@ -9,6 +9,10 @@ randomise();
 fire_rate = 5.0 * random_range(0.75, 1);
 fire_cooldown = fire_rate;
 
+next_node_x = x;
+next_node_y = y;
+node_threshold = obj_game_manager.cell_width / 3;
+
 lock_target = function()
 {
 	var _player_distance = infinity;
@@ -33,15 +37,23 @@ create_projectile = function()
 	var _projectile_origin_x = 0;
 	var _projectile_origin_y = -40;
 	
-	var _theta = degtorad(image_angle - 90);
+	var _theta = degtorad(image_angle);
 	
 	var _projectile_adjust_x = (_projectile_origin_x * cos(_theta)) - (_projectile_origin_y * sin(_theta));
 	var _projectile_adjust_y = (_projectile_origin_y * cos(_theta)) + (_projectile_origin_x * sin(_theta));
 	
 	var _projectile_pos_x = x + _projectile_adjust_x;
 	var _projectile_pos_y = y - _projectile_adjust_y;
+	
+	if (!collision_line(x, y, target.x, target.y, obj_enemy, true, true) && !collision_line(x, y, target.x, target.y, obj_obstacle, true, true))
+	{
+		var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
+		_new_projectile.owner = self;	
+		_new_projectile.correct_enemy();
+	}
+}
 
-	var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
-	_new_projectile.owner = self;	
-	_new_projectile.correct_self();
+find_path = function()
+{
+	
 }
