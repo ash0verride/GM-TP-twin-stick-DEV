@@ -1,5 +1,11 @@
 if(curr_game_type == GAME_TYPE.SINGLE_PLAYER && curr_game_state == GAME_STATE.PLAYING)
 {
+	if (instance_number(obj_enemy) <= 0)
+	{
+		curr_wave++;
+		wave_new_wave();
+	}
+	
 	var _x_adjust = room_width / 2;
 	var _cam_x = clamp(obj_player.x, _x_adjust, (arena_grid_width * cell_width) - _x_adjust);
 	_cam_x -= _x_adjust;

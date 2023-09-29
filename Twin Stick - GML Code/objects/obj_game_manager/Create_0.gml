@@ -25,7 +25,7 @@ randomise();
 curr_level_type = choose(LEVEL_TYPE.GRASS, LEVEL_TYPE.STONE);
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
-curr_wave = 1;
+curr_wave = 0;
 
 arena_grid_width = irandom_range(4, 8);
 arena_grid_height = irandom_range(3, 6);
@@ -33,7 +33,7 @@ arena_grid_height = irandom_range(3, 6);
 cell_width = 512;
 cell_height = 512;
 
-grid = mp_grid_create(0,0, arena_grid_width * 8, arena_grid_height * 8, cell_width / 8, cell_height / 8);
+grid = mp_grid_create(0,0, arena_grid_width * 6, arena_grid_height * 6, cell_width / 6, cell_height / 6);
 
 score_font = fnt_luckiest_guy_48;
 score_colour = c_white;
