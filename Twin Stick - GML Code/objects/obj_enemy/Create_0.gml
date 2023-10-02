@@ -7,8 +7,9 @@ wall_buffer = 250;
 speed_dropoff = 0.9;
 
 randomise();
-fire_rate = 2.0 * random_range(0.75, 1);
+fire_rate = 4.0 * random_range(0.75, 1);
 fire_cooldown = fire_rate;
+fire_max_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) * 2;
 danger_close_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) / 2.5;
 can_danger_close = false;
 
@@ -25,9 +26,6 @@ find_path = function()
     if mp_grid_path(obj_game_manager.grid, _path, x, y, target.x, target.y, true)
     {
 		path_assign(path, _path);
-		var _wanted_pos = path_get_length(path);
-		show_debug_message(string(_wanted_pos));
-		
 		next_node_x = path_get_point_x(path,1);
 		next_node_y = path_get_point_y(path,1);
     }

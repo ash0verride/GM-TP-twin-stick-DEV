@@ -40,7 +40,9 @@ switch(obj_game_manager.curr_game_state)
 
 		speed = min(speed, max_speed);
 		
-		if (point_distance(x, y, target.x, target.y) <= danger_close_distance)
+		var _target_distance = point_distance(x, y, target.x, target.y);
+		
+		if (_target_distance <= danger_close_distance)
 		{
 			speed *= 0.25;
 			can_danger_close = true;
@@ -50,7 +52,7 @@ switch(obj_game_manager.curr_game_state)
 			can_danger_close = false;	
 		}
 		
-		if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
+		if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING && _target_distance <= fire_max_distance)
 		{
 			fire_cooldown -= delta_time * 0.000001;
 			
