@@ -1,1 +1,4 @@
-obj_game_manager.pause_game();
+if (obj_game_manager.curr_game_state == GAME_STATE.PAUSED)
+{
+	obj_game_manager.resume_game();
+}

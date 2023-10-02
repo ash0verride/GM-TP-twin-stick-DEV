@@ -7,6 +7,8 @@ last_speed = speed;
 
 correct_player = function()
 {
+	sprite_index = spr_player_fireball;
+	
 	direction = owner.image_angle;
 	image_angle = direction;
 	
@@ -16,6 +18,8 @@ correct_player = function()
 
 correct_enemy = function()
 {
+	sprite_index = spr_enemy_fireball;
+	
 	direction = point_direction(owner.x, owner.y, owner.target.x, owner.target.y);
 	image_angle = direction;
 	

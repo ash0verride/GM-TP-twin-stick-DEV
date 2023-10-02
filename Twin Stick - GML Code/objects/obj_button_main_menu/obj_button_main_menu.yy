@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_grey_box",
-    "path": "sprites/spr_grey_box/spr_grey_box.yy",
+    "name": "spr_box_blue",
+    "path": "sprites/spr_box_blue/spr_box_blue.yy",
   },
   "spriteMaskId": null,
   "visible": true,

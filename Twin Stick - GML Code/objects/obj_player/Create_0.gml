@@ -4,7 +4,7 @@ player_health = 3;
 player_curr_ammo = 3;
 player_max_ammo = 3;
 
-controller_deadzone = 0.05;
+controller_deadzone = 0.1;
 is_mouse_aiming = false;
 mouse_prev_x = mouse_x;
 mouse_prev_y = mouse_y;
@@ -16,6 +16,7 @@ move_speed = 1;
 max_speed = 5;
 
 direction = image_angle;
+body_angle = direction;
 
 hspeed = 0;
 vspeed = 0;
@@ -23,6 +24,7 @@ vspeed = 0;
 last_speed = speed;
 
 last_image_speed = image_speed;
+is_flashed = false;
 
 create_projectile = function()
 {
@@ -41,6 +43,6 @@ create_projectile = function()
 	_new_projectile.owner = self;	
 	_new_projectile.correct_player();
 	
-	sprite_index = spr_player_shooting;
+	sprite_index = spr_player_shoot;
 	image_index = 0;
 }

@@ -1,7 +1,7 @@
 enum LEVEL_TYPE
 {
 	GRASS,
-	STONE,
+	//STONE,
 	SIZE
 }
 
@@ -22,25 +22,28 @@ enum GAME_STATE
 
 randomise();
 
-curr_level_type = choose(LEVEL_TYPE.GRASS, LEVEL_TYPE.STONE);
+//curr_level_type = choose(LEVEL_TYPE.GRASS, LEVEL_TYPE.STONE);
+curr_level_type = LEVEL_TYPE.GRASS;
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
 curr_wave = 0;
 
-arena_grid_width = irandom_range(4, 8);
-arena_grid_height = irandom_range(3, 6);
+//arena_grid_width = irandom_range(4, 8);
+//arena_grid_height = irandom_range(3, 6);
+arena_grid_width = 8;
+arena_grid_height = 8;
 
 cell_width = 512;
 cell_height = 512;
 
-grid = mp_grid_create(0,0, arena_grid_width * 6, arena_grid_height * 6, cell_width / 6, cell_height / 6);
+grid = mp_grid_create(0,0, arena_grid_width * 4, arena_grid_height * 4, cell_width / 4, cell_height / 4);
 
 score_font = fnt_luckiest_guy_48;
 score_colour = c_white;
 score_alpha = 0.75;
 
 score_halign = fa_center;
-score_valign = fa_center;
+score_valign = fa_middle;
 
 instance_create_layer(0, 0, "Popups", obj_button_pause);
 
@@ -129,15 +132,20 @@ if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
 	_player.player_local_id = 0;
 	_player.image_angle = 270;
-	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
 }
 else
 {
-	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
-	_player.player_local_id = 0;
-	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
-	
-	// ?? MORE PLAYERS
+	var _player_count = gamepad_get_device_count();
+
+	for (var _i = 0; _i < _player_count; _i++)
+	{
+		if (gamepad_is_connected(_i))
+		{		
+			var _player = instance_create_layer((arena_grid_width * cell_width) / 2 + 400 * _i, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
+			_player.player_local_id = _i;
+			_player.image_angle = 270;
+		}
+	}
 }
 
 var _obstacle_rate = 0.2;
@@ -203,71 +211,69 @@ var _add_grid_obstacles = function()
 	 mp_grid_add_instances(grid, obj_obstacle, true);
 }
 
-call_later(1, time_source_units_frames, _add_grid_obstacles);
+var _handle =  call_later(1, time_source_units_frames, _add_grid_obstacles);
 
 
 pause_game = function()
 {
-	if (curr_game_state == GAME_STATE.PLAYING)
-	{
-		curr_game_state = GAME_STATE.PAUSED;
-		layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_pause);
+	curr_game_state = GAME_STATE.PAUSED;
+	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_pause);
 		
-		with(obj_player)
-		{
-			last_speed = speed;
-			speed = 0;
+	with(obj_player)
+	{
+		last_speed = speed;
+		speed = 0;
 			
-			last_image_speed = image_speed;
-			image_speed = 0;
-		}
-		
-		with(obj_projectile)
-		{
-			last_speed = speed;
-			speed = 0;
-		}
-		
-		with(obj_flower)
-		{
-			last_speed = speed;
-			speed = 0;
-		}
+		last_image_speed = image_speed;
+		image_speed = 0;
 	}
-	else
+		
+	with(obj_projectile)
 	{
-		curr_game_state = GAME_STATE.PLAYING;
+		last_speed = speed;
+		speed = 0;
+	}
 		
-		with(obj_banner_pause)
-		{
-			instance_destroy();	
-		}
+	with(obj_flower)
+	{
+		last_speed = speed;
+		speed = 0;
+	}
+}
+
+resume_game = function()
+{
+	curr_game_state = GAME_STATE.PLAYING;
 		
-		with(obj_button_main_menu)
-		{
-			instance_destroy();	
-		}
+	with(obj_banner_pause)
+	{
+		instance_destroy();	
+	}
 		
-		with(obj_button_continue)
-		{
-			instance_destroy();	
-		}
+	with(obj_button_main_menu)
+	{
+		instance_destroy();	
+	}
 		
-		with(obj_player)
-		{
-			speed = last_speed;
-			image_speed = last_image_speed;
-		}
+	with(obj_button_continue)
+	{
+		instance_destroy();	
+	}
 		
-		with(obj_projectile)
-		{
-			speed = last_speed;
-		}
+	with(obj_player)
+	{
+		speed = last_speed;
+		image_speed = last_image_speed;
+	}
 		
-		with(obj_flower)
-		{
-			speed = last_speed;
-		}
+	with(obj_projectile)
+	{
+		speed = last_speed;
+	}
+		
+	with(obj_flower)
+	{
+		speed = last_speed;
 	}
 }
 
@@ -322,12 +328,15 @@ wave_new_wave = function()
 		var _tries = 0;
 		var _max_tries = 60;
 		
+		var _new_enemy_x = 0;
+		var _new_enemy_y = 0;
+		
 		while(_new_search)
 		{
 			_new_search = false;
 			
-			var _new_enemy_x = random_range(_enemy_edge_offset, (cell_width * arena_grid_width) - _enemy_edge_offset);
-			var _new_enemy_y = random_range(_enemy_edge_offset, (cell_height * arena_grid_height) - _enemy_edge_offset);
+			_new_enemy_x = random_range(_enemy_edge_offset, (cell_width * arena_grid_width) - _enemy_edge_offset);
+			_new_enemy_y = random_range(_enemy_edge_offset, (cell_height * arena_grid_height) - _enemy_edge_offset);
 			
 			for (var _j = 0; _j < _position_array_count; _j++)
 			{

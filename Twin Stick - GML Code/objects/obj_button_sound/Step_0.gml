@@ -4,9 +4,20 @@ for (var _i = 0; _i < _max_pads; _i++)
 {
 	if (gamepad_is_connected(_i))
 	{		
-		if (gamepad_button_check_pressed(_i, gp_face1) || gamepad_button_check_pressed(_i, gp_start))
+		if (gamepad_button_check_pressed(_i, gp_select))
 		{
-			room_goto(rm_arena);
+			if (image_index == 0)
+			{
+				global.audio_volume = 0;
+				image_index = 1;
+			}
+			else
+			{
+				global.audio_volume = 1;
+				image_index = 0;
+			}
+			
+			audio_set_master_gain(0, global.audio_volume);
 		}
 	}
 }

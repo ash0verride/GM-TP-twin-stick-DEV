@@ -8,13 +8,13 @@ if(curr_game_state == GAME_STATE.PLAYING)
 			
 			if (player_health > 0)
 			{
-				draw_sprite(spr_hud_health_normal, 0, 86, 40);
+				draw_sprite(spr_hud_health, 0, 86, 40);
 				if (player_health > 1)
 				{
-					draw_sprite(spr_hud_health_normal, 0, 237, 40);	
+					draw_sprite(spr_hud_health, 0, 237, 40);	
 					if (player_health > 2)
 					{
-						draw_sprite(spr_hud_health_edge, 0, 385, 40);	
+						draw_sprite(spr_hud_health_end, 0, 385, 40);	
 					}
 				}
 			}

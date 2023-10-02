@@ -15,7 +15,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		    }
 		}
 
-		if (obj_game_manager.curr_game_type == GAME_TYPE.SINGLE_PLAYER)
+		if (player_local_id == 0)
 		{
 			if (keyboard_check(ord("W")) || keyboard_check(vk_up))
 			{
@@ -76,69 +76,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		}
 		else
 		{
-			if (player_local_id == 0)
-			{
-				if (keyboard_check(ord("W")))
-				{
-			
-				}
-	
-				if (keyboard_check(ord("A")))
-				{
-		
-				}
-	
-				if (keyboard_check(ord("S")))
-				{
-		
-				}
-	
-				if (keyboard_check(ord("D")))
-				{
-		
-				}
-				if (keyboard_check(vk_space))
-				{
-		
-				}
-			}
-			else if (player_local_id == 1)
-			{
-				if (keyboard_check(vk_up))
-				{
-		
-				}
-	
-				if (keyboard_check(vk_left))
-				{
-		
-				}
-	
-				if (keyboard_check(vk_down))
-				{
-		
-				}
-	
-				if (keyboard_check(vk_right))
-				{
-		
-				}
-		
-				if (keyboard_check(vk_enter))
-				{
-		
-				}
-		
-				if (keyboard_check(vk_backspace))
-				{
-			
-				}
-		
-				if (keyboard_check(vk_shift))
-				{
-			
-				}
-			}
+			is_mouse_aiming = false;
 		}
 
 		if (gamepad_is_connected(player_local_id))
@@ -174,8 +112,38 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 				create_projectile();
 			}
 		}
+		
+		var _delta_body_dir = abs(body_angle - direction)
+	
+		if (_delta_body_dir >= 180)
+		{
+			if (body_angle > 180)
+			{
+				body_angle -= 360;
+			}
+			else
+			{
+				body_angle += 360;
+			}
+		}
+		
+		body_angle = lerp(body_angle, direction, rotation_speed * 0.5);
 	}
 
-	clamp(hspeed, -max_speed, max_speed);
-	clamp(vspeed, -max_speed, max_speed);
+	speed = clamp(speed, -max_speed, max_speed);
+	
+	if (x < wall_buffer || x > (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer)
+	{
+		x = clamp(x, wall_buffer, (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer);
+		hspeed *= -speed_dropoff;
+	}
+
+	if (y < wall_buffer || y > (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer)
+	{
+		y = clamp(y, wall_buffer, (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer);
+		vspeed *= -speed_dropoff;
+	}
+
+	mouse_prev_x = mouse_x;
+	mouse_prev_y = mouse_y;
 }

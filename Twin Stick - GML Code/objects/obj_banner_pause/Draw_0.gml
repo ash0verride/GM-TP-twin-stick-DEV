@@ -1,3 +1,8 @@
+draw_set_color(c_black);
+draw_set_alpha(0.6);
+draw_rectangle(x - (room_width / 2), (y + 108.5) - (room_height / 2), x + (room_width / 2), (y + 108.5) + (room_height / 2), false);
+draw_set_alpha(1.0);
+
 draw_self();
 
 draw_set_font(font);

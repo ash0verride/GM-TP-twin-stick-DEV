@@ -51,7 +51,7 @@ lock_target = function()
 }
 
 lock_target();
-call_later(1, time_source_units_frames, find_path);
+var _handle = call_later(1, time_source_units_frames, find_path);
 
 create_projectile = function()
 {

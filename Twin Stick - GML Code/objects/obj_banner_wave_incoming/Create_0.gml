@@ -11,6 +11,6 @@ valign = fa_middle;
 
 font_enable_effects(fnt_luckiest_guy_96_outline, true, {
     outlineEnable: true,
-    outlineDistance: 2,
+    outlineDistance: 4,
     outlineColour: c_black
 });
