@@ -127,14 +127,14 @@ if (curr_level_type == LEVEL_TYPE.GRASS)
 if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
 {
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
-	_player.player_id = 0;
+	_player.player_local_id = 0;
 	_player.image_angle = 270;
 	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
 }
 else
 {
 	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
-	_player.player_id = 0;
+	_player.player_local_id = 0;
 	//_player.image_angle = point_direction(_player.x, _player.y, mouse_x, mouse_y);
 	
 	// ?? MORE PLAYERS

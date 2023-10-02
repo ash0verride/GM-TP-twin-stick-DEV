@@ -76,7 +76,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		}
 		else
 		{
-			if (player_id == 0)
+			if (player_local_id == 0)
 			{
 				if (keyboard_check(ord("W")))
 				{
@@ -102,7 +102,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		
 				}
 			}
-			else if (player_id == 1)
+			else if (player_local_id == 1)
 			{
 				if (keyboard_check(vk_up))
 				{
@@ -141,13 +141,13 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			}
 		}
 
-		if (gamepad_is_connected(player_id))
+		if (gamepad_is_connected(player_local_id))
 		{	
-			vspeed += move_speed * gamepad_axis_value(player_id, gp_axislv);
-			hspeed += move_speed * gamepad_axis_value(player_id, gp_axislh);
+			vspeed += move_speed * gamepad_axis_value(player_local_id, gp_axislv);
+			hspeed += move_speed * gamepad_axis_value(player_local_id, gp_axislh);
 	
-			var _look_x = gamepad_axis_value(player_id, gp_axisrv);
-			var _look_y = -gamepad_axis_value(player_id, gp_axisrh);
+			var _look_x = gamepad_axis_value(player_local_id, gp_axisrv);
+			var _look_y = -gamepad_axis_value(player_local_id, gp_axisrh);
 
 			if (_look_x != 0 || _look_y != 0)
 			{
@@ -169,7 +169,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 				image_angle = lerp(image_angle, _new_dir, rotation_speed);
 			}
 	
-			if (gamepad_button_check(player_id, gp_shoulderrb))
+			if (gamepad_button_check(player_local_id, gp_shoulderrb))
 			{
 				create_projectile();
 			}

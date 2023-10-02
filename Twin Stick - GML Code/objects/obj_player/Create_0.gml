@@ -1,4 +1,4 @@
-player_id = 0;
+player_local_id = 0;
 player_score = 0;
 player_health = 3;
 player_curr_ammo = 3;

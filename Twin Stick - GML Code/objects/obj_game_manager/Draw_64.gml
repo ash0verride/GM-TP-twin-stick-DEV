@@ -2,7 +2,7 @@ if(curr_game_state == GAME_STATE.PLAYING)
 {		
 	with (obj_player)
 	{
-		if (player_id == 0)
+		if (player_local_id == 0)
 		{
 			draw_sprite(spr_hud_background, 0, 0, 0);
 			
