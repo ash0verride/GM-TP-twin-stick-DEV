@@ -9,7 +9,7 @@ set_smoke = function()
 
 set_player_shot = function()
 {
-	particle_sys = part_system_create_layer("Smoke", false, ps_character_defeat);
+	particle_sys = part_system_create_layer("Smoke", false, ps_player_shot);
 	part_system_position(particle_sys, x, y);
 }
 
