@@ -1,7 +1,7 @@
 {
   "resourceType": "GMParticleSystem",
   "resourceVersion": "1.0",
-  "name": "ps_player_shoot_smoke",
+  "name": "ps_shoot_smoke",
   "backdropHeight": 768,
   "backdropImageOpacity": 0.5,
   "backdropImagePath": "",

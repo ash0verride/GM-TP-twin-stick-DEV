@@ -1,7 +1,7 @@
 x = camera_get_view_x(view_camera[0]) + 1870;
 y = camera_get_view_y(view_camera[0]) + 50;
 
-if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
+if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.was_paused)
 {
 	if (keyboard_check_pressed(vk_escape))
 	{

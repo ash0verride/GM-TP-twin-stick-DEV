@@ -1,1 +1,1 @@
-instance_destroy();
+spark_projectile();

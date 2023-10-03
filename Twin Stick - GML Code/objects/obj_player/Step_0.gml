@@ -52,21 +52,21 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (is_mouse_aiming)
 			{
 				var _new_dir = point_direction(x, y, mouse_x, mouse_y);
-				var _delta_dir = abs(_new_dir - image_angle)
+				var _delta_dir = abs(_new_dir - gun_angle)
 	
 				if (_delta_dir >= 180)
 				{
-					if (image_angle > 180)
+					if (gun_angle > 180)
 					{
-						image_angle -= 360;
+						gun_angle -= 360;
 					}
 					else
 					{
-						image_angle += 360;
+						gun_angle += 360;
 					}
 				}
 	
-				image_angle = lerp(image_angle, _new_dir, rotation_speed);
+				gun_angle = lerp(gun_angle, _new_dir, rotation_speed);
 			}
 	
 			if (keyboard_check(vk_space) || keyboard_check(vk_enter) || mouse_check_button(mb_left))
@@ -90,21 +90,21 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (_look_x != 0 || _look_y != 0)
 			{
 				var _new_dir = point_direction(0, 0, _look_x, _look_y) - 90;
-				var _delta_dir = abs(_new_dir - image_angle)
+				var _delta_dir = abs(_new_dir - gun_angle)
 	
-				if (_delta_dir >= 180)
+				if (_delta_dir > 180)
 				{
-					if (image_angle > 180)
+					if (gun_angle > 180)
 					{
-						image_angle -= 360;
+						gun_angle -= 360;
 					}
 					else
 					{
-						image_angle += 360;
+						gun_angle += 360;
 					}
 				}
 	
-				image_angle = lerp(image_angle, _new_dir, rotation_speed);
+				gun_angle = lerp(gun_angle, _new_dir, rotation_speed);
 			}
 	
 			if (gamepad_button_check(player_local_id, gp_shoulderrb))
@@ -128,22 +128,6 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		}
 		
 		body_angle = lerp(body_angle, direction, rotation_speed * 0.5);
+		image_angle = body_angle;
 	}
-
-	speed = clamp(speed, -max_speed, max_speed);
-	
-	if (x < wall_buffer || x > (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer)
-	{
-		x = clamp(x, wall_buffer, (obj_game_manager.arena_grid_width * obj_game_manager.cell_width) - wall_buffer);
-		hspeed *= -speed_dropoff;
-	}
-
-	if (y < wall_buffer || y > (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer)
-	{
-		y = clamp(y, wall_buffer, (obj_game_manager.arena_grid_height * obj_game_manager.cell_height) - wall_buffer);
-		vspeed *= -speed_dropoff;
-	}
-
-	mouse_prev_x = mouse_x;
-	mouse_prev_y = mouse_y;
 }

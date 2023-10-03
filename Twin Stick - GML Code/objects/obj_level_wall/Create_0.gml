@@ -1,25 +1,61 @@
-// Inherit the parent event
-event_inherited();
+enum FACE_TYPE
+{
+	TOP_LEFT,
+	TOP,
+	TOP_RIGHT,
+	RIGHT,
+	BOTTOM_RIGHT,
+	BOTTOM,
+	BOTTOM_LEFT,
+	LEFT,
+	TOP_GAP,
+	RIGHT_GAP,
+	BOTTOM_GAP,
+	LEFT_GAP,
+	SIZE
+}
+
+curr_face_type = FACE_TYPE.SIZE;
 
 set_sprite = function()
 {
-	switch(obj_game_manager.curr_level_type)
+	switch (curr_face_type)
 	{
-		case LEVEL_TYPE.GRASS:
-			cell_sprite[0] = spr_grass_top_left;
-			cell_sprite[1] = spr_grass_top;
-			cell_sprite[2] = spr_grass_top_right;
-			cell_sprite[3] = spr_grass_right;
-			cell_sprite[4] = spr_grass_bottom_right;
-			cell_sprite[5] = spr_grass_bottom;
-			cell_sprite[6] = spr_grass_bottom_left;
-			cell_sprite[7] = spr_grass_left;
-			cell_sprite[8] = spr_grass_top_gap;
-			cell_sprite[9] = spr_grass_right_gap;
-			cell_sprite[10] = spr_grass_bottom_gap;
-			cell_sprite[11] = spr_grass_left_gap;
-			break;
+		case FACE_TYPE.TOP_LEFT:
+			sprite_index = spr_grass_top_left;
+		break;
+		case FACE_TYPE.TOP:
+			sprite_index = spr_grass_top;
+		break;
+		case FACE_TYPE.TOP_RIGHT:
+			sprite_index = spr_grass_top_right;
+		break;
+		case FACE_TYPE.RIGHT:
+			sprite_index = spr_grass_right;
+		break;
+		case FACE_TYPE.BOTTOM_RIGHT:
+			sprite_index = spr_grass_bottom_right;
+		break;
+		case FACE_TYPE.BOTTOM:
+			sprite_index = spr_grass_bottom;
+		break;
+		case FACE_TYPE.BOTTOM_LEFT:
+			sprite_index = spr_grass_bottom_left;
+		break;
+		case FACE_TYPE.LEFT:
+			sprite_index = spr_grass_left;
+		break;
+		case FACE_TYPE.TOP_GAP:
+			sprite_index = spr_grass_top_gap;
+		break;
+		case FACE_TYPE.RIGHT_GAP:
+			sprite_index = spr_grass_right_gap;
+		break;
+		case FACE_TYPE.BOTTOM_GAP:
+			sprite_index = spr_grass_bottom_gap;
+		break;
+		case FACE_TYPE.LEFT_GAP:
+			sprite_index = spr_grass_left_gap;
+		break;
 	}
-	
-	sprite_index = cell_sprite[curr_face_type];
 }

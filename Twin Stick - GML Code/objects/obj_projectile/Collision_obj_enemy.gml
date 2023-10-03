@@ -11,5 +11,5 @@ if (owner.object_index == obj_player)
 	}
 	
 	instance_destroy(other);
-	instance_destroy(self);
+	spark_projectile();
 }

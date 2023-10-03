@@ -14,5 +14,5 @@ if (owner.id != other.id)
 	}
 	
 	other.player_health--;
-	instance_destroy(self);
+	spark_projectile();
 }

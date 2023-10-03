@@ -1,10 +1,3 @@
-enum LEVEL_TYPE
-{
-	GRASS,
-	//STONE,
-	SIZE
-}
-
 enum GAME_TYPE
 {
 	SINGLE_PLAYER,
@@ -22,14 +15,10 @@ enum GAME_STATE
 
 randomise();
 
-//curr_level_type = choose(LEVEL_TYPE.GRASS, LEVEL_TYPE.STONE);
-curr_level_type = LEVEL_TYPE.GRASS;
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
 curr_wave = 0;
 
-//arena_grid_width = irandom_range(4, 8);
-//arena_grid_height = irandom_range(3, 6);
 arena_grid_width = 8;
 arena_grid_height = 8;
 
@@ -44,6 +33,8 @@ score_alpha = 0.75;
 
 score_halign = fa_center;
 score_valign = fa_middle;
+
+was_paused = false;
 
 instance_create_layer(0, 0, "Popups", obj_button_pause);
 
@@ -115,16 +106,14 @@ for (var _i = 0; _i < arena_grid_width; _i++)
 var _flower_rate = 3;
 var _flower_edge_offset = 240;
 
-if (curr_level_type == LEVEL_TYPE.GRASS)
-{	
-	var _flower_count = round(arena_grid_width * arena_grid_height * _flower_rate);
+
+var _flower_count = round(arena_grid_width * arena_grid_height * _flower_rate);
 	
-	for (var _i = 0; _i < _flower_count; _i++)
-	{
-		var _new_flower_x = random_range(_flower_edge_offset, (cell_width * arena_grid_width) - _flower_edge_offset);
-		var _new_flower_y = random_range(_flower_edge_offset, (cell_height * arena_grid_height) - _flower_edge_offset);
-		instance_create_layer(_new_flower_x, _new_flower_y, "Flowers", obj_flower);
-	}
+for (var _i = 0; _i < _flower_count; _i++)
+{
+	var _new_flower_x = random_range(_flower_edge_offset, (cell_width * arena_grid_width) - _flower_edge_offset);
+	var _new_flower_y = random_range(_flower_edge_offset, (cell_height * arena_grid_height) - _flower_edge_offset);
+	instance_create_layer(_new_flower_x, _new_flower_y, "Flowers", obj_flower);
 }
 
 if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
@@ -221,23 +210,38 @@ pause_game = function()
 		
 	with(obj_player)
 	{
-		last_speed = speed;
-		speed = 0;
-			
-		last_image_speed = image_speed;
-		image_speed = 0;
+		if (speed != 0)
+		{
+			last_speed = speed;
+			speed = 0;
+		}
+	}
+	
+	with(obj_player_shoot)
+	{
+		if (image_speed != 0)
+		{
+			last_image_speed = image_speed;
+			image_speed = 0;
+		}
 	}
 		
 	with(obj_projectile)
 	{
-		last_speed = speed;
-		speed = 0;
+		if (speed != 0)
+		{
+			last_speed = speed;
+			speed = 0;
+		}
 	}
 		
 	with(obj_flower)
 	{
-		last_speed = speed;
-		speed = 0;
+		if (speed != 0)
+		{
+			last_speed = speed;
+			speed = 0;
+		}
 	}
 }
 
@@ -263,7 +267,11 @@ resume_game = function()
 	with(obj_player)
 	{
 		speed = last_speed;
-		image_speed = last_image_speed;
+	}
+	
+	with(obj_player_shoot)
+	{
+		image_speed = last_image_speed;	
 	}
 		
 	with(obj_projectile)

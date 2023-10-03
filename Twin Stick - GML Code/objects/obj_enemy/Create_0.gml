@@ -19,6 +19,9 @@ node_threshold = ((obj_game_manager.cell_width + obj_game_manager.cell_height) /
 
 path = path_add();
 
+direction = image_angle;
+sprite_index = spr_enemy;
+
 find_path = function()
 {
 	var _path = path_add();
