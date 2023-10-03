@@ -82,6 +82,7 @@
     {"id":{"name":"spr_grass_right","path":"sprites/spr_grass_right/spr_grass_right.yy",},},
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"spr_icon_panel","path":"sprites/spr_icon_panel/spr_icon_panel.yy",},},
+    {"id":{"name":"obj_enemy_spawner","path":"objects/obj_enemy_spawner/obj_enemy_spawner.yy",},},
     {"id":{"name":"spr_flower_blue","path":"sprites/spr_flower_blue/spr_flower_blue.yy",},},
     {"id":{"name":"spr_grass_right_gap","path":"sprites/spr_grass_right_gap/spr_grass_right_gap.yy",},},
     {"id":{"name":"obj_banner_wave_clear","path":"objects/obj_banner_wave_clear/obj_banner_wave_clear.yy",},},

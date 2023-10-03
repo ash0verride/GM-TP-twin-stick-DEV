@@ -1,3 +1,6 @@
+is_spawning = true;
+owner = noone;
+
 target = noone;
 repulse_buffer = 300;
 max_speed = 2.5;
@@ -19,7 +22,7 @@ node_threshold = ((obj_game_manager.cell_width + obj_game_manager.cell_height) /
 
 path = path_add();
 
-direction = image_angle;
+image_angle = direction + 180;
 sprite_index = spr_enemy;
 
 find_path = function()
@@ -54,7 +57,6 @@ lock_target = function()
 }
 
 lock_target();
-var _handle = call_later(1, time_source_units_frames, find_path);
 
 create_projectile = function()
 {

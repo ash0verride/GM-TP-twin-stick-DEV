@@ -38,6 +38,7 @@
     {"name":"spr_flower_group","order":1,"path":"sprites/spr_flower_group/spr_flower_group.yy",},
     {"name":"spr_grass_right","order":11,"path":"sprites/spr_grass_right/spr_grass_right.yy",},
     {"name":"obj_enemy","order":17,"path":"objects/obj_enemy/obj_enemy.yy",},
+    {"name":"obj_enemy_spawner","order":23,"path":"objects/obj_enemy_spawner/obj_enemy_spawner.yy",},
     {"name":"spr_grass_right_gap","order":14,"path":"sprites/spr_grass_right_gap/spr_grass_right_gap.yy",},
     {"name":"obj_banner_wave_clear","order":14,"path":"objects/obj_banner_wave_clear/obj_banner_wave_clear.yy",},
     {"name":"obj_level_ground","order":2,"path":"objects/obj_level_ground/obj_level_ground.yy",},

@@ -1,4 +1,4 @@
-if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
+if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED && !is_spawning)
 {	
 	//x = xprevious;
 	//y = yprevious;

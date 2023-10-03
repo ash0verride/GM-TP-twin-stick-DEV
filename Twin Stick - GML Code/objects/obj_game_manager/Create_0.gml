@@ -27,6 +27,11 @@ cell_height = 512;
 
 grid = mp_grid_create(0,0, arena_grid_width * 4, arena_grid_height * 4, cell_width / 4, cell_height / 4);
 
+gap_rate = 1/3;
+gap_count = 0;
+gap_min = 2;
+gap_max = 8;
+
 score_font = fnt_luckiest_guy_48;
 score_colour = c_white;
 score_alpha = 0.75;
@@ -52,15 +57,30 @@ for (var _i = 0; _i < arena_grid_width; _i++)
 			}
 			else if (_j == arena_grid_height - 1)
 			{
+				
 				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
 				_new_wall.curr_face_type = FACE_TYPE.BOTTOM_LEFT;
 				_new_wall.set_sprite();
 			}
 			else
 			{
-				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
-				_new_wall.curr_face_type = FACE_TYPE.LEFT;
-				_new_wall.set_sprite();
+				if (random(1.0) <= gap_rate && gap_count < gap_max)
+				{
+					var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+					_new_wall.curr_face_type = FACE_TYPE.LEFT_GAP;
+					_new_wall.set_sprite();
+					
+					var _new_spawner = instance_create_layer(_new_wall.x - cell_width / 2, _new_wall.y + cell_height / 2, "Level", obj_enemy_spawner);
+					_new_spawner.curr_face_direction = FACE_DIRECTION.LEFT;
+					
+					gap_count++;
+				}
+				else
+				{
+					var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+					_new_wall.curr_face_type = FACE_TYPE.LEFT;
+					_new_wall.set_sprite();
+				}
 			}
 		}
 		else if (_i == arena_grid_width - 1)
@@ -79,28 +99,75 @@ for (var _i = 0; _i < arena_grid_width; _i++)
 			}
 			else
 			{
-				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
-				_new_wall.curr_face_type = FACE_TYPE.RIGHT;
-				_new_wall.set_sprite();
+				if (random(1.0) <= gap_rate && gap_count < gap_max)
+				{
+					var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+					_new_wall.curr_face_type = FACE_TYPE.RIGHT_GAP;
+					_new_wall.set_sprite();
+					
+					var _new_spawner = instance_create_layer(_new_wall.x + (3 * cell_width) / 2, _new_wall.y + cell_height / 2, "Level", obj_enemy_spawner);
+					_new_spawner.curr_face_direction = FACE_DIRECTION.RIGHT;
+					
+					gap_count++;
+				}
+				else
+				{
+					var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+					_new_wall.curr_face_type = FACE_TYPE.RIGHT;
+					_new_wall.set_sprite();
+				}
 			}
 		}
 		else if (_j == 0)
 		{
-			var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
-			_new_wall.curr_face_type = FACE_TYPE.TOP;
-			_new_wall.set_sprite();
+			if (random(1.0) <= gap_rate && gap_count < gap_max)
+			{
+				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+				_new_wall.curr_face_type = FACE_TYPE.TOP_GAP;
+				_new_wall.set_sprite();
+				
+				var _new_spawner = instance_create_layer(_new_wall.x + cell_width / 2, _new_wall.y - cell_height / 2, "Level", obj_enemy_spawner);
+				_new_spawner.curr_face_direction = FACE_DIRECTION.TOP;
+				
+				gap_count++;
+			}
+			else
+			{
+				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+				_new_wall.curr_face_type = FACE_TYPE.TOP;
+				_new_wall.set_sprite();
+			}
 		}
 		else if (_j == arena_grid_height - 1)
 		{
-			var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
-			_new_wall.curr_face_type = FACE_TYPE.BOTTOM;
-			_new_wall.set_sprite();
+			if (random(1.0) <= gap_rate && gap_count < gap_max)
+			{
+				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+				_new_wall.curr_face_type = FACE_TYPE.BOTTOM_GAP;
+				_new_wall.set_sprite();
+				
+				var _new_spawner = instance_create_layer(_new_wall.x + cell_width / 2, _new_wall.y + (3 * cell_height) / 2, "Level", obj_enemy_spawner);
+				_new_spawner.curr_face_direction = FACE_DIRECTION.BOTTOM;
+				
+				gap_count++;
+			}
+			else
+			{
+				var _new_wall = instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_wall);
+				_new_wall.curr_face_type = FACE_TYPE.BOTTOM;
+				_new_wall.set_sprite();
+			}
 		}
 		else
 		{
 			instance_create_layer(_i * cell_width, _j * cell_height, "Level", obj_level_ground);
 		}
 	}
+}
+
+if (gap_count < gap_min)
+{
+	room_restart();	
 }
 
 var _flower_rate = 3;
@@ -295,14 +362,37 @@ wave_incoming = function()
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_wave_incoming);
 }
 
-wave_new_wave = function()
+wave_new_spawners = function()
+{
+	var _enemy_rate = 0.1;
+	
+	var _enemy_count = ceil((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
+	
+	for (var _i = 0; _i < _enemy_count; _i++)
+	{
+		var _picked_spawner = irandom(instance_number(obj_enemy_spawner) - 1)
+		var _curr_spawner = 0;
+		
+		with(obj_enemy_spawner)
+		{
+			if (_curr_spawner == _picked_spawner)
+			{
+				spawn_queue++;
+			}
+			
+			_curr_spawner++;
+		}
+	}
+}
+
+wave_new_random = function()
 {
 	var _enemy_rate = 0.75;
 	var _enemy_edge_offset = 240;
 	var _enemy_cell_buffer_width = cell_width / 3;
 	var _enemy_cell_buffer_height = cell_height / 3;
 	
-	var _enemy_count = round((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
+	var _enemy_count = ceil((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
 	
 	var _position_array_pos_x = [];
 	var _position_array_pos_y = [];

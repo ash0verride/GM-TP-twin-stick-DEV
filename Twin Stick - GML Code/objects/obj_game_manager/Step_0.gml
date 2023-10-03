@@ -1,11 +1,5 @@
 if(curr_game_state == GAME_STATE.PLAYING)
 {
-	if (instance_number(obj_enemy) <= 0)
-	{
-		curr_wave++;
-		wave_new_wave();
-	}
-	
 	var _x_adjust = room_width / 2;
 	var _y_adjust = room_height / 2;
 	
