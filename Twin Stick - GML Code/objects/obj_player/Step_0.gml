@@ -68,11 +68,18 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 	
 				gun_angle = lerp(gun_angle, _new_dir, rotation_speed);
 			}
-	
-			if (keyboard_check(vk_space) || keyboard_check(vk_enter) || mouse_check_button(mb_left))
+			
+			if (keyboard_check(ord("R")) && !player_is_reloading)
 			{
-				create_projectile();
+				player_is_reloading = true;
 			}
+	
+			if (keyboard_check(vk_space) || mouse_check_button(mb_left))
+			{
+				trigger_pressed();
+			}
+			
+
 		}
 		else
 		{
@@ -106,10 +113,15 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 	
 				gun_angle = lerp(gun_angle, _new_dir, rotation_speed);
 			}
+			
+			if (gamepad_button_check(player_local_id, gp_face3) && !player_is_reloading)
+			{
+				player_is_reloading = true;
+			}
 	
 			if (gamepad_button_check(player_local_id, gp_shoulderrb))
 			{
-				create_projectile();
+				trigger_pressed();
 			}
 		}
 		
@@ -129,5 +141,27 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		
 		body_angle = lerp(body_angle, direction, rotation_speed * 0.5);
 		image_angle = body_angle;
+		
+		if (player_is_reloading)
+		{
+			if (player_curr_ammo < player_max_ammo)
+			{
+				player_reload_cooldown += delta_time * 0.000001;
+				
+				if (player_reload_cooldown >= player_reload_rate)
+				{
+					player_reload_cooldown -= player_reload_rate;
+					player_curr_ammo++;
+				}
+			}
+			else
+			{
+				player_is_reloading = false;	
+			}
+		}
+		if (player_fire_cooldown > 0)
+		{
+			player_fire_cooldown -= delta_time * 0.000001;	
+		}
 	}
 }

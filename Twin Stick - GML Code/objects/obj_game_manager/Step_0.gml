@@ -3,6 +3,24 @@ if(curr_game_state == GAME_STATE.PLAYING)
 	var _x_adjust = room_width / 2;
 	var _y_adjust = room_height / 2;
 	
+	if (instance_number(obj_enemy) <= 0 && curr_wave != 0 && !instance_exists(obj_banner_wave_clear) && !instance_exists(obj_banner_wave_incoming))
+	{
+		curr_wave++;
+		wave_cleared();
+	}
+	else if (curr_wave == 0)
+	{
+		if (start_time <= 0)
+		{
+			curr_wave++;
+			wave_new_spawners();
+			wave_incoming();
+		}
+		else
+		{
+			start_time -= delta_time * 0.000001;	
+		}
+	}
 	
 	var _player_count = instance_number(obj_player)
 	var _cam_x = 0;

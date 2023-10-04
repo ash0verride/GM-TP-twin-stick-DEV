@@ -2,6 +2,7 @@ switch(obj_game_manager.curr_game_state)
 {
 	case GAME_STATE.ENDED:
 		speed *= speed_dropoff;
+		break;
 	case GAME_STATE.PLAYING:
 		if (is_spawning)
 		{
@@ -89,6 +90,5 @@ switch(obj_game_manager.curr_game_state)
 		}
 		break;
 	case GAME_STATE.PAUSED:
-		speed = 0;
 		break;
 }

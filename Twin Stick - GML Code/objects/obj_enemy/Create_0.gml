@@ -25,6 +25,8 @@ path = path_add();
 image_angle = direction + 180;
 sprite_index = spr_enemy;
 
+last_speed = speed;
+
 find_path = function()
 {
 	var _path = path_add();

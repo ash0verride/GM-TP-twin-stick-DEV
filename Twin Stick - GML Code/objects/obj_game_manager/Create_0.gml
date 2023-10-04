@@ -41,6 +41,8 @@ score_valign = fa_middle;
 
 was_paused = false;
 
+start_time = 5.0;
+
 instance_create_layer(0, 0, "Popups", obj_button_pause);
 
 for (var _i = 0; _i < arena_grid_width; _i++)
@@ -292,6 +294,15 @@ pause_game = function()
 			image_speed = 0;
 		}
 	}
+	
+	with(obj_enemy)
+	{
+		if (speed != 0)
+		{
+			last_speed = speed;
+			speed = 0;
+		}
+	}
 		
 	with(obj_projectile)
 	{
@@ -339,6 +350,11 @@ resume_game = function()
 	with(obj_player_shoot)
 	{
 		image_speed = last_image_speed;	
+	}
+	
+	with(obj_enemy)
+	{
+		speed = last_speed;
 	}
 		
 	with(obj_projectile)

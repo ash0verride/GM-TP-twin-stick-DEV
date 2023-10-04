@@ -1,8 +1,14 @@
 player_local_id = 0;
 player_score = 0;
-player_health = 30;
-player_curr_ammo = 3;
-player_max_ammo = 3;
+player_health = 3;
+
+player_curr_ammo = 35;
+player_max_ammo = 35;
+player_fire_rate = 0.5;
+player_fire_cooldown = 0;
+player_reload_rate = 0.1;
+player_reload_cooldown = 0;
+player_is_reloading = false; 
 
 controller_deadzone = 0.1;
 is_mouse_aiming = false;
@@ -42,4 +48,21 @@ create_projectile = function()
 	var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
 	_new_projectile.owner = self;	
 	_new_projectile.correct_player();
+}
+
+trigger_pressed = function()
+{
+	if (!player_is_reloading && player_curr_ammo > 0)
+	{
+		if (player_fire_cooldown <= 0)
+		{
+			player_fire_cooldown = player_fire_rate;
+			player_curr_ammo--;
+			create_projectile();
+		}
+	}
+	else
+	{
+		player_is_reloading = false;	
+	}
 }
