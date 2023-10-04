@@ -17,7 +17,7 @@ randomise();
 
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
-curr_wave = 3000;
+curr_wave = 0;
 
 arena_grid_width = 8;
 arena_grid_height = 8;
@@ -25,7 +25,8 @@ arena_grid_height = 8;
 cell_width = 512;
 cell_height = 512;
 
-grid = mp_grid_create(0,0, arena_grid_width * 4, arena_grid_height * 4, cell_width / 4, cell_height / 4);
+grid_rate = 8;
+grid = mp_grid_create(0, 0, arena_grid_width * grid_rate, arena_grid_height * grid_rate, cell_width / grid_rate, cell_height / grid_rate);
 
 gap_rate = 1/3;
 gap_count = 0;
@@ -208,7 +209,7 @@ else
 }
 
 var _obstacle_rate = 0.2;
-var _obstacle_edge_offset = 480;
+var _obstacle_edge_offset = 600;
 var _obstacle_cell_buffer_width = cell_width * 1.5;
 var _obstacle_cell_buffer_height = cell_height * 1.5;
 
@@ -402,6 +403,7 @@ wave_new_spawners = function()
 	}
 }
 
+/// OLD WAVE SPAWNING USE FOR POWERUPS!
 wave_new_random = function()
 {
 	var _enemy_rate = 0.75;

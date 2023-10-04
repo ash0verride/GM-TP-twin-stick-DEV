@@ -76,6 +76,7 @@
     {"name":"spr_grass_left_gap","order":13,"path":"sprites/spr_grass_left_gap/spr_grass_left_gap.yy",},
     {"name":"obj_flower","order":4,"path":"objects/obj_flower/obj_flower.yy",},
     {"name":"obj_obstacle","order":18,"path":"objects/obj_obstacle/obj_obstacle.yy",},
+    {"name":"seq_enemy_parts","order":7,"path":"sequences/seq_enemy_parts/seq_enemy_parts.yy",},
     {"name":"spr_enemy_part_1","order":3,"path":"sprites/spr_enemy_part_1/spr_enemy_part_1.yy",},
     {"name":"spr_enemy_part_2","order":4,"path":"sprites/spr_enemy_part_2/spr_enemy_part_2.yy",},
     {"name":"obj_button_options","order":20,"path":"objects/obj_button_options/obj_button_options.yy",},

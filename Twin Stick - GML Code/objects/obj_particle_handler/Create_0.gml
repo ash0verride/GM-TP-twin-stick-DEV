@@ -9,19 +9,19 @@ set_smoke = function()
 
 set_player_shot = function()
 {
-	particle_sys = part_system_create_layer("Smoke", false, ps_player_shot);
+	particle_sys = part_system_create_layer("Explosions", false, ps_player_shot);
 	part_system_position(particle_sys, x, y);
 }
 
 set_enemy_shot = function()
 {
-	particle_sys = part_system_create_layer("Smoke", false, ps_enemy_shot);
+	particle_sys = part_system_create_layer("Explosions", false, ps_enemy_shot);
 	part_system_position(particle_sys, x, y);
 }
 
 set_character_defeat = function()
 {
-	particle_sys = part_system_create_layer("Smoke", false, ps_character_defeat);
+	particle_sys = part_system_create_layer("Explosions", false, ps_character_defeat);
 	part_system_position(particle_sys, x, y);
 }
 
