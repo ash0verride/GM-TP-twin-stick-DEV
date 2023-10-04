@@ -1,8 +1,8 @@
 {
   "FolderOrderSettings": [
+    {"name":"Particle Systems","order":1,"path":"folders/Particle Systems.yy",},
     {"name":"Enemy","order":1,"path":"folders/Sprites/Actors/Enemy.yy",},
     {"name":"Player","order":2,"path":"folders/Sprites/Actors/Player.yy",},
-    {"name":"Particle Systems","order":1,"path":"folders/Particle Systems.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_player_shoot","order":5,"path":"sprites/spr_player_shoot/spr_player_shoot.yy",},
