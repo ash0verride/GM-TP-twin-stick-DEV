@@ -163,5 +163,26 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		{
 			player_fire_cooldown -= delta_time * 0.000001;	
 		}
+		
+		if (is_flashed)
+		{
+			flash_cooldown -= delta_time * 0.000001;
+			
+			if (flash_cooldown <= 0)
+			{
+				is_flashed = false;
+				flash_cooldown = flash_time;
+			}
+		}
+	}
+	
+	if (player_health <= 0)
+	{
+		image_alpha -= 0.000001 * delta_time * 0.2;
+		
+		if (image_alpha <= 0)
+		{
+			instance_destroy();	
+		}
 	}
 }

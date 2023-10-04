@@ -1,6 +1,6 @@
 player_local_id = 0;
 player_score = 0;
-player_health = 3;
+player_health = 3000;
 
 player_curr_ammo = 35;
 player_max_ammo = 35;
@@ -31,6 +31,8 @@ vspeed = 0;
 last_speed = speed;
 
 is_flashed = false;
+flash_time = 0.2;
+flash_cooldown = flash_time;
 
 create_projectile = function()
 {

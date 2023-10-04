@@ -4,7 +4,10 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	{
 		if (cooldown <= 0)
 		{
-			spawn_enemy();
+			if(instance_number(obj_enemy) < obj_game_manager.max_enemies)
+			{
+				spawn_enemy();
+			}
 		}
 		else
 		{

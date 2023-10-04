@@ -17,7 +17,7 @@ randomise();
 
 curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
-curr_wave = 0;
+curr_wave = 3000;
 
 arena_grid_width = 8;
 arena_grid_height = 8;
@@ -42,6 +42,7 @@ score_valign = fa_middle;
 was_paused = false;
 
 start_time = 5.0;
+max_enemies = 40;
 
 instance_create_layer(0, 0, "Popups", obj_button_pause);
 

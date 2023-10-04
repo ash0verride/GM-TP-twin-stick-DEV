@@ -6,7 +6,7 @@ repulse_buffer = 300;
 max_speed = 2.5;
 speed_rate = 0.9;
 
-wall_buffer = 250;
+wall_buffer = 280;
 speed_dropoff = 0.9;
 
 randomise();
