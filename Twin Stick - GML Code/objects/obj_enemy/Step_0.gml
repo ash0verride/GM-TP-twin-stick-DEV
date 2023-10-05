@@ -55,7 +55,7 @@ switch(obj_game_manager.curr_game_state)
 		
 			if (_target_distance <= danger_close_distance)
 			{
-				speed *= 0.25;
+				speed *= 0.1;
 				can_danger_close = true;
 			}
 			else
@@ -91,4 +91,20 @@ switch(obj_game_manager.curr_game_state)
 		break;
 	case GAME_STATE.PAUSED:
 		break;
+}
+
+if (is_flashed && obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
+{
+	flash_cooldown -= delta_time * 0.000001;
+
+	if (flash_cooldown <= 0)
+	{
+		is_flashed = false;
+		flash_cooldown = flash_time;
+	}
+}
+
+if (curr_health <= 0)
+{
+	instance_destroy();
 }

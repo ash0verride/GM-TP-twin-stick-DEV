@@ -42,7 +42,7 @@ score_valign = fa_middle;
 
 was_paused = false;
 
-start_time = 5.0;
+start_time = 3.0;
 max_enemies = 40;
 
 instance_create_layer(0, 0, "Popups", obj_button_pause);

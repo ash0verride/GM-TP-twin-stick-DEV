@@ -174,15 +174,18 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 				flash_cooldown = flash_time;
 			}
 		}
+		
+		if (hud_health_alpha > 0)
+		{
+			hud_health_alpha -= delta_time * 0.000001 * 2;
+		}
 	}
 	
 	if (player_health <= 0)
 	{
-		image_alpha -= 0.000001 * delta_time * 0.2;
-		
-		if (image_alpha <= 0)
-		{
-			instance_destroy();	
-		}
+		var _new_boom = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+		_new_boom.set_character_defeat();
+		_new_boom.owner = self;
+		instance_destroy();	
 	}
 }

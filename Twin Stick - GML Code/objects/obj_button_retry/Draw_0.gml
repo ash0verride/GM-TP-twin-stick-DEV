@@ -5,4 +5,4 @@ draw_set_valign(valign);
 
 draw_self();
 
-draw_text(x, y + 10, text);
+draw_text_transformed(x, y + 10, text, image_xscale, image_yscale, 0);

@@ -15,9 +15,9 @@ correct_player = function()
 	hspeed += owner.hspeed * speed_dropoff;
 	vspeed += owner.vspeed * speed_dropoff;
 	
-	//var _new_gun_flash = instance_create_depth(x, y, depth - 1, obj_player_shoot);
-	//_new_gun_flash.owner = owner;
-	//_new_gun_flash.image_angle = direction;
+	var _new_gun_flash = instance_create_depth(x, y, depth - 1, obj_player_shoot);
+	_new_gun_flash.owner = owner;
+	_new_gun_flash.image_angle = direction;
 	
 	var _new_smoke = instance_create_depth(x, y, depth - 1, obj_particle_handler);
 	_new_smoke.set_smoke();

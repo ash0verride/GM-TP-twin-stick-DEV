@@ -1,10 +1,6 @@
 if (owner.id != other.id)
 {
-	if (other.is_flashed)
-	{
-		spark_projectile();
-	}
-	else
+	if (!other.is_flashed)
 	{
 		if (owner.object_index == obj_player)
 		{
@@ -18,12 +14,9 @@ if (owner.id != other.id)
 				}
 			}
 		}
-	
 		other.is_flashed = true;
-		other.player_health--;
-		spark_projectile();
-		var _new_boom = instance_create_depth(x, y, depth - 1, obj_particle_handler);
-		_new_boom.set_character_defeat();
-		_new_boom.owner = self;
+		other.hud_health_alpha = 1.0;
+		other.player_health--;	
 	}
+	spark_projectile();
 }

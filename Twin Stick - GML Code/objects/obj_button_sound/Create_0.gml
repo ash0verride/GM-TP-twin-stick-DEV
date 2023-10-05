@@ -15,3 +15,7 @@ else
 }
 
 audio_set_master_gain(0, global.audio_volume);
+
+target_scale = 1.0;
+scale_rate = 0.1;
+is_pressed = false;

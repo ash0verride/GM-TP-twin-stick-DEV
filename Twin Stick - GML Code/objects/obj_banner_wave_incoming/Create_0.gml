@@ -1,11 +1,11 @@
-banner_life = 5;
+banner_life = 2;
 banner_alpha = image_alpha;
 
 text_1 = "INCOMING WAVE " + string(obj_game_manager.curr_wave);
 font_1 = fnt_luckiest_guy_96_outline;
 colour_1 = c_red;
 
-text_2 = "HOLD TIGHT AND FIX THE BOT\nMORE ARE ON THE WAY";
+text_2 = "GET READY!";
 font_2 = fnt_luckiest_guy_24;
 colour_2 = c_white;
 

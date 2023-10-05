@@ -34,6 +34,8 @@ is_flashed = false;
 flash_time = 0.2;
 flash_cooldown = flash_time;
 
+hud_health_alpha = 0;
+
 create_projectile = function(_gun_angle)
 {
 	var _projectile_origin_x = 110;

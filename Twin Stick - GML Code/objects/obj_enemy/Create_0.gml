@@ -27,6 +27,11 @@ sprite_index = spr_enemy;
 
 last_speed = speed;
 
+curr_health = 3;
+is_flashed = false;
+flash_time = 0.1;
+flash_cooldown = flash_time;
+
 find_path = function()
 {
 	var _path = path_add();
