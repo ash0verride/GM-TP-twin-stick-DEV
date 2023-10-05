@@ -69,7 +69,7 @@ switch(obj_game_manager.curr_game_state)
 			
 				if (fire_cooldown <= 0)
 				{
-					create_projectile();
+					create_projectile_enemy();
 					fire_cooldown = fire_rate;
 				}
 			}

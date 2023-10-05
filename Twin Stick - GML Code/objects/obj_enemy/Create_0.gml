@@ -60,7 +60,7 @@ lock_target = function()
 
 lock_target();
 
-create_projectile = function()
+create_projectile_enemy = function()
 {
 	var _projectile_origin_x = 0;
 	var _projectile_origin_y = -40;

@@ -21,9 +21,9 @@ speed_dropoff = 0.9;
 move_speed = 1;
 max_speed = 5;
 
-gun_angle = image_angle;
-body_angle = gun_angle;
-direction = body_angle;
+direction = image_angle;
+gun_angle = direction;
+body_angle = direction;
 
 hspeed = 0;
 vspeed = 0;
@@ -34,12 +34,12 @@ is_flashed = false;
 flash_time = 0.2;
 flash_cooldown = flash_time;
 
-create_projectile = function()
+create_projectile = function(_gun_angle)
 {
 	var _projectile_origin_x = 110;
 	var _projectile_origin_y = 0;
 	
-	var _theta = degtorad(gun_angle);
+	var _theta = degtorad(_gun_angle);
 	
 	var _projectile_adjust_x = (_projectile_origin_x * cos(_theta)) - (_projectile_origin_y * sin(_theta));
 	var _projectile_adjust_y = (_projectile_origin_y * cos(_theta)) + (_projectile_origin_x * sin(_theta));
@@ -50,6 +50,12 @@ create_projectile = function()
 	var _new_projectile = instance_create_layer(_projectile_pos_x, _projectile_pos_y, "Projectiles", obj_projectile);
 	_new_projectile.owner = self;	
 	_new_projectile.correct_player();
+	
+	var _new_hit = instance_create_depth(_projectile_pos_x, _projectile_pos_y, depth - 1, obj_particle_handler);
+	_new_hit.set_player_shot();
+	_new_hit.owner = self;
+	_new_hit.set_angle(_gun_angle);
+	_new_hit.set_offset(true, 110, 0)
 }
 
 trigger_pressed = function()
@@ -60,7 +66,7 @@ trigger_pressed = function()
 		{
 			player_fire_cooldown = player_fire_rate;
 			player_curr_ammo--;
-			create_projectile();
+			create_projectile(gun_angle);
 		}
 	}
 	else
