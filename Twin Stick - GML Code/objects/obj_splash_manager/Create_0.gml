@@ -51,3 +51,6 @@ font_enable_effects(fnt_luckiest_guy_36_outline, true, {
     outlineDistance: 2,
     outlineColour: c_black
 });
+
+audio_stop_all();
+music = audio_play_sound(snd_music_menu_main, 100, true);

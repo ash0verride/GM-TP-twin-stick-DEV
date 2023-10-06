@@ -10,6 +10,10 @@ if(curr_game_state == GAME_STATE.PLAYING)
 			curr_wave++;
 			wave_cleared();
 			was_new_wave = false;
+			
+			audio_stop_sound(music);
+			music = -1;
+			music = audio_play_sound(snd_music_round_clear, 100, false);
 		}
 		else
 		{

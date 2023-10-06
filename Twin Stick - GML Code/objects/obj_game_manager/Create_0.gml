@@ -384,3 +384,6 @@ lose_game = function()
 	curr_game_state = GAME_STATE.ENDED;
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_lose);
 }
+
+audio_stop_all();
+music = -1;

@@ -13,6 +13,8 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		if(image_alpha <= 0)
 		{
 			obj_game_manager.wave_new_spawners();
+			
+			obj_game_manager.music = audio_play_sound(choose(snd_music_game_1, snd_music_game_2, snd_music_game_3), 100, true);
 			instance_destroy();	
 		}
 	}
