@@ -5,9 +5,13 @@ draw_set_alpha(1.0);
 
 draw_self();
 
-draw_set_font(font);
+draw_set_font(font_1);
 draw_set_color(colour);
 draw_set_halign(halign);
 draw_set_valign(valign);
 
-draw_text(x, y - 64, text);
+draw_text(x, y - 64, text_1);
+
+draw_set_font(font_2);
+
+draw_text(x, y + 32, text_2);

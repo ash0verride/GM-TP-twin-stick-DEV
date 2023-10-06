@@ -86,3 +86,6 @@ create_projectile_enemy = function()
 	}
 }
 
+var _new_indicator = instance_create_layer(x, y, "GM", obj_enemy_indicator);
+_new_indicator.target = self;
+
