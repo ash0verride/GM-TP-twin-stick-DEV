@@ -41,6 +41,7 @@ score_halign = fa_center;
 score_valign = fa_middle;
 
 was_paused = false;
+was_new_wave = false;
 
 start_time = 3.0;
 max_enemies = 40;

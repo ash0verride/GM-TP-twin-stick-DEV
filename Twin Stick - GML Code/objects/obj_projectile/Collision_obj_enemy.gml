@@ -21,5 +21,5 @@ if (owner.object_index == obj_player)
 			}
 		}
 	}
-	spark_projectile();
+	var _handle = spark_projectile();
 }

@@ -38,7 +38,7 @@ if (is_pressed)
 	{
 		if (image_xscale == 1 && image_yscale == 1)
 		{
-			obj_game_manager.resume_game();
+			var _handle = obj_game_manager.resume_game();
 		}
 		else
 		{

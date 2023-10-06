@@ -67,8 +67,8 @@ lock_target();
 
 create_projectile_enemy = function()
 {
-	var _projectile_origin_x = 0;
-	var _projectile_origin_y = -40;
+	var _projectile_origin_x = -40;
+	var _projectile_origin_y = 0;
 	
 	var _theta = degtorad(image_angle);
 	

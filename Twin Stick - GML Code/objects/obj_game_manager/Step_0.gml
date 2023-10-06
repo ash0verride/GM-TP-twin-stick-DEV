@@ -5,15 +5,22 @@ if(curr_game_state == GAME_STATE.PLAYING)
 	
 	if (instance_number(obj_enemy) <= 0 && curr_wave != 0 && !instance_exists(obj_banner_wave_clear) && !instance_exists(obj_banner_wave_incoming))
 	{
-		curr_wave++;
-		wave_cleared();
+		if (was_new_wave)
+		{
+			curr_wave++;
+			wave_cleared();
+			was_new_wave = false;
+		}
+		else
+		{
+			was_new_wave = true;	
+		}
 	}
 	else if (curr_wave == 0)
 	{
 		if (start_time <= 0)
 		{
 			curr_wave++;
-			wave_new_spawners();
 			wave_incoming();
 		}
 		else

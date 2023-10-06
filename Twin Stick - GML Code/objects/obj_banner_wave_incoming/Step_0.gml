@@ -12,6 +12,7 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	
 		if(image_alpha <= 0)
 		{
+			obj_game_manager.wave_new_spawners();
 			instance_destroy();	
 		}
 	}
