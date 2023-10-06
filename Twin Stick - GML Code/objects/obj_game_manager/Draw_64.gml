@@ -1,4 +1,4 @@
-if(curr_game_state == GAME_STATE.PLAYING && curr_game_type == GAME_TYPE.SINGLE_PLAYER)
+if(curr_game_state == GAME_STATE.PLAYING)
 {		
 	with (obj_player)
 	{

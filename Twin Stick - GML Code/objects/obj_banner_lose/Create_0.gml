@@ -7,12 +7,8 @@ colour = c_white;
 halign = fa_center;
 valign = fa_middle;
 
-if (obj_game_manager.curr_game_type == GAME_TYPE.SINGLE_PLAYER)
-{
-	player_score = obj_player.player_score;
-	text_2 = "SCORE: " + string(player_score);
-	highscore_add("", player_score);
-}
+player_score = obj_player.player_score;
+text_2 = "SCORE: " + string(player_score);
 
 font_enable_effects(fnt_luckiest_guy_96_outline, true, {
     outlineEnable: true,

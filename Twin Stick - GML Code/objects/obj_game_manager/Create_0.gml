@@ -1,10 +1,3 @@
-enum GAME_TYPE
-{
-	SINGLE_PLAYER,
-	MULTI_PLAYER,
-	SIZE
-}
-
 enum GAME_STATE
 {
 	PLAYING,
@@ -15,7 +8,6 @@ enum GAME_STATE
 
 randomise();
 
-curr_game_type = GAME_TYPE.SINGLE_PLAYER;
 curr_game_state = GAME_STATE.PLAYING;
 curr_wave = 0;
 
@@ -188,26 +180,9 @@ for (var _i = 0; _i < _flower_count; _i++)
 	instance_create_layer(_new_flower_x, _new_flower_y, "Flowers", obj_flower);
 }
 
-if (curr_game_type == GAME_TYPE.SINGLE_PLAYER)
-{
-	var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
-	_player.player_local_id = 0;
-	_player.image_angle = 270;
-}
-else
-{
-	var _player_count = gamepad_get_device_count();
-
-	for (var _i = 0; _i < _player_count; _i++)
-	{
-		if (gamepad_is_connected(_i))
-		{		
-			var _player = instance_create_layer((arena_grid_width * cell_width) / 2 + 400 * _i, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
-			_player.player_local_id = _i;
-			_player.image_angle = 270;
-		}
-	}
-}
+var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
+_player.player_local_id = 0;
+_player.image_angle = 270;
 
 var _obstacle_rate = 0.2;
 var _obstacle_edge_offset = 600;
@@ -400,85 +375,6 @@ wave_new_spawners = function()
 			}
 			
 			_curr_spawner++;
-		}
-	}
-}
-
-/// OLD WAVE SPAWNING USE FOR POWERUPS!
-wave_new_random = function()
-{
-	var _enemy_rate = 0.75;
-	var _enemy_edge_offset = 240;
-	var _enemy_cell_buffer_width = cell_width / 3;
-	var _enemy_cell_buffer_height = cell_height / 3;
-	
-	var _enemy_count = ceil((arena_grid_width - 2)  * (arena_grid_height - 2) * _enemy_rate * curr_wave);
-	
-	var _position_array_pos_x = [];
-	var _position_array_pos_y = [];
-	var _position_array_count = 0;
-	
-	with (obj_player)
-	{
-		_position_array_pos_x[_position_array_count] = x;
-		_position_array_pos_y[_position_array_count] = y;
-		_position_array_count++;
-	}
-	
-	with (obj_obstacle)
-	{
-		_position_array_pos_x[_position_array_count] = x;
-		_position_array_pos_y[_position_array_count] = y;
-		_position_array_count++;
-	}
-	
-	with (obj_enemy)
-	{
-		_position_array_pos_x[_position_array_count] = x;
-		_position_array_pos_y[_position_array_count] = y;
-		_position_array_count++;
-	}
-	
-	for (var _i = 0; _i < _enemy_count; _i++)
-	{
-		var _new_search = true;
-		var _can_place = true;
-		var _tries = 0;
-		var _max_tries = 60;
-		
-		var _new_enemy_x = 0;
-		var _new_enemy_y = 0;
-		
-		while(_new_search)
-		{
-			_new_search = false;
-			
-			_new_enemy_x = random_range(_enemy_edge_offset, (cell_width * arena_grid_width) - _enemy_edge_offset);
-			_new_enemy_y = random_range(_enemy_edge_offset, (cell_height * arena_grid_height) - _enemy_edge_offset);
-			
-			for (var _j = 0; _j < _position_array_count; _j++)
-			{
-				if (point_in_rectangle(_new_enemy_x, _new_enemy_y, _position_array_pos_x[_j] - _enemy_cell_buffer_width, _position_array_pos_y[_j] - _enemy_cell_buffer_height, _position_array_pos_x[_j] + _enemy_cell_buffer_width, _position_array_pos_y[_j] + _enemy_cell_buffer_height))
-				{
-					_new_search = true;
-				}
-			}
-			
-			_tries++;
-			
-			if (_tries >= _max_tries && _new_search)
-			{
-				_can_place = false;
-				_new_search = false;
-			}
-		}
-
-		if (_can_place)
-		{
-			layer_sequence_create("Instances", _new_enemy_x, _new_enemy_y, seq_spawn_enemy);
-			_position_array_pos_x[_position_array_count] = _new_enemy_x;
-			_position_array_pos_y[_position_array_count] = _new_enemy_y;
-			_position_array_count++;
 		}
 	}
 }

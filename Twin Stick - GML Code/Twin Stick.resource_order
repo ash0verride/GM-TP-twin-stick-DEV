@@ -29,7 +29,6 @@
     {"name":"spr_hud_health_end","order":5,"path":"sprites/spr_hud_health_end/spr_hud_health_end.yy",},
     {"name":"seq_lose","order":2,"path":"sequences/seq_lose/seq_lose.yy",},
     {"name":"seq_pause","order":3,"path":"sequences/seq_pause/seq_pause.yy",},
-    {"name":"seq_spawn_enemy","order":6,"path":"sequences/seq_spawn_enemy/seq_spawn_enemy.yy",},
     {"name":"ps_character_defeat","order":3,"path":"particles/ps_character_defeat/ps_character_defeat.yy",},
     {"name":"spr_vignette","order":7,"path":"sprites/spr_vignette/spr_vignette.yy",},
     {"name":"obj_level_wall","order":2,"path":"objects/obj_level_wall/obj_level_wall.yy",},

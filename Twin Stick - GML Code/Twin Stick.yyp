@@ -68,7 +68,6 @@
     {"id":{"name":"seq_lose","path":"sequences/seq_lose/seq_lose.yy",},},
     {"id":{"name":"seq_pause","path":"sequences/seq_pause/seq_pause.yy",},},
     {"id":{"name":"spr_player_body","path":"sprites/spr_player_body/spr_player_body.yy",},},
-    {"id":{"name":"seq_spawn_enemy","path":"sequences/seq_spawn_enemy/seq_spawn_enemy.yy",},},
     {"id":{"name":"ps_character_defeat","path":"particles/ps_character_defeat/ps_character_defeat.yy",},},
     {"id":{"name":"spr_vignette","path":"sprites/spr_vignette/spr_vignette.yy",},},
     {"id":{"name":"obj_level_wall","path":"objects/obj_level_wall/obj_level_wall.yy",},},
