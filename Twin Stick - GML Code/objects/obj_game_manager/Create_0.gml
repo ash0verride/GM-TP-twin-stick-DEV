@@ -246,6 +246,7 @@ for (var _i = 0; _i < _flower_count; _i++)
 var _player = instance_create_layer((arena_grid_width * cell_width) / 2, (arena_grid_height * cell_height) / 2,"Instances", obj_player);
 _player.player_local_id = 0;
 _player.image_angle = 270;
+_player.gun_angle = 270;
 
 // Variables for spwaning the obstacles within the room
 // Rate of obstacles per grid cell in level

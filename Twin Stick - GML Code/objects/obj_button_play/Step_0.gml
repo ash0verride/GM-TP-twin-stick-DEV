@@ -9,6 +9,9 @@ for (var _i = 0; _i < _max_pads; _i++)
 			is_pressed = true;
 			target_scale = 0.9;
 			scale_rate = 0.9;
+			
+			// Plays the button pushed sound effect
+			sound_button = audio_play_sound(snd_menu_button, 100, false);
 		}
 	}
 }
@@ -25,7 +28,11 @@ if (is_pressed)
 	{
 		if (image_xscale == 1 && image_yscale == 1)
 		{
-			room_goto(rm_arena);
+			// Checks if button sound effect has finished playing
+			if (!audio_exists(sound_button))
+			{
+				room_goto(rm_arena);
+			}
 		}
 		else
 		{
