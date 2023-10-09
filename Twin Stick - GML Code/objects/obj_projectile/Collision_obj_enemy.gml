@@ -8,6 +8,8 @@ if (owner.object_index == obj_player)
 		other.is_flashed = true;
 		other.curr_health--;
 		
+		var _sound_enemy_hit = audio_play_sound(snd_enemy_hit, 100, false, 0.5, 0, 1.0);
+		
 		if (other.curr_health <= 0)
 		{
 			_score = 300;
@@ -21,5 +23,6 @@ if (owner.object_index == obj_player)
 			}
 		}
 	}
-	var _handle = spark_projectile();
+	
+	spark_projectile();
 }

@@ -36,6 +36,8 @@ flash_cooldown = flash_time;
 
 hud_health_alpha = 0;
 
+reloading_sound = -1;
+
 create_projectile = function(_gun_angle)
 {
 	var _projectile_origin_x = 110;
@@ -58,6 +60,8 @@ create_projectile = function(_gun_angle)
 	_new_hit.owner = self;
 	_new_hit.set_angle(_gun_angle);
 	_new_hit.set_offset(true, 110, 0)
+	
+	var _sound_spark = audio_play_sound(snd_player_fire, 100, false, 0.3, 0, 1.0);
 }
 
 trigger_pressed = function()
@@ -70,9 +74,13 @@ trigger_pressed = function()
 			player_curr_ammo--;
 			create_projectile(gun_angle);
 		}
+		
+		audio_stop_sound(reloading_sound);
 	}
 	else
 	{
-		player_is_reloading = false;	
+		player_is_reloading = false;
+		audio_stop_sound(reloading_sound);
+		var _sound_jam = audio_play_sound(snd_gun_jam, 100, false, 0.4, 0, 1.0);
 	}
 }

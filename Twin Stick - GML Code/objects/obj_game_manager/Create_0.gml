@@ -299,6 +299,10 @@ pause_game = function()
 			speed = 0;
 		}
 	}
+	
+	audio_pause_all();
+	
+	var _button_push = audio_play_sound(snd_menu_button, 100, false);
 }
 
 resume_game = function()
@@ -344,16 +348,31 @@ resume_game = function()
 	{
 		speed = last_speed;
 	}
+	
+	audio_resume_all();
+	
+	var _button_push = audio_play_sound(snd_menu_button, 100, false);
 }
 
 wave_cleared = function()
 {
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_wave_cleared);
+	
+	audio_stop_sound(music);
+	music = -1;
+	music = audio_play_sound(snd_music_round_clear, 100, false);
 }
 
 wave_incoming = function()
 {
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_wave_incoming);
+	
+	if (curr_wave > 1)
+	{
+		audio_stop_sound(music);
+		music = -1;
+		music = audio_play_sound(choose(snd_music_game_1, snd_music_game_2, snd_music_game_3), 100, true);	
+	}
 }
 
 wave_new_spawners = function()
@@ -383,7 +402,11 @@ lose_game = function()
 {
 	curr_game_state = GAME_STATE.ENDED;
 	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_lose);
+	
+	audio_stop_sound(music);
+	music = -1;
+	music = audio_play_sound(snd_music_lose, 100, false);
 }
 
 audio_stop_all();
-music = -1;
+music = audio_play_sound(snd_music_menu_main, 100, true);

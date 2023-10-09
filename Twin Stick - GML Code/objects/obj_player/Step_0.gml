@@ -72,6 +72,11 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (keyboard_check(ord("R")) && !player_is_reloading)
 			{
 				player_is_reloading = true;
+				
+				if(!audio_is_playing(reloading_sound))
+				{
+					reloading_sound = audio_play_sound(snd_gun_reload, 100, true, 0.4, 0, 1.0);
+				}
 			}
 	
 			if (keyboard_check(vk_space) || mouse_check_button(mb_left))
@@ -117,6 +122,11 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (gamepad_button_check(player_local_id, gp_face3) && !player_is_reloading)
 			{
 				player_is_reloading = true;
+				
+				if(!audio_is_playing(reloading_sound))
+				{
+					reloading_sound = audio_play_sound(snd_gun_reload, 100, true, 0.4, 0, 1.0);
+				}
 			}
 	
 			if (gamepad_button_check(player_local_id, gp_shoulderrb))
@@ -157,6 +167,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			else
 			{
 				player_is_reloading = false;	
+				audio_stop_sound(reloading_sound);
 			}
 		}
 		if (player_fire_cooldown > 0)

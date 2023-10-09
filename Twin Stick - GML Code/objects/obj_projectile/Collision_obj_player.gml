@@ -16,7 +16,9 @@ if (owner.id != other.id)
 		}
 		other.is_flashed = true;
 		other.hud_health_alpha = 1.0;
-		other.player_health--;	
+		other.player_health--;
+		
+		var _sound_player_hit = audio_play_sound(snd_player_hit, 100, false, 0.6, 0, 1.0);
 	}
 	spark_projectile();
 }

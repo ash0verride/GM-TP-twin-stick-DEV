@@ -26,11 +26,13 @@ set_character_defeat = function()
 {
 	particle_sys = part_system_create_layer("Explosions", false, ps_character_defeat);
 	part_system_position(particle_sys, x, y);
+	
+	var _sound_explosion = audio_play_sound(snd_explosion, 100, false, 0.8);
 }
 
 set_angle = function(_new_angle)
 {
-	part_system_angle(particle_sys, _new_angle);	
+	part_system_angle(particle_sys, _new_angle);
 }
 
 set_offset = function(_is_offset, _x_offset, _y_offset)

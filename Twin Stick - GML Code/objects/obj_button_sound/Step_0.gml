@@ -34,6 +34,8 @@ if (is_pressed)
 			{
 				global.audio_volume = 1;
 				image_index = 0;
+				
+				var _button_push = audio_play_sound(snd_menu_button, 100, false);
 			}
 			
 			audio_set_master_gain(0, global.audio_volume);
