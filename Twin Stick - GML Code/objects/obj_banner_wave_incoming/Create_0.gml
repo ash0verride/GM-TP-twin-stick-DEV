@@ -12,6 +12,8 @@ colour_2 = c_white;
 halign = fa_center;
 valign = fa_middle;
 
+has_spawned = false;
+
 font_enable_effects(fnt_luckiest_guy_96_outline, true, {
     outlineEnable: true,
     outlineDistance: 4,

@@ -10,10 +10,11 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		banner_alpha -= delta_time * 0.000001 * 2;
 		image_alpha = banner_alpha;
 	
-		if(image_alpha <= 0)
+		if(image_alpha <= 0 && !has_spawned)
 		{
+			has_spawned = true;
 			obj_game_manager.wave_new_spawners();
-			instance_destroy();	
+			instance_destroy()
 		}
 	}
 }

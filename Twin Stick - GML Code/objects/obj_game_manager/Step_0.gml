@@ -7,13 +7,26 @@ if(curr_game_state == GAME_STATE.PLAYING)
 	{
 		if (was_new_wave)
 		{
-			curr_wave++;
-			wave_cleared();
-			was_new_wave = false;
+			var _is_queue_empty = true
+			
+			with (obj_enemy_spawner)
+			{
+				if (spawn_queue > 0)
+				{
+					_is_queue_empty = false;	
+				}
+			}
+			
+			if (_is_queue_empty)
+			{
+				curr_wave++;
+				wave_cleared();
+				was_new_wave = false;
+			}
 		}
 		else
 		{
-			was_new_wave = true;	
+			was_new_wave = true;
 		}
 	}
 	else if (curr_wave == 0)
