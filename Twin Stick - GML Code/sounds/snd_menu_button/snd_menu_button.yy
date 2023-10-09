@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.569229,
   "parent": {
-    "name": "Twin Stick",
-    "path": "Twin Stick.yyp",
+    "name": "SFX",
+    "path": "folders/Sounds/SFX.yy",
   },
   "preload": false,
   "sampleRate": 44100,

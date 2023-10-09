@@ -67,6 +67,7 @@
     {"id":{"name":"obj_button_play","path":"objects/obj_button_play/obj_button_play.yy",},},
     {"id":{"name":"spr_button_options","path":"sprites/spr_button_options/spr_button_options.yy",},},
     {"id":{"name":"snd_music_game_3","path":"sounds/snd_music_game_3/snd_music_game_3.yy",},},
+    {"id":{"name":"ps_shoot_empty","path":"particles/ps_shoot_empty/ps_shoot_empty.yy",},},
     {"id":{"name":"spr_hud_health_end","path":"sprites/spr_hud_health_end/spr_hud_health_end.yy",},},
     {"id":{"name":"spr_obstacle_3","path":"sprites/spr_obstacle_3/spr_obstacle_3.yy",},},
     {"id":{"name":"seq_lose","path":"sequences/seq_lose/seq_lose.yy",},},

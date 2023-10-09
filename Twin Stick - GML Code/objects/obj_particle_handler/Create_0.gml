@@ -18,6 +18,15 @@ set_smoke = function()
 	part_system_position(particle_sys, x, y);
 }
 
+// Function used for setting empty spark particle system
+set_empty_shot = function()
+{
+	// Creates smoke particle system
+	particle_sys = part_system_create_layer("Smoke", false, ps_shoot_empty);
+	// Updates particle system position
+	part_system_position(particle_sys, x, y);
+}
+
 // Function used for setting player shot particle system
 set_player_shot = function()
 {

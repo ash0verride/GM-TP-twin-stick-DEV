@@ -82,5 +82,22 @@ trigger_pressed = function()
 		player_is_reloading = false;
 		audio_stop_sound(reloading_sound);
 		var _sound_jam = audio_play_sound(snd_gun_jam, 100, false, 0.4, 0, 1.0);
+		
+		var _projectile_origin_x = 110;
+		var _projectile_origin_y = 0;
+	
+		var _theta = degtorad(gun_angle);
+	
+		var _projectile_adjust_x = (_projectile_origin_x * cos(_theta)) - (_projectile_origin_y * sin(_theta));
+		var _projectile_adjust_y = (_projectile_origin_y * cos(_theta)) + (_projectile_origin_x * sin(_theta));
+	
+		var _projectile_pos_x = x + _projectile_adjust_x;
+		var _projectile_pos_y = y - _projectile_adjust_y;
+		
+		var _new_empty_spark = instance_create_depth(_projectile_pos_x, _projectile_pos_y, depth - 1, obj_particle_handler);
+		_new_empty_spark.set_empty_shot();
+		_new_empty_spark.owner = self;
+		_new_empty_spark.set_angle(gun_angle);
+		_new_empty_spark.set_offset(true, _projectile_origin_x, _projectile_origin_y)
 	}
 }
