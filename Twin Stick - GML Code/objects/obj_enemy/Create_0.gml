@@ -8,7 +8,7 @@ is_colliding = false;
 // Variable used for knowing what player to target
 target = noone;
 // Variable used for knowing how far to repel from with other enemies
-repulse_buffer = 300;
+repulse_buffer = 600;
 // Variable used for maximum possible speed
 max_speed = 2.5;
 // Variable used for rate speed increased and decreases

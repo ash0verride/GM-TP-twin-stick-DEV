@@ -18,5 +18,5 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED && !is_spawning)
 	x += hspeed * 0.1;
 	y += vspeed * 0.1;
 	
-	speed = clamp(speed, -max_speed, max_speed);
+	//speed = min(speed, other.speed);
 }

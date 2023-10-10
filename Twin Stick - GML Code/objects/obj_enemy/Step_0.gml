@@ -30,18 +30,73 @@ switch(obj_game_manager.curr_game_state)
 		}
 		else
 		{	
-			// Checks if the distance between the enemy and its next travel node is less than the current threshold
 			if (point_distance(x, y, next_node_x, next_node_y) <= node_threshold)
 			{
-				// Updates its path
 				find_path();
 			}
+		
+			var _dir = point_direction(x, y, next_node_x, next_node_y);
+	
+			var _attraction_x = lengthdir_x(1, _dir);
+			var _attraction_y = lengthdir_y(1, _dir);
+
+			var _current_x = lengthdir_x(20, image_angle + 180);
+			var _current_y = lengthdir_y(20, image_angle + 180);
+
+			var _repulse_x = 0;
+			var _repulse_y = 0;
+	
+			var _self = self;
 			
-			// Creates variable used for direction enemy will need to head follow nodes
-			var _node_dir = point_direction(x, y, next_node_x, next_node_y);
+			with (obj_enemy)
+			{
+				if (self.id != _self.id)
+				{
+					var _repulse_dir = point_direction(_self.x, _self.y, x, y);
+					var _repulse_dis = point_distance(_self.x, _self.y, x, y);
+		
+					_repulse_x += lengthdir_x(clamp(1 - _repulse_dis / repulse_buffer, 0, 1), _repulse_dir);
+					_repulse_y += lengthdir_y(clamp(1 - _repulse_dis / repulse_buffer, 0, 1), _repulse_dir);
+				}
+			}
 			
-			direction = lerp(direction, _node_dir, speed_rate);
-			speed = max_speed;
+			with (obj_obstacle)
+			{
+
+				var _repulse_dir = point_direction(_self.x, _self.y, x, y);
+				var _repulse_dis = point_distance(_self.x, _self.y, x, y);
+		
+				_repulse_x += lengthdir_x(clamp(1 - _repulse_dis / _self.repulse_buffer, 0, 1), _repulse_dir) * 1.1;
+				_repulse_y += lengthdir_y(clamp(1 - _repulse_dis / _self.repulse_buffer, 0, 1), _repulse_dir) * 1.1;
+			}
+
+			hspeed += lerp(hspeed, (_attraction_x + _current_x + _repulse_x), speed_rate);
+			vspeed += lerp(vspeed, (_attraction_y + _current_y + _repulse_y), speed_rate);
+
+			speed = min(speed, max_speed);
+		
+			var _target_distance = point_distance(x, y, target.x, target.y);
+		
+			if (_target_distance <= danger_close_distance)
+			{
+				speed *= 0.1;
+				can_danger_close = true;
+			}
+			else
+			{
+				can_danger_close = false;	
+			}
+		
+			if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING && _target_distance <= fire_max_distance)
+			{
+				fire_cooldown -= delta_time * 0.000001;
+			
+				if (fire_cooldown <= 0)
+				{
+					create_projectile_enemy();
+					fire_cooldown = fire_rate;
+				}
+			}
 				
 			if (is_colliding)
 			{
@@ -49,22 +104,8 @@ switch(obj_game_manager.curr_game_state)
 			}
 			else
 			{
-				//var _vec_dir = point_direction(0, 0, _new_vec_x * max_speed, _new_vec_y * max_speed) - 180;
-				var _vec_dir = direction - 180;
-				var _delta_dir = abs(_vec_dir - image_angle);
-	
-				if (_delta_dir >= 180)
-				{
-					if (_vec_dir > 180)
-					{
-						_vec_dir -= 360;
-					}
-					else
-					{
-						_vec_dir += 360;
-					}
-				}
-				image_angle = lerp(image_angle, _vec_dir, 0.1);
+				var _new_dir = direction + 180;
+				image_angle = lerp(image_angle, _new_dir, 0.1);
 			}
 			
 		}
