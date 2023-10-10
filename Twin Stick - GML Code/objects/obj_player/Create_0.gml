@@ -19,7 +19,7 @@ wall_buffer = 250;
 rotation_speed = 0.25;
 speed_dropoff = 0.9;
 move_speed = 1;
-max_speed = 5;
+max_speed = 10;
 
 direction = image_angle;
 gun_angle = direction;

@@ -135,7 +135,9 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			}
 		}
 		
-		var _delta_body_dir = abs(body_angle - direction)
+		speed = clamp(speed, -max_speed, max_speed);
+		
+		var _delta_body_dir = abs(body_angle - direction);
 	
 		if (_delta_body_dir >= 180)
 		{
