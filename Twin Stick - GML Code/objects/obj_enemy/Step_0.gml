@@ -40,8 +40,8 @@ switch(obj_game_manager.curr_game_state)
 			var _attraction_x = lengthdir_x(1, _dir);
 			var _attraction_y = lengthdir_y(1, _dir);
 
-			var _current_x = lengthdir_x(20, image_angle + 180);
-			var _current_y = lengthdir_y(20, image_angle + 180);
+			var _current_x = lengthdir_x(20, direction);
+			var _current_y = lengthdir_y(20, direction);
 
 			var _repulse_x = 0;
 			var _repulse_y = 0;
@@ -104,8 +104,17 @@ switch(obj_game_manager.curr_game_state)
 			}
 			else
 			{
-				var _new_dir = direction + 180;
-				image_angle = lerp(image_angle, _new_dir, 0.1);
+				//var _new_dir = direction + 180;
+				//if (_new_dir >= 360)
+				//{
+				//	_new_dir -= 360;	
+				//}
+				
+				//else
+				//{
+					
+				//}
+				//image_angle = lerp(image_angle, _new_dir, 0.1);
 			}
 			
 		}
