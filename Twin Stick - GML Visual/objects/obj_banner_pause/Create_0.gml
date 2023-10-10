@@ -1,24 +1,3 @@
-/// @DnDAction : YoYo Games.Common.Variable
-/// @DnDVersion : 1
-/// @DnDHash : 53240136
-/// @DnDArgument : "expr" "fnt_luckiest_guy_96_outline"
-/// @DnDArgument : "var" "font"
-font = fnt_luckiest_guy_96_outline;
-
-/// @DnDAction : YoYo Games.Common.Variable
-/// @DnDVersion : 1
-/// @DnDHash : 39250AEB
-/// @DnDArgument : "expr" "fa_center"
-/// @DnDArgument : "var" "halign"
-halign = fa_center;
-
-/// @DnDAction : YoYo Games.Common.Variable
-/// @DnDVersion : 1
-/// @DnDHash : 5BA337EC
-/// @DnDArgument : "expr" "fa_middle"
-/// @DnDArgument : "var" "valign"
-valign = fa_middle;
-
 /// @DnDAction : YoYo Games.Common.Function_Call
 /// @DnDVersion : 1
 /// @DnDHash : 56DCEF30

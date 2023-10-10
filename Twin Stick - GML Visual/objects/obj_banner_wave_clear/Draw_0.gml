@@ -84,11 +84,15 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	/// @DnDVersion : 1
 	/// @DnDHash : 7F50DA5D
 	/// @DnDParent : 14B5C35A
+	/// @DnDArgument : "x_relative" "1"
 	/// @DnDArgument : "y" "32"
 	/// @DnDArgument : "y_relative" "1"
+	/// @DnDArgument : "xscale" "image_xscale"
+	/// @DnDArgument : "yscale" "image_yscale"
 	/// @DnDArgument : "caption" ""
 	/// @DnDArgument : "text" "text_2"
-	draw_text_transformed(0, y + 32, "" + string(text_2), 1, 1, 0);
+	/// @DnDArgument : "angle" "image_angle"
+	draw_text_transformed(x + 0, y + 32, "" + string(text_2), image_xscale, image_yscale, image_angle);
 
 	/// @DnDAction : YoYo Games.Drawing.Set_Alpha
 	/// @DnDVersion : 1
