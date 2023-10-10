@@ -1,6 +1,6 @@
 player_local_id = 0;
 player_score = 0;
-player_health = 3;
+player_health = 30000;
 
 player_curr_ammo = 35;
 player_max_ammo = 35;
