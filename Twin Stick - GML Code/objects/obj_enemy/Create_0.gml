@@ -20,11 +20,11 @@ wall_buffer = 280;
 speed_dropoff = 0.9;
 
 // Variable used for the firing rate of enemy randomised between 75% and 100% of the original value
-fire_rate = 4.0 * random_range(0.75, 1);
+fire_rate = 4.0 * random_range(0.75, 1) * (4 / (obj_game_manager.curr_wave + 3));
 // Variable used to control the fire rate cooldown timer
 fire_cooldown = fire_rate;
 // Variable used for the maximum distance an enemy can fire from
-fire_max_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) * 2;
+fire_max_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) * 1.5;
 // Variable used for the distance the enemy will slow down and stop caring if obstacles are between itself and the player target
 danger_close_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) / 2.5;
 // Variable used for identifying when in close proximity to player target

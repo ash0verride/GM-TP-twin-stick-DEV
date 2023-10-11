@@ -16,7 +16,7 @@ cooldown_rate = 2;
 cooldown = 0;
 
 // Variable that stores the queue for enemies needing to be spawned
-spawn_queue = 4000;
+spawn_queue = 0;
 
 // Function called when a new enemy is due to be spawned
 spawn_enemy = function()

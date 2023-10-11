@@ -1,12 +1,12 @@
 player_local_id = 0;
 player_score = 0;
-player_health = 30000;
+player_health = 30;
 
 player_curr_ammo = 35;
 player_max_ammo = 35;
-player_fire_rate = 0.5;
+player_fire_rate = 0.25;
 player_fire_cooldown = 0;
-player_reload_rate = 0.1;
+player_reload_rate = 0.075;
 player_reload_cooldown = 0;
 player_is_reloading = false; 
 

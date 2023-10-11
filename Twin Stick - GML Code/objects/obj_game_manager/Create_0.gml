@@ -13,7 +13,7 @@ randomise();
 // Variable for the current game state - initally set to playing
 curr_game_state = GAME_STATE.PLAYING;
 // Variable for storing the current wave - initally set to 0
-curr_wave = 0;
+curr_wave = 10;
 
 // Variables for setting the grid size of the level
 // can be changed to larger or smaller sizes for bigger or smaller levels
@@ -54,6 +54,8 @@ was_new_wave = false;
 start_time = 3.0;
 // Variable used to set the maximum amount of enemeies that can appear on screen at any time
 max_enemies = 40;
+
+max_levels = 10;
 
 // Creates pause button used in the top left corner of the screen
 instance_create_layer(0, 0, "Popups", obj_button_pause);
@@ -540,4 +542,19 @@ lose_game = function()
 	// Resets and sets the music to play the lose sound
 	music = -1;
 	music = audio_play_sound(snd_music_lose, 100, false);
+}
+
+// Function called for when the player completes the game
+win_game = function()
+{
+	// Sets the current game state to ended
+	curr_game_state = GAME_STATE.ENDED;
+	// Creates the template complete banner popup
+	layer_sequence_create("Popups", camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) / 2), camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) / 2), seq_win);
+	
+	// Stops the current game music
+	audio_stop_sound(music);
+	// Resets and sets the music to play the clear sound
+	music = -1;
+	music = audio_play_sound(snd_music_round_clear, 100, false);
 }

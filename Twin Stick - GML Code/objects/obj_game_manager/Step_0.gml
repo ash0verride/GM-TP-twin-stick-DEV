@@ -27,12 +27,19 @@ if(curr_game_state == GAME_STATE.PLAYING)
 			// Checks if queue's were empty
 			if (_is_queue_empty)
 			{
-				// Increments the current wave 
-				curr_wave++;
-				// Runs the wave cleared fucction spawning the wave clear banner
-				wave_cleared();
-				// Sets the check for new wave to false
-				was_new_wave = false;
+				if (curr_wave < max_levels)
+				{
+					// Increments the current wave 
+					curr_wave++;
+					// Runs the wave cleared fucction spawning the wave clear banner
+					wave_cleared();
+					// Sets the check for new wave to false
+					was_new_wave = false;
+				}
+				else
+				{
+					win_game();
+				}
 			}
 		}
 		else
