@@ -48,7 +48,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.106",
+    "IDEVersion": "2023.8.2.108",
   },
   "resources": [
     {"id":{"name":"spr_player_shoot","path":"sprites/spr_player_shoot/spr_player_shoot.yy",},},
@@ -70,6 +70,7 @@
     {"id":{"name":"ps_shoot_empty","path":"particles/ps_shoot_empty/ps_shoot_empty.yy",},},
     {"id":{"name":"spr_hud_health_end","path":"sprites/spr_hud_health_end/spr_hud_health_end.yy",},},
     {"id":{"name":"spr_obstacle_3","path":"sprites/spr_obstacle_3/spr_obstacle_3.yy",},},
+    {"id":{"name":"spr_button_close","path":"sprites/spr_button_close/spr_button_close.yy",},},
     {"id":{"name":"seq_win","path":"sequences/seq_win/seq_win.yy",},},
     {"id":{"name":"seq_pause","path":"sequences/seq_pause/seq_pause.yy",},},
     {"id":{"name":"spr_player_body","path":"sprites/spr_player_body/spr_player_body.yy",},},
@@ -145,7 +146,6 @@
     {"id":{"name":"fnt_luckiest_guy_24","path":"fonts/fnt_luckiest_guy_24/fnt_luckiest_guy_24.yy",},},
     {"id":{"name":"ps_player_shot","path":"particles/ps_player_shot/ps_player_shot.yy",},},
     {"id":{"name":"snd_music_game_1","path":"sounds/snd_music_game_1/snd_music_game_1.yy",},},
-    {"id":{"name":"spr_button_close","path":"sprites/spr_button_close/spr_button_close.yy",},},
     {"id":{"name":"Documentation","path":"notes/Documentation/Documentation.yy",},},
     {"id":{"name":"snd_gun_reload","path":"sounds/snd_gun_reload/snd_gun_reload.yy",},},
     {"id":{"name":"obj_button_sound","path":"objects/obj_button_sound/obj_button_sound.yy",},},

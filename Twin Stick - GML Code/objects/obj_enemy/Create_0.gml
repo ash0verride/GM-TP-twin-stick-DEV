@@ -8,21 +8,24 @@ is_colliding = false;
 // Variable used for knowing what player to target
 target = noone;
 // Variable used for knowing how far to repel from with other enemies
-repulse_buffer = 600;
+repulse_buffer = 300;
 // Variable used for maximum possible speed
 max_speed = 2.5;
+speed_rate = 0.05;
 // Variable used for rate speed increased and decreases
-speed_rate = 0.9;
+repulse_rate = 0.9;
+
+rotation_speed = 0.1;
 
 // Variable used for controlling how close to level edge enemy can be
 wall_buffer = 280;
 // Variable used for slowing down enemy when cetain collisions occur
-speed_dropoff = 0.9;
+speed_dropoff = 0.1;
 
 // Variable used for the firing rate of enemy randomised between 75% and 100% of the original value
 fire_rate = 4.0 * random_range(0.75, 1) * (4 / (obj_game_manager.curr_wave + 3));
 // Variable used to control the fire rate cooldown timer
-fire_cooldown = fire_rate;
+fire_cooldown = fire_rate * 0.5;
 // Variable used for the maximum distance an enemy can fire from
 fire_max_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) * 1.5;
 // Variable used for the distance the enemy will slow down and stop caring if obstacles are between itself and the player target

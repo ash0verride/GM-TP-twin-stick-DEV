@@ -13,7 +13,9 @@ randomise();
 // Variable for the current game state - initally set to playing
 curr_game_state = GAME_STATE.PLAYING;
 // Variable for storing the current wave - initally set to 0
-curr_wave = 10;
+curr_wave = 0;
+// Variable for storing the maximum waves a player can go through
+max_levels = 10;
 
 // Variables for setting the grid size of the level
 // can be changed to larger or smaller sizes for bigger or smaller levels
@@ -55,7 +57,7 @@ start_time = 3.0;
 // Variable used to set the maximum amount of enemeies that can appear on screen at any time
 max_enemies = 40;
 
-max_levels = 10;
+
 
 // Creates pause button used in the top left corner of the screen
 instance_create_layer(0, 0, "Popups", obj_button_pause);

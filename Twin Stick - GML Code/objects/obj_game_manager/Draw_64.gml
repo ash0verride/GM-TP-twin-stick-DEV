@@ -75,4 +75,43 @@ if(curr_game_state == GAME_STATE.PLAYING)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 	}
+	
+	draw_set_alpha(0.5);
+	
+	window_set_cursor(cr_none);
+	
+	if (obj_player.is_mouse_aiming)
+	{
+		draw_sprite(spr_crosshair, 0, mouse_x - x, mouse_y - y);
+	}
+	else
+	{
+		// Crosshair position offsets
+		var _offset_x = 400;
+		var _offset_y = 0;
+		
+		// Converts angle to radians
+		var _theta = degtorad(real(obj_player.gun_angle));
+	
+		// Calculates the adjusted repositioned angles from the set offsets and angle
+		var _crosshair_adjust_x = (_offset_x * cos(_theta)) - (_offset_y * sin(_theta));
+		var _crosshair_adjust_y = (_offset_y * cos(_theta)) + (_offset_x * sin(_theta));
+	
+		// Updates the position to the adjusted player positions
+		var _crosshair_pos_x = obj_player.x + _crosshair_adjust_x;
+		var _crosshair_pos_y = obj_player.y - _crosshair_adjust_y;
+		
+		var _crosshair_buffer = 60;
+		
+		_crosshair_pos_x = clamp(_crosshair_pos_x - x, _crosshair_buffer, room_width - _crosshair_buffer);
+		_crosshair_pos_y = clamp(_crosshair_pos_y - y, _crosshair_buffer, room_height - _crosshair_buffer);
+		
+		draw_sprite(spr_crosshair, 0, _crosshair_pos_x, _crosshair_pos_y);
+	}
+	
+	draw_set_alpha(1.0);
+}
+else
+{
+	window_set_cursor(cr_default);
 }

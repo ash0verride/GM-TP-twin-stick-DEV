@@ -34,46 +34,74 @@ switch(obj_game_manager.curr_game_state)
 			{
 				find_path();
 			}
-		
-			var _dir = point_direction(x, y, next_node_x, next_node_y);
-	
-			var _attraction_x = lengthdir_x(1, _dir);
-			var _attraction_y = lengthdir_y(1, _dir);
-
-			var _current_x = lengthdir_x(20, direction);
-			var _current_y = lengthdir_y(20, direction);
-
-			var _repulse_x = 0;
-			var _repulse_y = 0;
-	
-			var _self = self;
 			
-			with (obj_enemy)
-			{
-				if (self.id != _self.id)
-				{
-					var _repulse_dir = point_direction(_self.x, _self.y, x, y);
-					var _repulse_dis = point_distance(_self.x, _self.y, x, y);
-		
-					_repulse_x += lengthdir_x(clamp(1 - _repulse_dis / repulse_buffer, 0, 1), _repulse_dir);
-					_repulse_y += lengthdir_y(clamp(1 - _repulse_dis / repulse_buffer, 0, 1), _repulse_dir);
-				}
-			}
+			var _node_direction = point_direction(x, y, next_node_x, next_node_y);
+	
+			var _node_velo_x = lengthdir_x(max_speed, _node_direction);
+			var _node_velo_y = lengthdir_y(max_speed, _node_direction);
+
+			hspeed = lerp(hspeed, _node_velo_x, speed_rate);
+			vspeed = lerp(vspeed, _node_velo_y, speed_rate);
+			
+			speed = min(speed, max_speed);
+			
+			var _self = self;
 			
 			with (obj_obstacle)
 			{
-
-				var _repulse_dir = point_direction(_self.x, _self.y, x, y);
 				var _repulse_dis = point_distance(_self.x, _self.y, x, y);
-		
-				_repulse_x += lengthdir_x(clamp(1 - _repulse_dis / _self.repulse_buffer, 0, 1), _repulse_dir) * 1.1;
-				_repulse_y += lengthdir_y(clamp(1 - _repulse_dis / _self.repulse_buffer, 0, 1), _repulse_dir) * 1.1;
+				
+				if (_repulse_dis <= _self.repulse_buffer)
+				{
+					var _repulse_strength = _self.repulse_buffer / _repulse_dis;
+					
+					var _repulse_dir = point_direction(x, y, _self.x, _self.y);
+				
+					var _repulse_velo_x = lengthdir_x(_self.max_speed, _repulse_dir) * _repulse_strength;
+					var _repulse_velo_y = lengthdir_y(_self.max_speed, _repulse_dir) * _repulse_strength;
+					
+					_self.hspeed += lerp(_self.hspeed, _repulse_velo_x, _self.speed_rate);
+					_self.vspeed += lerp(_self.vspeed, _repulse_velo_y, _self.speed_rate);
+			
+					_self.speed = min(_self.speed, _self.max_speed);
+				}	
 			}
-
-			hspeed += lerp(hspeed, (_attraction_x + _current_x + _repulse_x), speed_rate);
-			vspeed += lerp(vspeed, (_attraction_y + _current_y + _repulse_y), speed_rate);
-
-			speed = min(speed, max_speed);
+			
+			with (obj_enemy)
+			{
+				if (id != _self.id)
+				{
+					var _repulse_dis = point_distance(_self.x, _self.y, x, y);
+				
+					if (_repulse_dis <= _self.repulse_buffer)
+					{
+						var _repulse_strength = _self.repulse_buffer / _repulse_dis;
+					
+						var _repulse_dir = point_direction(x, y, _self.x, _self.y);
+				
+						var _repulse_velo_x = lengthdir_x(_self.max_speed, _repulse_dir) * _repulse_strength;
+						var _repulse_velo_y = lengthdir_y(_self.max_speed, _repulse_dir) * _repulse_strength;
+					
+						_self.hspeed += lerp(_self.hspeed, _repulse_velo_x, _self.speed_rate);
+						_self.vspeed += lerp(_self.vspeed, _repulse_velo_y, _self.speed_rate);
+			
+						_self.speed = min(_self.speed, _self.max_speed);
+					}
+				}
+			}
+			
+			var _new_angle = direction - 180;
+			var _angle_difference = angle_difference(_new_angle, image_angle);
+			
+			if (is_colliding)
+			{
+				image_angle += _angle_difference * rotation_speed * speed_dropoff;
+				is_colliding = false;
+			}
+			else
+			{
+				image_angle += _angle_difference * rotation_speed;
+			}
 		
 			var _target_distance = point_distance(x, y, target.x, target.y);
 		
@@ -97,26 +125,6 @@ switch(obj_game_manager.curr_game_state)
 					fire_cooldown = fire_rate;
 				}
 			}
-				
-			if (is_colliding)
-			{
-				is_colliding = false;
-			}
-			else
-			{
-				//var _new_dir = direction + 180;
-				//if (_new_dir >= 360)
-				//{
-				//	_new_dir -= 360;	
-				//}
-				
-				//else
-				//{
-					
-				//}
-				//image_angle = lerp(image_angle, _new_dir, 0.1);
-			}
-			
 		}
 		break;
 	// Case for if the game is paused

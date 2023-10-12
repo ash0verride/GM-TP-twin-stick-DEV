@@ -22,7 +22,7 @@ set_smoke = function()
 set_empty_shot = function()
 {
 	// Creates smoke particle system
-	particle_sys = part_system_create_layer("Smoke", false, ps_shoot_empty);
+	particle_sys = part_system_create_layer("Fumes", false, ps_shoot_empty);
 	// Updates particle system position
 	part_system_position(particle_sys, x, y);
 }

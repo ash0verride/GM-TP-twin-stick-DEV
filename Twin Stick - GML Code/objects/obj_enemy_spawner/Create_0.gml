@@ -22,7 +22,7 @@ spawn_queue = 0;
 spawn_enemy = function()
 {
 	// Creates new enemy object instance
-	var _new_enemy = instance_create_layer(x, y, "Instances", obj_enemy);
+	var _new_enemy = instance_create_layer(x, y, "Enemies", obj_enemy);
 	// Sets new enemy's owner to the spawner it is created from
 	_new_enemy.owner = self;
 	

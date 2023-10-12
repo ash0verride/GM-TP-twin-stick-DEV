@@ -12,6 +12,8 @@ for (var _i = 0; _i < _max_pads; _i++)
 			
 			// Plays the button pushed sound effect
 			sound_button = audio_play_sound(snd_menu_button, 100, false);
+			
+			global.is_mouse_aiming = false;
 		}
 	}
 }

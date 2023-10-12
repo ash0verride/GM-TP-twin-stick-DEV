@@ -1,6 +1,6 @@
 player_local_id = 0;
 player_score = 0;
-player_health = 30;
+player_health = 3;
 
 player_curr_ammo = 35;
 player_max_ammo = 35;
@@ -11,7 +11,8 @@ player_reload_cooldown = 0;
 player_is_reloading = false; 
 
 controller_deadzone = 0.1;
-is_mouse_aiming = false;
+is_mouse_aiming = global.is_mouse_aiming;
+is_first_frame = true;
 mouse_prev_x = mouse_x;
 mouse_prev_y = mouse_y;
 

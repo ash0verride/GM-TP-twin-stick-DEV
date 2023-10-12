@@ -39,7 +39,14 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 	
 			if (mouse_x != mouse_prev_x || mouse_y != mouse_prev_y)
 			{
-				is_mouse_aiming = true;
+				if (!is_first_frame)
+				{
+					is_mouse_aiming = true;
+				}
+				else
+				{
+					is_first_frame = false;	
+				}
 			}
 			else if (gamepad_is_connected(0))
 			{
