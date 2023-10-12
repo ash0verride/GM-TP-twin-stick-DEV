@@ -1,3 +1,4 @@
+// Sets window to full screen
 window_set_fullscreen(true);
 
 // Creates the splash screen squence

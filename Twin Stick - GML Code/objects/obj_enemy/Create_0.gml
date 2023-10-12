@@ -1,30 +1,45 @@
-// Variable used for controlling when spawned logic should continue
-is_spawning = true;
 // Variable used for setting spawner parent to
 owner = noone;
-
-is_colliding = false;
-
-// Variable used for knowing what player to target
+// Variable used for setting what player to target
 target = noone;
-// Variable used for knowing how far to repel from with other enemies
-repulse_buffer = 300;
-// Variable used for maximum possible speed
-max_speed = 2.5;
-speed_rate = 0.05;
-// Variable used for rate speed increased and decreases
-repulse_rate = 0.9;
 
-rotation_speed = 0.1;
+// Variable used to store enemy health
+curr_health = 3;
+
+// Variable used for controlling when spawned logic should continue
+is_spawning = true;
+// Variable used for setting the collision state
+is_colliding = false;
+// Variable used for knowing what state of flash
+is_flashed = false;
 
 // Variable used for controlling how close to level edge enemy can be
 wall_buffer = 280;
-// Variable used for slowing down enemy when cetain collisions occur
-speed_dropoff = 0.1;
+// Variable used for controlling how far to repel from other enemies and obstacles
+repulse_buffer = 300;
+// Variable used for repulse increases and decreases
+repulse_rate = 0.9;
 
-// Variable used for the firing rate of enemy randomised between 75% and 100% of the original value
+// Variable for path followed towards target
+path = path_add();
+// Variables used for storing next node positions
+next_node_x = x;
+next_node_y = y;
+// Variable used for threshold distance node will be before recalculating path to target
+node_threshold = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) / 3;
+
+// Variable used for the rotation speed
+rotation_speed = 0.1;
+// Variable used for maximum possible speed
+max_speed = 2.5;
+// Variable used for slowing down enemy when certain collisions occur
+speed_dropoff = 0.1;
+// Variable used for speeding up and slowing down enemy
+speed_rate = 0.05;
+
+// Variable used for the firing rate of enemy randomised between 75% and 100% of the original value then scaled to by the current wave
 fire_rate = 4.0 * random_range(0.75, 1) * (4 / (obj_game_manager.curr_wave + 3));
-// Variable used to control the fire rate cooldown timer
+// Variable used to control the fire rate cooldown timer set to initally be half the normal value
 fire_cooldown = fire_rate * 0.5;
 // Variable used for the maximum distance an enemy can fire from
 fire_max_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) * 1.5;
@@ -33,30 +48,15 @@ danger_close_distance = ((obj_game_manager.cell_width + obj_game_manager.cell_he
 // Variable used for identifying when in close proximity to player target
 can_danger_close = false;
 
-// Node positions used for path finding
-next_node_x = x;
-next_node_y = y;
-// Threshold of distance node will be before recalculating path enemy should take to target
-node_threshold = ((obj_game_manager.cell_width + obj_game_manager.cell_height) / 2) / 3;
-
-// Path variable enemy should follow towards player target
-path = path_add();
+// Variables used for the flash state cooldown time
+flash_time = 0.1;
+// Used for the flash cooldown timer
+flash_cooldown = flash_time;
 
 // Sprite image angle set to direction plus 180 since facing left asset
 image_angle = direction + 180;
-
 // Variable used for storing speed when paused
 last_speed = speed;
-
-// Variable used to store enemy health
-curr_health = 3;
-
-// Used for knowing what state of flashed enemy is in
-is_flashed = false;
-
-// Variables used for the flash state cooldown time
-flash_time = 0.1;
-flash_cooldown = flash_time;
 
 // Function used for finding the path towards the set target
 find_path = function()
