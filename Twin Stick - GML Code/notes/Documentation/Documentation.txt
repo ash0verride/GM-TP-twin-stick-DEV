@@ -1,0 +1,80 @@
+This note is high-level documentation for the core parts of this template project.
+All events in this project are commented, so you can open any event and read the comments to understand what it does, and how it works.
+
+# OBJECTS
+
+There are X Objects witin this project:
+
+obj_game_manager
+	DESCRIPTION
+
+	Create			XYZ	
+	Begin Step		XYZ
+	Step			XYZ
+	Draw			XYZ
+	Draw GUI		XYZ
+
+# PARTICLE SYSTEMS
+
+There are X Particle Systems within this project:
+
+ps_character_defeat
+	DESCRIPTION
+
+# ROOMS
+
+There are two Rooms within this project:
+
+rm_main_menu
+	DESCRIPTION
+	
+	Layer X			XYZ
+
+# SEQUENCES
+
+There are X sequences within this project:
+
+seq_enemy_parts
+	DESCRIPTION
+	
+# Sounds
+
+There are 14 sound files within this project:
+
+They are organised by their type
+	Music
+		Played in the background (offten looped)
+	SFX
+		Called when needed in game
+	
+# SPRITES
+
+There are X sprites within this project:
+
+They are organised by their use
+	Actors
+		Enemy
+			DESC
+		Player
+			DESC
+	Ground Tiles
+		Grass Arena
+			DESC
+		Obstacles
+			DESC
+	UI
+		HUD
+			DESC
+		MENU
+			DESC
+		DESC
+		
+~~ Possible Edits! ~~
+
+If you want to edit parts of this project to make it more unique and personal feel free to!
+
+Why not try:
+	- Adding your own 
+	- Or use this as an idea of how to make your own game from scratch!
+	
+Don't forget to share what you make to gx.games so others can play your game too!

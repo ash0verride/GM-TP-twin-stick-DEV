@@ -18,6 +18,15 @@ set_smoke = function()
 	part_system_position(particle_sys, x, y);
 }
 
+// Function used for setting dust smoke particle system
+set_dust_smoke = function()
+{
+	// Creates dust smoke particle system
+	particle_sys = part_system_create_layer("Smoke", false, ps_dust_smoke);
+	// Updates particle system position
+	part_system_position(particle_sys, x, y);
+}
+
 // Function used for setting empty spark particle system
 set_empty_shot = function()
 {

@@ -25,6 +25,7 @@
     {"name":"spr_grass_top_right","order":9,"path":"sprites/spr_grass_top_right/spr_grass_top_right.yy",},
     {"name":"spr_hud_ammo_full","order":1,"path":"sprites/spr_hud_ammo_full/spr_hud_ammo_full.yy",},
     {"name":"obj_enemy_dead","order":1,"path":"objects/obj_enemy_dead/obj_enemy_dead.yy",},
+    {"name":"ps_dust_smoke","order":5,"path":"particles/ps_dust_smoke/ps_dust_smoke.yy",},
     {"name":"spr_player_fireball","order":2,"path":"sprites/spr_player_fireball/spr_player_fireball.yy",},
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
     {"name":"spr_grass_top","order":5,"path":"sprites/spr_grass_top/spr_grass_top.yy",},
