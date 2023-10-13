@@ -1,1 +1,2 @@
-self.spark_projectile();
+// Calls spark projectile function
+spark_projectile();
