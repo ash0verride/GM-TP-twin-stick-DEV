@@ -303,8 +303,9 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 						/// @DnDHash : 5DBE4010
 						/// @DnDParent : 37F7B8E3
 						/// @DnDArgument : "expr" "false"
+						/// @DnDArgument : "expr_relative" "1"
 						/// @DnDArgument : "var" "is_mouse_aiming"
-						is_mouse_aiming = false;
+						is_mouse_aiming += false;
 					}
 				
 					/// @DnDAction : YoYo Games.Common.If_Variable
@@ -511,10 +512,10 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 			/// @DnDVersion : 1
 			/// @DnDHash : 2CA97AA2
 			/// @DnDParent : 7ACE0F2B
-			/// @DnDArgument : "value" "move_speed + _lv_axis"
+			/// @DnDArgument : "value" "move_speed * _lv_axis"
 			/// @DnDArgument : "value_relative" "1"
 			/// @DnDArgument : "instvar" "5"
-			vspeed += move_speed + _lv_axis;
+			vspeed += move_speed * _lv_axis;
 		
 			/// @DnDAction : YoYo Games.Gamepad.Get_Gamepad_Axis_Value
 			/// @DnDVersion : 1.1
@@ -529,10 +530,10 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 			/// @DnDVersion : 1
 			/// @DnDHash : 23845CA2
 			/// @DnDParent : 7ACE0F2B
-			/// @DnDArgument : "value" "move_speed + _lh_axis"
+			/// @DnDArgument : "value" "move_speed * _lh_axis"
 			/// @DnDArgument : "value_relative" "1"
 			/// @DnDArgument : "instvar" "4"
-			hspeed += move_speed + _lh_axis;
+			hspeed += move_speed * _lh_axis;
 		
 			/// @DnDAction : YoYo Games.Gamepad.Get_Gamepad_Axis_Value
 			/// @DnDVersion : 1.1
@@ -548,9 +549,9 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 			/// @DnDVersion : 1
 			/// @DnDHash : 3A4BE3A9
 			/// @DnDParent : 7ACE0F2B
-			/// @DnDArgument : "var" "_look_y"
-			/// @DnDArgument : "value" "-_rv_axis"
-			var _look_y = -_rv_axis;
+			/// @DnDArgument : "var" "_look_x"
+			/// @DnDArgument : "value" "_rv_axis"
+			var _look_x = _rv_axis;
 		
 			/// @DnDAction : YoYo Games.Gamepad.Get_Gamepad_Axis_Value
 			/// @DnDVersion : 1.1
@@ -566,9 +567,9 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 			/// @DnDVersion : 1
 			/// @DnDHash : 6D92A4B0
 			/// @DnDParent : 7ACE0F2B
-			/// @DnDArgument : "var" "_look_x"
-			/// @DnDArgument : "value" "_rh_axis"
-			var _look_x = _rh_axis;
+			/// @DnDArgument : "var" "_look_y"
+			/// @DnDArgument : "value" "-_rh_axis"
+			var _look_y = -_rh_axis;
 		
 			/// @DnDAction : YoYo Games.Common.If_Expression
 			/// @DnDVersion : 1
