@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Banners",
+    "path": "folders/Objects/UI/Banners.yy",
   },
   "parentObjectId": null,
   "persistent": false,
