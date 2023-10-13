@@ -39,7 +39,14 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 	
 			if (mouse_x != mouse_prev_x || mouse_y != mouse_prev_y)
 			{
-				is_mouse_aiming = true;
+				if (!is_first_frame)
+				{
+					is_mouse_aiming = true;
+				}
+				else
+				{
+					is_first_frame = false;	
+				}
 			}
 			else if (gamepad_is_connected(0))
 			{
@@ -72,6 +79,11 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (keyboard_check(ord("R")) && !player_is_reloading)
 			{
 				player_is_reloading = true;
+				
+				if(!audio_is_playing(reloading_sound))
+				{
+					reloading_sound = audio_play_sound(snd_gun_reload, 100, true, 0.4, 0, 1.0);
+				}
 			}
 	
 			if (keyboard_check(vk_space) || mouse_check_button(mb_left))
@@ -117,6 +129,11 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			if (gamepad_button_check(player_local_id, gp_face3) && !player_is_reloading)
 			{
 				player_is_reloading = true;
+				
+				if(!audio_is_playing(reloading_sound))
+				{
+					reloading_sound = audio_play_sound(snd_gun_reload, 100, true, 0.4, 0, 1.0);
+				}
 			}
 	
 			if (gamepad_button_check(player_local_id, gp_shoulderrb))
@@ -125,7 +142,9 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			}
 		}
 		
-		var _delta_body_dir = abs(body_angle - direction)
+		speed = clamp(speed, -max_speed, max_speed);
+		
+		var _delta_body_dir = abs(body_angle - direction);
 	
 		if (_delta_body_dir >= 180)
 		{
@@ -157,6 +176,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			else
 			{
 				player_is_reloading = false;	
+				audio_stop_sound(reloading_sound);
 			}
 		}
 		if (player_fire_cooldown > 0)
@@ -174,15 +194,18 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 				flash_cooldown = flash_time;
 			}
 		}
+		
+		if (hud_health_alpha > 0)
+		{
+			hud_health_alpha -= delta_time * 0.000001 * 2;
+		}
 	}
 	
 	if (player_health <= 0)
 	{
-		image_alpha -= 0.000001 * delta_time * 0.2;
-		
-		if (image_alpha <= 0)
-		{
-			instance_destroy();	
-		}
+		var _new_boom = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+		_new_boom.set_character_defeat();
+		_new_boom.owner = self;
+		instance_destroy();	
 	}
 }

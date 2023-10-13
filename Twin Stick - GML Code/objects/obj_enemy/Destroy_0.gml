@@ -1,5 +1,4 @@
+// Creates a new instance of a dead state of the enemy
 var _dead_body = instance_create_layer(x, y, "Bodies", obj_enemy_dead);
+// Sets the angle of the dead enemy to match the enemy
 _dead_body.image_angle = image_angle;
-
-var _new_seq = layer_sequence_create("Bodies", x, y, seq_enemy_parts);
-layer_sequence_angle(_new_seq, image_angle);

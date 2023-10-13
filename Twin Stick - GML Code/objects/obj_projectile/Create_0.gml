@@ -46,14 +46,14 @@ spark_projectile = function()
 		var _new_hit = instance_create_depth(x, y, depth - 1, obj_particle_handler);
 		_new_hit.set_player_shot();
 		_new_hit.owner = self;
-		_new_hit.set_angle();
+		_new_hit.set_angle(direction + 180);
 	}
 	else
 	{
 		var _new_hit = instance_create_depth(x, y, depth - 1, obj_particle_handler);
 		_new_hit.set_enemy_shot();
 		_new_hit.owner = self;
-		_new_hit.set_angle();
+		_new_hit.set_angle(direction + 180);
 	}
 	
 	instance_destroy();

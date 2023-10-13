@@ -1,1 +1,1 @@
-spark_projectile();
+self.spark_projectile();

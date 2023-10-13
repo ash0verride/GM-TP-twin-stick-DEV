@@ -1,35 +1,29 @@
-if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED && !is_spawning)
+if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 {	
-	find_path();
+	if (is_spawning)
+	{
+		speed = 1.5;	
+	}
+	else
+	{
+		is_colliding = true;
 	
-	hspeed *= speed_dropoff;
-	vspeed *= speed_dropoff;
+		find_path();
 	
-	var _obs_repulse_rate = 0.9;
-	var _obs_dist = point_distance(x, y, other.x, other.y);
-	var _obs_dir = point_direction(other.x, other.y, x, y);
+		var _enemy_dist = point_distance(x, y, other.x, other.y);
+		var _enemy_dir = point_direction(other.x, other.y, x, y);
+	
+		var _buff = 195;
 		
-	var _repulse_x = lengthdir_x(clamp(1 - _obs_dist / (other.sprite_width * _obs_repulse_rate), 0, 1), _obs_dir) * _obs_repulse_rate;
-	var	_repulse_y = lengthdir_y(clamp(1 - _obs_dist / (other.sprite_height * _obs_repulse_rate), 0, 1), _obs_dir) * _obs_repulse_rate;
+		var _repulse_x = lengthdir_x(clamp(1 - _enemy_dist / _buff, 0, 1), _enemy_dir) * _buff;
+		var	_repulse_y = lengthdir_y(clamp(1 - _enemy_dist / _buff, 0, 1), _enemy_dir) * _buff;
 
-	hspeed += lerp(hspeed, hspeed + _repulse_x, speed_rate);
-	vspeed += lerp(vspeed, vspeed + _repulse_y, speed_rate);
+		var _adjusted_speed_x = lerp(hspeed, hspeed + _repulse_x, repulse_rate) * speed_dropoff;
+		var _adjusted_speed_y = lerp(vspeed, vspeed + _repulse_y, repulse_rate) * speed_dropoff;
 	
-	//if (x < other.x)
-	//{
-	//	x--;
-	//}
-	//else
-	//{
-	//	x++;
-	//}
+		x = lerp(x, x + _adjusted_speed_x, 0.5);
+		y = lerp(y, y + _adjusted_speed_y, 0.5);
 	
-	//if (y < other.y)
-	//{
-	//	y--;	
-	//}
-	//else
-	//{
-	//	y++
-	//}
+		speed *= speed_dropoff;
+	}
 }
