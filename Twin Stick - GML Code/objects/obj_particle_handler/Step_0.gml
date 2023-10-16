@@ -4,11 +4,15 @@ if (owner != noone)
 	// Checks if dust particles
 	if (is_dust)
 	{	
-		// Sets target alpha from speed
-		target_alpha = (1 / owner.max_speed) * owner.speed;
+		// Checks if the game state is not paused
+		if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
+		{
+			// Sets target alpha from speed
+			target_alpha = (1 / owner.max_speed) * owner.speed;
 		
-		// Lerps the alpha to target
-		current_alpha = lerp(current_alpha, target_alpha, 0.1);
+			// Lerps the alpha to target
+			current_alpha = lerp(current_alpha, target_alpha, 0.1);
+		}
 		
 		// Sets the dusts alpha
 		part_system_color(particle_sys,c_white, current_alpha);
@@ -93,8 +97,13 @@ else if (is_dust)
 		// Checks if player is dead
 		if (owner.player_health <= 0)
 		{
-			// Lerps alpha to 0
-			current_alpha = lerp(current_alpha, 0, 0.9);
+			// Checks if the game state is not paused
+			if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
+			{
+				// Lerps alpha to 0
+				current_alpha = lerp(current_alpha, 0, 0.9);
+			}
+			
 			// Sets alpha to dust
 			part_system_color(particle_sys, c_white, current_alpha);
 			
@@ -114,8 +123,13 @@ else if (is_dust)
 		// Checks if enemy is dead
 		if (owner.curr_health <= 0)
 		{
-			// Lerps alpha to 0
-			current_alpha = lerp(current_alpha, 0, 0.9);
+			// Checks if the game state is not paused
+			if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
+			{
+				// Lerps alpha to 0
+				current_alpha = lerp(current_alpha, 0, 0.9);
+			}
+			
 			// Sets alpha to dust
 			part_system_color(particle_sys, c_white, current_alpha);
 			
