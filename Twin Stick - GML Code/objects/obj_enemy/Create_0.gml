@@ -58,6 +58,16 @@ image_angle = direction + 180;
 // Variable used for storing speed when paused
 last_speed = speed;
 
+// Creates new particle emitter for dust smoke on left
+var _new_dust_1 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+_new_dust_1.owner = self;
+_new_dust_1.set_dust_smoke(1);
+
+// Creates new particle emitter for dust smoke right
+var _new_dust_2 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+_new_dust_2.owner = self;
+_new_dust_2.set_dust_smoke(3);
+
 // Function used for finding the path towards the set target
 find_path = function()
 {

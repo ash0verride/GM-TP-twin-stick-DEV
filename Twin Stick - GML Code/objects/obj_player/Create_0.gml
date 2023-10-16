@@ -68,6 +68,21 @@ hud_health_alpha = 0;
 // Variable for storing players reloading sound
 reloading_sound = -1;
 
+// Creates new particle emitter for dust smoke on left
+var _new_dust_1 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+_new_dust_1.owner = self;
+_new_dust_1.set_dust_smoke(1);
+
+// Creates new particle emitter for dust smoke centre
+var _new_dust_2 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+_new_dust_2.owner = self;
+_new_dust_2.set_dust_smoke(1);
+
+// Creates new particle emitter for dust smoke on right
+var _new_dust_3 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+_new_dust_3.owner = self;
+_new_dust_3.set_dust_smoke(3);
+
 // Function for creating projectile from players gun angle
 create_projectile = function(_gun_angle)
 {
