@@ -27,6 +27,7 @@ if(curr_game_state == GAME_STATE.PLAYING)
 			// Checks if queue's were empty
 			if (_is_queue_empty)
 			{
+				// Checks if the current wave is less than max waves
 				if (curr_wave < max_levels)
 				{
 					// Increments the current wave 
@@ -38,6 +39,7 @@ if(curr_game_state == GAME_STATE.PLAYING)
 				}
 				else
 				{
+					// Calls win game function that shows the template complete banner
 					win_game();
 				}
 			}
@@ -70,6 +72,7 @@ if(curr_game_state == GAME_STATE.PLAYING)
 	var _x_adjust = room_width / 2;
 	var _y_adjust = room_height / 2;
 	
+	// Sets the cameras intial position variables
 	var _cam_x = 0;
 	var _cam_y = 0;
 	

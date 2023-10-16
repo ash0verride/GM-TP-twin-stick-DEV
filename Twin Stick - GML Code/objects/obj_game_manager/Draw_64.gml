@@ -76,12 +76,16 @@ if(curr_game_state == GAME_STATE.PLAYING)
 		draw_set_valign(fa_top);
 	}
 	
-	draw_set_alpha(0.5);
-	
+	// Hides the cursor
 	window_set_cursor(cr_none);
 	
+	// Sets the alpha to 0.5 for the crosshair
+	draw_set_alpha(0.5);
+	
+	// Checks if the player is aiming
 	if (obj_player.is_mouse_aiming)
 	{
+		// Draws the crosshair sprite on the players mouse position
 		draw_sprite(spr_crosshair, 0, mouse_x - x, mouse_y - y);
 	}
 	else
@@ -101,17 +105,22 @@ if(curr_game_state == GAME_STATE.PLAYING)
 		var _crosshair_pos_x = obj_player.x + _crosshair_adjust_x;
 		var _crosshair_pos_y = obj_player.y - _crosshair_adjust_y;
 		
+		// Sets buffer for crosshair to be from edge of screen
 		var _crosshair_buffer = 60;
 		
+		// Clamps crosshair postions to be in players view
 		_crosshair_pos_x = clamp(_crosshair_pos_x - x, _crosshair_buffer, room_width - _crosshair_buffer);
 		_crosshair_pos_y = clamp(_crosshair_pos_y - y, _crosshair_buffer, room_height - _crosshair_buffer);
 		
+		// Draws the crosshair at the adjusted position
 		draw_sprite(spr_crosshair, 0, _crosshair_pos_x, _crosshair_pos_y);
 	}
 	
+	// Resets the draw alpha
 	draw_set_alpha(1.0);
 }
 else
 {
+	// Shows the default normal cursor
 	window_set_cursor(cr_default);
 }

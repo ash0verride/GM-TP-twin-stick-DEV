@@ -60,6 +60,7 @@
     {"id":{"name":"spr_hud_ammo_full","path":"sprites/spr_hud_ammo_full/spr_hud_ammo_full.yy",},},
     {"id":{"name":"spr_banner_black","path":"sprites/spr_banner_black/spr_banner_black.yy",},},
     {"id":{"name":"obj_enemy_dead","path":"objects/obj_enemy_dead/obj_enemy_dead.yy",},},
+    {"id":{"name":"ps_dust_smoke","path":"particles/ps_dust_smoke/ps_dust_smoke.yy",},},
     {"id":{"name":"spr_player_fireball","path":"sprites/spr_player_fireball/spr_player_fireball.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"spr_grass_top","path":"sprites/spr_grass_top/spr_grass_top.yy",},},
