@@ -373,7 +373,10 @@ They are organised by their use.
 If you want to edit parts of this project to make it more unique and personal feel free to!
 
 Why not try:
-	- Adding your own ...
+	- Adding your own tile sets for new levels.
+	- Changing the difficulty by giving enemies more health or reducing the players rate of fire.
+	- Implement power ups to buff the player!
+	- Try implement some local multiplayer?
 	- Or use this as an idea of how to make your own game from scratch!
 	
 Don't forget to share what you make to gx.games so others can play your game too!
