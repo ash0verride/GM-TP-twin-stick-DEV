@@ -392,16 +392,6 @@ pause_game = function()
 		}
 	}
 	
-	// Sets all the flowers to stop moving and saves their last speed if moving
-	with(obj_flower)
-	{
-		if (speed != 0)
-		{
-			last_speed = speed;
-			speed = 0;
-		}
-	}
-	
 	// Pauses all audio
 	audio_pause_all();
 	// Plays button sound effect
@@ -452,12 +442,6 @@ resume_game = function()
 	
 	// Sets the projectiles speed back to their previous value
 	with(obj_projectile)
-	{
-		speed = last_speed;
-	}
-	
-	// Sets the flowers speed back to their previous value
-	with(obj_flower)
 	{
 		speed = last_speed;
 	}
