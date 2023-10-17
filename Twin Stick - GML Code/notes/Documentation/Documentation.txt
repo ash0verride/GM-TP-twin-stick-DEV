@@ -126,12 +126,9 @@ obj_enemy_spawner
 	Step				Checks the queue and cooldown spawning new enemies when possible.
 	
 obj_flower
-	Small flower objects that are created in the play area and interact with projectiles.
+	Small flower objects that are created in the play area.
 	
 	Create				Sets up the flower sprite at random as well as its rotation and scale.
-	Step				Slows the flower down and limits its postion to within the play area.
-	-><- obj_obstacle	Bounces the flower against obstacles when they collide.
-	-><- obj_projectile	Changes the flowers speed the projectile that passes over it adjusted to a drop off rate.
 	
 obj_level_ground
 	Object that stores what ground sprite it is and where it's position is.
@@ -376,7 +373,10 @@ They are organised by their use.
 If you want to edit parts of this project to make it more unique and personal feel free to!
 
 Why not try:
-	- Adding your own ...
+	- Adding your own tile sets for new levels.
+	- Changing the difficulty by giving enemies more health or reducing the players rate of fire.
+	- Implement power ups to buff the player!
+	- Try implement some local multiplayer?
 	- Or use this as an idea of how to make your own game from scratch!
 	
 Don't forget to share what you make to gx.games so others can play your game too!
