@@ -122,6 +122,7 @@
     {"id":{"name":"obj_button_quit","path":"objects/obj_button_quit/obj_button_quit.yy",},},
     {"id":{"name":"ps_enemy_shot","path":"particles/ps_enemy_shot/ps_enemy_shot.yy",},},
     {"id":{"name":"obj_particle_handler","path":"objects/obj_particle_handler/obj_particle_handler.yy",},},
+    {"id":{"name":"scr_enumerators","path":"scripts/scr_enumerators/scr_enumerators.yy",},},
     {"id":{"name":"spr_hud_health","path":"sprites/spr_hud_health/spr_hud_health.yy",},},
     {"id":{"name":"spr_button_close","path":"sprites/spr_button_close/spr_button_close.yy",},},
     {"id":{"name":"spr_crosshair","path":"sprites/spr_crosshair/spr_crosshair.yy",},},

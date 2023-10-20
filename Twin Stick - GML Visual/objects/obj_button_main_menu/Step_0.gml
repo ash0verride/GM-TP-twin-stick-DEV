@@ -21,17 +21,20 @@ for(var _i = 0; _i < _max_pads; _i++) {
 	/// @DnDArgument : "expr" "gamepad_is_connected(_i)"
 	if(gamepad_is_connected(_i))
 	{
-		/// @DnDAction : YoYo Games.Common.If_Expression
-		/// @DnDVersion : 1
-		/// @DnDHash : 3C0B9071
+		/// @DnDAction : YoYo Games.Gamepad.If_Gamepad_Button_Released
+		/// @DnDVersion : 1.1
+		/// @DnDHash : 1792F536
 		/// @DnDParent : 7F69A25A
-		/// @DnDArgument : "expr" "gamepad_button_check_pressed(_i, gp_face2)"
-		if(gamepad_button_check_pressed(_i, gp_face2))
+		/// @DnDArgument : "gp" "_i"
+		/// @DnDArgument : "btn" "gp_face2"
+		var l1792F536_0 = _i;
+		var l1792F536_1 = gp_face2;
+		if(gamepad_is_connected(l1792F536_0) && gamepad_button_check_released(l1792F536_0, l1792F536_1))
 		{
 			/// @DnDAction : YoYo Games.Rooms.Go_To_Room
 			/// @DnDVersion : 1
 			/// @DnDHash : 33655880
-			/// @DnDParent : 3C0B9071
+			/// @DnDParent : 1792F536
 			/// @DnDArgument : "room" "rm_main_menu"
 			/// @DnDSaveInfo : "room" "rm_main_menu"
 			room_goto(rm_main_menu);

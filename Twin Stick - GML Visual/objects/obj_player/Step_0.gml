@@ -887,6 +887,24 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 				flash_cooldown = flash_time;
 			}
 		}
+	
+		/// @DnDAction : YoYo Games.Common.If_Variable
+		/// @DnDVersion : 1
+		/// @DnDHash : 2B714EE3
+		/// @DnDParent : 549374A5
+		/// @DnDArgument : "var" "hud_health_alpha"
+		/// @DnDArgument : "op" "2"
+		if(hud_health_alpha > 0)
+		{
+			/// @DnDAction : YoYo Games.Common.Variable
+			/// @DnDVersion : 1
+			/// @DnDHash : 66CAE902
+			/// @DnDParent : 2B714EE3
+			/// @DnDArgument : "expr" "-delta_time * 2 / 1000000"
+			/// @DnDArgument : "expr_relative" "1"
+			/// @DnDArgument : "var" "hud_health_alpha"
+			hud_health_alpha += -delta_time * 2 / 1000000;
+		}
 	}
 
 	/// @DnDAction : YoYo Games.Common.If_Variable

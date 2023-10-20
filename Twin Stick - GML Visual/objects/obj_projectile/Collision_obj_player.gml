@@ -74,17 +74,20 @@ if(!(owner.id == other.id))
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 54D9CBAC
-		/// @DnDInput : 2
+		/// @DnDInput : 3
 		/// @DnDApplyTo : other
 		/// @DnDParent : 7A309412
 		/// @DnDArgument : "expr" "true"
 		/// @DnDArgument : "expr_1" "-1"
 		/// @DnDArgument : "expr_relative_1" "1"
+		/// @DnDArgument : "expr_2" "1"
 		/// @DnDArgument : "var" "is_flashed"
 		/// @DnDArgument : "var_1" "player_health"
+		/// @DnDArgument : "var_2" "hud_health_alpha"
 		with(other) {
 		is_flashed = true;
 		player_health += -1;
+		hud_health_alpha = 1;
 		
 		}
 	
