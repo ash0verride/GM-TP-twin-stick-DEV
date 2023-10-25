@@ -1571,9 +1571,9 @@ function wave_new_spawners()
 	/// @DnDParent : 3A36A189
 	/// @DnDArgument : "init" "_i = 0"
 	/// @DnDArgument : "init_temp" "1"
-	/// @DnDArgument : "cond" "_i < 10"
+	/// @DnDArgument : "cond" "_i < _enemy_count"
 	/// @DnDArgument : "expr" "_i++"
-	for(var _i = 0; _i < 10; _i++) {
+	for(var _i = 0; _i < _enemy_count; _i++) {
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 7A7A13DB

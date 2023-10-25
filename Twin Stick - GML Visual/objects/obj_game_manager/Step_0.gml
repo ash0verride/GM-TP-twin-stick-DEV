@@ -160,8 +160,9 @@ if(curr_game_state == GAME_STATE.PLAYING)
 				/// @DnDVersion : 1
 				/// @DnDHash : 33649716
 				/// @DnDParent : 06EA0A6D
+				/// @DnDArgument : "var_temp" "1"
 				/// @DnDArgument : "function" "wave_incoming"
-				wave_incoming();
+				var wave_incoming();
 			}
 		
 			/// @DnDAction : YoYo Games.Common.Else

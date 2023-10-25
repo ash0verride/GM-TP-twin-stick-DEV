@@ -64,16 +64,6 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		{
 			/// @DnDAction : YoYo Games.Common.Function_Call
 			/// @DnDVersion : 1
-			/// @DnDHash : 6CC94F87
-			/// @DnDApplyTo : {obj_game_manager}
-			/// @DnDParent : 0B42847D
-			/// @DnDArgument : "function" "wave_new_spawners"
-			with(obj_game_manager) {
-				wave_new_spawners();
-			}
-		
-			/// @DnDAction : YoYo Games.Common.Function_Call
-			/// @DnDVersion : 1
 			/// @DnDHash : 75EDE210
 			/// @DnDApplyTo : {obj_game_manager}
 			/// @DnDParent : 0B42847D
