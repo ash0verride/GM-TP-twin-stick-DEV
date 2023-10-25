@@ -18,12 +18,3 @@ image_yscale = _scale;
 
 // Rotates the sprite to a random angle
 image_angle = random_range(0, 360);
-
-// Variable used for storing move speed when paused
-last_speed = speed;
-
-// Variable used for slowing the flowers speed
-speed_dropoff = 0.5;
-
-// Variable used for how close the the level edge the flowers can get
-wall_buffer = 200;
