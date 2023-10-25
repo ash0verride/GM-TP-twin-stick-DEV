@@ -1,17 +1,23 @@
-/// @DnDAction : YoYo Games.Common.If_Variable
+/// @DnDAction : YoYo Games.Common.Variable
 /// @DnDVersion : 1
-/// @DnDHash : 7471B744
-/// @DnDArgument : "var" "obj_game_manager.curr_game_state"
-/// @DnDArgument : "value" "GAME_STATE.PAUSED"
-if(obj_game_manager.curr_game_state == GAME_STATE.PAUSED)
-{
-	/// @DnDAction : YoYo Games.Common.Function_Call
-	/// @DnDVersion : 1
-	/// @DnDHash : 175F2ECE
-	/// @DnDApplyTo : {obj_game_manager}
-	/// @DnDParent : 7471B744
-	/// @DnDArgument : "function" "resume_game"
-	with(obj_game_manager) {
-		resume_game();
-	}
-}
+/// @DnDHash : 212E4B78
+/// @DnDComment : // Sets the key variable to pressed
+/// @DnDArgument : "expr" "true"
+/// @DnDArgument : "var" "is_pressed"
+is_pressed = true;
+
+/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDVersion : 1
+/// @DnDHash : 5AA62A5B
+/// @DnDComment : // Sets the target scale
+/// @DnDArgument : "expr" "0.9"
+/// @DnDArgument : "var" "target_scale"
+target_scale = 0.9;
+
+/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDVersion : 1
+/// @DnDHash : 7AF2D999
+/// @DnDComment : // Speeds up the scale rate
+/// @DnDArgument : "expr" "0.9"
+/// @DnDArgument : "var" "scale_rate"
+scale_rate = 0.9;
