@@ -1,20 +1,20 @@
 /// @DnDAction : YoYo Games.Drawing.Set_Font
 /// @DnDVersion : 1
-/// @DnDHash : 3F1D61CB
+/// @DnDHash : 20D7283A
+/// @DnDComment : // Sets the buttons draw options
 /// @DnDArgument : "font" "font"
 draw_set_font(font);
 
 /// @DnDAction : YoYo Games.Drawing.Set_Color
 /// @DnDVersion : 1
-/// @DnDHash : 4AC9DA20
+/// @DnDHash : 2A8289DA
 /// @DnDArgument : "color" "colour"
-draw_set_colour(colour & $ffffff);
-var l4AC9DA20_0=(colour >> 24);
-draw_set_alpha(l4AC9DA20_0 / $ff);
+/// @DnDArgument : "alpha" "false"
+draw_set_colour(colour & $ffffff);draw_set_alpha(1);
 
 /// @DnDAction : YoYo Games.Drawing.Set_Alignment
 /// @DnDVersion : 1.1
-/// @DnDHash : 6C26E093
+/// @DnDHash : 3ED6458E
 /// @DnDArgument : "halign" "halign"
 /// @DnDArgument : "valign" "valign"
 draw_set_halign(halign);
@@ -22,15 +22,34 @@ draw_set_valign(valign);
 
 /// @DnDAction : YoYo Games.Drawing.Draw_Self
 /// @DnDVersion : 1
-/// @DnDHash : 103E108E
+/// @DnDHash : 70472905
+/// @DnDComment : // Draws the button
 draw_self();
 
-/// @DnDAction : YoYo Games.Drawing.Draw_Value
+/// @DnDAction : YoYo Games.Drawing.Draw_Value_Transformed
 /// @DnDVersion : 1
-/// @DnDHash : 3C5F5EC9
+/// @DnDHash : 5B78E309
+/// @DnDComment : // Draws the buttons text scaled
 /// @DnDArgument : "x_relative" "1"
 /// @DnDArgument : "y" "10"
 /// @DnDArgument : "y_relative" "1"
+/// @DnDArgument : "xscale" "image_xscale"
+/// @DnDArgument : "yscale" "image_yscale"
 /// @DnDArgument : "caption" ""
-/// @DnDArgument : "var" "text"
-draw_text(x + 0, y + 10,  + string(text));
+/// @DnDArgument : "text" "text"
+draw_text_transformed(x + 0, y + 10, "" + string(text), image_xscale, image_yscale, 0);
+
+/// @DnDAction : YoYo Games.Drawing.Set_Color
+/// @DnDVersion : 1
+/// @DnDHash : 68E2F5E2
+/// @DnDComment : // Returns the draw options to defaults
+/// @DnDArgument : "color" "c_white"
+draw_set_colour(c_white & $ffffff);
+var l68E2F5E2_0=(c_white >> 24);
+draw_set_alpha(l68E2F5E2_0 / $ff);
+
+/// @DnDAction : YoYo Games.Drawing.Set_Alignment
+/// @DnDVersion : 1.1
+/// @DnDHash : 235B926D
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
