@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 /// @DnDVersion : 1
 /// @DnDHash : 44135536
+/// @DnDComment : // Updates pause button positions based on camera position and offsets
 /// @DnDArgument : "value" "camera_get_view_x(view_camera[0]) + 1870"
 x = camera_get_view_x(view_camera[0]) + 1870;
 
@@ -14,12 +15,14 @@ y = camera_get_view_y(view_camera[0]) + 50;
 /// @DnDAction : YoYo Games.Common.If_Expression
 /// @DnDVersion : 1
 /// @DnDHash : 1F58BAB8
+/// @DnDComment : // Checks if the game is playing and wasnt paused
 /// @DnDArgument : "expr" "obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.was_paused"
 if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.was_paused)
 {
 	/// @DnDAction : YoYo Games.Common.If_Expression
 	/// @DnDVersion : 1
 	/// @DnDHash : 3C97C4F5
+	/// @DnDComment : // Checks if the escape button has been pressed
 	/// @DnDParent : 1F58BAB8
 	/// @DnDArgument : "expr" "keyboard_check_pressed(vk_escape)"
 	if(keyboard_check_pressed(vk_escape))
@@ -27,6 +30,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 794E2C12
+		/// @DnDComment : // Calls the pause game function
 		/// @DnDApplyTo : {obj_game_manager}
 		/// @DnDParent : 3C97C4F5
 		/// @DnDArgument : "function" "pause_game"
