@@ -64,6 +64,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 11ED908C
+		/// @DnDComment : // Variable stores gamepad count
 		/// @DnDParent : 223F74C5
 		/// @DnDArgument : "var" "_max_pads"
 		/// @DnDArgument : "var_temp" "1"
@@ -73,6 +74,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 		/// @DnDAction : YoYo Games.Loops.For_Loop
 		/// @DnDVersion : 1
 		/// @DnDHash : 57E93236
+		/// @DnDComment : // Loops though the gamepads
 		/// @DnDParent : 223F74C5
 		/// @DnDArgument : "init" "_i = 0"
 		/// @DnDArgument : "init_temp" "1"
@@ -82,6 +84,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 			/// @DnDAction : YoYo Games.Common.If_Expression
 			/// @DnDVersion : 1
 			/// @DnDHash : 6A3F737C
+			/// @DnDComment : // Checks gamepad is connected
 			/// @DnDParent : 57E93236
 			/// @DnDArgument : "expr" "gamepad_is_connected(_i)"
 			if(gamepad_is_connected(_i))
@@ -89,6 +92,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 				/// @DnDAction : YoYo Games.Common.If_Expression
 				/// @DnDVersion : 1
 				/// @DnDHash : 3C84471C
+				/// @DnDComment : // Checks if the start button has been pressed	
 				/// @DnDParent : 6A3F737C
 				/// @DnDArgument : "expr" "gamepad_button_check_pressed(_i, gp_start)"
 				if(gamepad_button_check_pressed(_i, gp_start))
@@ -96,6 +100,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING && !obj_game_manager.w
 					/// @DnDAction : YoYo Games.Common.Function_Call
 					/// @DnDVersion : 1
 					/// @DnDHash : 61117038
+					/// @DnDComment : // Calls the pause game function
 					/// @DnDApplyTo : {obj_game_manager}
 					/// @DnDParent : 3C84471C
 					/// @DnDArgument : "function" "pause_game"

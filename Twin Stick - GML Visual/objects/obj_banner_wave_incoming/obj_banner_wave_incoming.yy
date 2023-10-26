@@ -28,17 +28,7 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"banner_life","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"5","varType":0,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_2","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"\"HOLD TIGHT AND FIX THE BOT\\nMORE ARE ON THE WAY\"","varType":2,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"colour_1","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"$FF0000FF","varType":7,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"colour_2","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"$FFFFFFFF","varType":7,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"halign","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"fa_center","varType":0,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"valign","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"fa_middle","varType":0,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"banner_alpha","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"image_alpha","varType":0,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"font_1","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"fnt_luckiest_guy_96_outline","varType":5,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"font_2","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"fnt_luckiest_guy_24","varType":5,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "spr_banner_yellow",
