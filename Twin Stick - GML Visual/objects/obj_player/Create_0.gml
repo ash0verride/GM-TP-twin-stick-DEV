@@ -1,3 +1,93 @@
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 0BEB9921
+/// @DnDInput : 4
+/// @DnDArgument : "var" "_new_dust_1"
+/// @DnDArgument : "var_temp" "1"
+/// @DnDArgument : "function" "instance_create_depth"
+/// @DnDArgument : "arg" "x"
+/// @DnDArgument : "arg_1" "y"
+/// @DnDArgument : "arg_2" "depth - 1"
+/// @DnDArgument : "arg_3" "obj_particle_handler"
+var _new_dust_1 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+
+/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDVersion : 1
+/// @DnDHash : 5C7E2A3C
+/// @DnDArgument : "expr" "self"
+/// @DnDArgument : "var" "_new_dust_1.owner"
+_new_dust_1.owner = self;
+
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 591BDBC7
+/// @DnDApplyTo : _new_dust_1
+/// @DnDArgument : "function" "set_dust_smoke"
+/// @DnDArgument : "arg" "1"
+with(_new_dust_1) {
+	set_dust_smoke(1);
+}
+
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 11BA71EE
+/// @DnDInput : 4
+/// @DnDArgument : "var" "_new_dust_2"
+/// @DnDArgument : "var_temp" "1"
+/// @DnDArgument : "function" "instance_create_depth"
+/// @DnDArgument : "arg" "x"
+/// @DnDArgument : "arg_1" "y"
+/// @DnDArgument : "arg_2" "depth - 1"
+/// @DnDArgument : "arg_3" "obj_particle_handler"
+var _new_dust_2 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+
+/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDVersion : 1
+/// @DnDHash : 58C69200
+/// @DnDArgument : "expr" "self"
+/// @DnDArgument : "var" "_new_dust_2.owner"
+_new_dust_2.owner = self;
+
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 5FB5E9B2
+/// @DnDApplyTo : _new_dust_2
+/// @DnDArgument : "function" "set_dust_smoke"
+/// @DnDArgument : "arg" "1"
+with(_new_dust_2) {
+	set_dust_smoke(1);
+}
+
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 4EB00DC7
+/// @DnDInput : 4
+/// @DnDArgument : "var" "_new_dust_3"
+/// @DnDArgument : "var_temp" "1"
+/// @DnDArgument : "function" "instance_create_depth"
+/// @DnDArgument : "arg" "x"
+/// @DnDArgument : "arg_1" "y"
+/// @DnDArgument : "arg_2" "depth - 1"
+/// @DnDArgument : "arg_3" "obj_particle_handler"
+var _new_dust_3 = instance_create_depth(x, y, depth - 1, obj_particle_handler);
+
+/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDVersion : 1
+/// @DnDHash : 548675AC
+/// @DnDArgument : "expr" "self"
+/// @DnDArgument : "var" "_new_dust_3.owner"
+_new_dust_3.owner = self;
+
+/// @DnDAction : YoYo Games.Common.Function_Call
+/// @DnDVersion : 1
+/// @DnDHash : 6A0104DA
+/// @DnDApplyTo : _new_dust_3
+/// @DnDArgument : "function" "set_dust_smoke"
+/// @DnDArgument : "arg" "3"
+with(_new_dust_3) {
+	set_dust_smoke(3);
+}
+
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 4F6A1EF3

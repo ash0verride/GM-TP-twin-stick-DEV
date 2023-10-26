@@ -421,9 +421,9 @@ switch(l340F1866_0)
 /// @DnDAction : YoYo Games.Common.If_Variable
 /// @DnDVersion : 1
 /// @DnDHash : 66F2E9AE
-/// @DnDArgument : "var" "is_flashed"
+/// @DnDArgument : "var" "is_flashing"
 /// @DnDArgument : "value" "true"
-if(is_flashed == true)
+if(is_flashing == true)
 {
 	/// @DnDAction : YoYo Games.Common.If_Variable
 	/// @DnDVersion : 1
@@ -458,9 +458,9 @@ if(is_flashed == true)
 			/// @DnDParent : 3126A504
 			/// @DnDArgument : "expr" "false"
 			/// @DnDArgument : "expr_1" "flash_time"
-			/// @DnDArgument : "var" "is_flashed"
+			/// @DnDArgument : "var" "is_flashing"
 			/// @DnDArgument : "var_1" "flash_cooldown"
-			is_flashed = false;
+			is_flashing = false;
 			flash_cooldown = flash_time;
 		}
 	}
