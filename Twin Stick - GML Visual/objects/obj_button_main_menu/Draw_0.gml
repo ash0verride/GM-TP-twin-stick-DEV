@@ -44,9 +44,13 @@ draw_text_transformed(x + 0, y + 10, "" + string(text), image_xscale, image_ysca
 /// @DnDHash : 68E2F5E2
 /// @DnDComment : // Returns the draw options to defaults
 /// @DnDArgument : "color" "c_white"
-draw_set_colour(c_white & $ffffff);
-var l68E2F5E2_0=(c_white >> 24);
-draw_set_alpha(l68E2F5E2_0 / $ff);
+/// @DnDArgument : "alpha" "false"
+draw_set_colour(c_white & $ffffff);draw_set_alpha(1);
+
+/// @DnDAction : YoYo Games.Drawing.Set_Alpha
+/// @DnDVersion : 1
+/// @DnDHash : 1DA01281
+draw_set_alpha(1);
 
 /// @DnDAction : YoYo Games.Drawing.Set_Alignment
 /// @DnDVersion : 1.1
