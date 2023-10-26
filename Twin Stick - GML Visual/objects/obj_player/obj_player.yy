@@ -43,7 +43,7 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"player_reload_cooldown","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":0,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"player_is_reloading","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"controller_deadzone","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0.1","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"is_mouse_aiming","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"is_mouse_aiming","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"global.is_mouse_aiming","varType":4,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"mouse_prev_x","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"mouse_x","varType":4,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"mouse_prev_y","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"mouse_y","varType":4,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"wall_buffer","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"250","varType":0,},
