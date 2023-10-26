@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.Variable
 /// @DnDVersion : 1
-/// @DnDHash : 7501158C
+/// @DnDHash : 503ECB17
+/// @DnDComment : // Sets the key variable to pressed$(13_10)// Sets the target scale$(13_10)// Speeds up the scale rate
 /// @DnDInput : 3
 /// @DnDArgument : "expr" "true"
 /// @DnDArgument : "expr_1" "0.9"
@@ -14,8 +15,10 @@ scale_rate = 0.9;
 
 /// @DnDAction : YoYo Games.Audio.Play_Audio
 /// @DnDVersion : 1.1
-/// @DnDHash : 6C07B163
-/// @DnDArgument : "target" "sound_button"
+/// @DnDHash : 374C7D16
+/// @DnDComment : // Plays the button pushed sound effect
+/// @DnDArgument : "target" "_button_push"
+/// @DnDArgument : "target_temp" "1"
 /// @DnDArgument : "soundid" "snd_menu_button"
 /// @DnDSaveInfo : "soundid" "snd_menu_button"
-sound_button = audio_play_sound(snd_menu_button, 0, 0, 1.0, undefined, 1.0);
+var _button_push = audio_play_sound(snd_menu_button, 0, 0, 1.0, undefined, 1.0);

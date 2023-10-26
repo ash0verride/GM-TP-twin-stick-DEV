@@ -8,7 +8,7 @@ var _projectile_origin_y = -2;
 // Store the angle in radians
 var _theta = degtorad(image_angle);
 
-// Callculate adjusted position from offset and angle
+// Calculate adjusted position from offset and angle
 var _projectile_adjust_x = (_projectile_origin_x * cos(_theta)) - (_projectile_origin_y * sin(_theta));
 var _projectile_adjust_y = (_projectile_origin_y * cos(_theta)) + (_projectile_origin_x * sin(_theta));
 

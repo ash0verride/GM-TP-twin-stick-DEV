@@ -37,7 +37,7 @@ if (obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		// Lerps alpha to target fast
 		curr_alpha = lerp(curr_alpha, target_alpha, 0.5);
 		
-		// Checks if the alpha is now invisable
+		// Checks if the alpha is now invisible
 		if (curr_alpha <= 0)
 		{
 			// Destroys the object

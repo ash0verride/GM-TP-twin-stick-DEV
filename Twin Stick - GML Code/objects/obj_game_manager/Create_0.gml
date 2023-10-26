@@ -38,7 +38,7 @@ gap_rate = 1/3;
 gap_count = 0;
 // Min is the minimum amount of gaps a level can have or it will regenerate
 gap_min = 2;
-// Max is the maximum amount of gaps a level can have before it stops makeing more
+// Max is the maximum amount of gaps a level can have before it stops making more
 gap_max = 8;
 
 // Variables used for the score font used in the hud
@@ -56,8 +56,6 @@ was_new_wave = false;
 start_time = 3.0;
 // Variable used to set the maximum amount of enemeies that can appear on screen at any time
 max_enemies = 40;
-
-
 
 // Creates pause button used in the top left corner of the screen
 instance_create_layer(0, 0, "Popups", obj_button_pause);

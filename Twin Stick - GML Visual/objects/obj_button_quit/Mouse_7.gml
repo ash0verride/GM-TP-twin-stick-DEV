@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.Variable
 /// @DnDVersion : 1
 /// @DnDHash : 0FE6DA37
+/// @DnDComment : // Sets the key variable to pressed$(13_10)// Sets the target scale$(13_10)// Speeds up the scale rate
 /// @DnDInput : 3
 /// @DnDArgument : "expr" "true"
 /// @DnDArgument : "expr_1" "0.9"
@@ -15,6 +16,7 @@ scale_rate = 0.9;
 /// @DnDAction : YoYo Games.Audio.Play_Audio
 /// @DnDVersion : 1.1
 /// @DnDHash : 6BD9772F
+/// @DnDComment : // Plays the button pushed sound effect
 /// @DnDArgument : "target" "sound_button"
 /// @DnDArgument : "soundid" "snd_menu_button"
 /// @DnDSaveInfo : "soundid" "snd_menu_button"
