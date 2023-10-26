@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.Function_Call
 /// @DnDVersion : 1
 /// @DnDHash : 0BEB9921
+/// @DnDComment : // Creates new particle emitter for dust smoke on left
 /// @DnDInput : 4
 /// @DnDArgument : "var" "_new_dust_1"
 /// @DnDArgument : "var_temp" "1"
@@ -31,6 +32,7 @@ with(_new_dust_1) {
 /// @DnDAction : YoYo Games.Common.Function_Call
 /// @DnDVersion : 1
 /// @DnDHash : 11BA71EE
+/// @DnDComment : // Creates new particle emitter for dust smoke centre
 /// @DnDInput : 4
 /// @DnDArgument : "var" "_new_dust_2"
 /// @DnDArgument : "var_temp" "1"
@@ -61,6 +63,7 @@ with(_new_dust_2) {
 /// @DnDAction : YoYo Games.Common.Function_Call
 /// @DnDVersion : 1
 /// @DnDHash : 4EB00DC7
+/// @DnDComment : // Creates new particle emitter for dust smoke on right
 /// @DnDInput : 4
 /// @DnDArgument : "var" "_new_dust_3"
 /// @DnDArgument : "var_temp" "1"
@@ -91,6 +94,7 @@ with(_new_dust_3) {
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 4F6A1EF3
+/// @DnDComment : // Function for creating projectile from players gun angle
 /// @DnDArgument : "funcName" "create_projectile"
 /// @DnDArgument : "arg" "_gun_angle"
 function create_projectile(_gun_angle) 
@@ -98,6 +102,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 1730EB9F
+	/// @DnDComment : // Offsets for players gun position$(13_10)// Gun angle stored in radians
 	/// @DnDInput : 3
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "var" "_projectile_origin_x"
@@ -113,6 +118,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 79229A1D
+	/// @DnDComment : // Calculates the adjusted positions from offsets and angle
 	/// @DnDInput : 2
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "var" "_projectile_adjust_x"
@@ -125,6 +131,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 5A31F11C
+	/// @DnDComment : // Sets new postions from adjusted positions and players position
 	/// @DnDInput : 2
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "var" "_projectile_pos_x"
@@ -137,6 +144,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Instances.Create_Instance
 	/// @DnDVersion : 1
 	/// @DnDHash : 13AC5722
+	/// @DnDComment : // Creates new player projectile from the new positions
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "xpos" "_projectile_pos_x"
 	/// @DnDArgument : "ypos" "_projectile_pos_y"
@@ -172,6 +180,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 14258CCA
+	/// @DnDComment : // Creates new sparked projectile from angle and offset to add to players fired effect
 	/// @DnDInput : 4
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "var" "_new_hit"
@@ -227,6 +236,7 @@ function create_projectile(_gun_angle)
 	/// @DnDAction : YoYo Games.Audio.Play_Audio
 	/// @DnDVersion : 1.1
 	/// @DnDHash : 4E2B187E
+	/// @DnDComment : // Plays firing audio sound
 	/// @DnDParent : 4F6A1EF3
 	/// @DnDArgument : "soundid" "snd_player_fire"
 	/// @DnDArgument : "gain" "0.3"
@@ -237,12 +247,14 @@ function create_projectile(_gun_angle)
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 14BEC946
+/// @DnDComment : // Function called when player triggers to fire
 /// @DnDArgument : "funcName" "trigger_pressed"
 function trigger_pressed() 
 {
 	/// @DnDAction : YoYo Games.Common.If_Expression
 	/// @DnDVersion : 1
 	/// @DnDHash : 546C59A0
+	/// @DnDComment : // Checks if player has ammo and isnt reloading
 	/// @DnDParent : 14BEC946
 	/// @DnDArgument : "expr" "!player_is_reloading && player_curr_ammo > 0"
 	if(!player_is_reloading && player_curr_ammo > 0)
@@ -250,6 +262,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.If_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 56B8371C
+		/// @DnDComment : // Checks if the fire cooldown has finished
 		/// @DnDParent : 546C59A0
 		/// @DnDArgument : "var" "player_fire_cooldown"
 		/// @DnDArgument : "op" "3"
@@ -258,6 +271,7 @@ function trigger_pressed()
 			/// @DnDAction : YoYo Games.Common.Variable
 			/// @DnDVersion : 1
 			/// @DnDHash : 02F70B20
+			/// @DnDComment : // Resets the fire cooldown$(13_10)// Reduces the ammo
 			/// @DnDInput : 2
 			/// @DnDParent : 56B8371C
 			/// @DnDArgument : "expr" "player_fire_rate"
@@ -271,6 +285,7 @@ function trigger_pressed()
 			/// @DnDAction : YoYo Games.Common.Function_Call
 			/// @DnDVersion : 1
 			/// @DnDHash : 42475940
+			/// @DnDComment : // Creates a projectile
 			/// @DnDParent : 56B8371C
 			/// @DnDArgument : "function" "create_projectile"
 			/// @DnDArgument : "arg" "gun_angle"
@@ -280,6 +295,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Audio.Stop_Audio
 		/// @DnDVersion : 1
 		/// @DnDHash : 7482931A
+		/// @DnDComment : // Stops the reloading sound
 		/// @DnDParent : 546C59A0
 		/// @DnDArgument : "soundid" "reloading_sound"
 		audio_stop_sound(reloading_sound);
@@ -294,6 +310,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 431AEAF5
+		/// @DnDComment : // Sets player to no longer reload
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "expr" "false"
 		/// @DnDArgument : "var" "player_is_reloading"
@@ -302,6 +319,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Audio.Stop_Audio
 		/// @DnDVersion : 1
 		/// @DnDHash : 14088B94
+		/// @DnDComment : // Stops the reloading sound
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "soundid" "reloading_sound"
 		audio_stop_sound(reloading_sound);
@@ -309,6 +327,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Audio.Play_Audio
 		/// @DnDVersion : 1.1
 		/// @DnDHash : 5171B979
+		/// @DnDComment : // Plays a gun jam sound effect
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "target" "_sound_jam"
 		/// @DnDArgument : "target_temp" "1"
@@ -320,6 +339,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 0A643D02
+		/// @DnDComment : // Offsets used for gun jam smoke$(13_10)// Angle smoke is created from
 		/// @DnDInput : 3
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "var" "_projectile_origin_x"
@@ -335,6 +355,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 52F40960
+		/// @DnDComment : // Calculates the adjusted positions
 		/// @DnDInput : 2
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "var" "_projectile_adjust_x"
@@ -347,6 +368,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 2852D614
+		/// @DnDComment : // Creates new positons form adjusted position and players position
 		/// @DnDInput : 2
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "var" "_projectile_pos_x"
@@ -359,6 +381,7 @@ function trigger_pressed()
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 0886E836
+		/// @DnDComment : // Creates an empty spark particle system from new position
 		/// @DnDInput : 4
 		/// @DnDParent : 31306BA0
 		/// @DnDArgument : "var" "_new_empty_spark"

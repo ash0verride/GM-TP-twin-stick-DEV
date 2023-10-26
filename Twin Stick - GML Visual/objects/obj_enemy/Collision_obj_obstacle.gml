@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.If_Variable
 /// @DnDVersion : 1
 /// @DnDHash : 7AE21D28
+/// @DnDComment : // Checks the game is not paused
 /// @DnDArgument : "var" "obj_game_manager.curr_game_state"
 /// @DnDArgument : "not" "1"
 /// @DnDArgument : "value" "GAME_STATE.PAUSED"
@@ -9,6 +10,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	/// @DnDAction : YoYo Games.Common.If_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 058DBE43
+	/// @DnDComment : // Checks if enemy is spawning
 	/// @DnDParent : 7AE21D28
 	/// @DnDArgument : "var" "is_spawning"
 	/// @DnDArgument : "value" "true"
@@ -17,6 +19,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 		/// @DnDVersion : 1
 		/// @DnDHash : 1FDB7A37
+		/// @DnDComment : // Slows enemy to half speed but still lets them move into the arena
 		/// @DnDParent : 058DBE43
 		/// @DnDArgument : "value" "1.5"
 		/// @DnDArgument : "instvar" "3"
@@ -32,6 +35,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 6D079A0B
+		/// @DnDComment : // Sets colliding state to true
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "expr" "true"
 		/// @DnDArgument : "var" "is_colliding"
@@ -40,6 +44,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 42EE13CB
+		/// @DnDComment : // Recalculates path to enemy
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "function" "find_path"
 		find_path();
@@ -47,6 +52,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 4AF2FD5F
+		/// @DnDComment : // Calculates distance to obstacle$(13_10)// Calculates direction of obstacle$(13_10)// Sets buffer values from obstacles dimensions
 		/// @DnDInput : 4
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "var" "_obs_dist"
@@ -65,6 +71,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Common.Temp_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 53966F38
+		/// @DnDComment : // Calculates speed of repulsion from obstacle
 		/// @DnDInput : 2
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "var" "_repulse_x"
@@ -77,6 +84,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 		/// @DnDVersion : 1
 		/// @DnDHash : 08C26828
+		/// @DnDComment : // Adjusts and applies the new speed to the existing speed
 		/// @DnDInput : 2
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "value" "lerp(hspeed, hspeed + _repulse_x, repulse_rate)"
@@ -89,6 +97,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 		/// @DnDVersion : 1
 		/// @DnDHash : 61C1254C
+		/// @DnDComment : // Applies the speed to the position
 		/// @DnDInput : 2
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "value" "hspeed * speed_dropoff"
@@ -102,6 +111,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 		/// @DnDVersion : 1
 		/// @DnDHash : 23000DE6
+		/// @DnDComment : // Limits the speed to max speed
 		/// @DnDInput : 2
 		/// @DnDParent : 632D163E
 		/// @DnDArgument : "value" "clamp(hspeed, -max_speed, max_speed)"
