@@ -274,9 +274,9 @@ function set_character_defeat()
 	/// @DnDParent : 3573E6D9
 	/// @DnDArgument : "var" "particle_sys"
 	/// @DnDArgument : "layer" ""Explosions""
-	/// @DnDArgument : "partsys" "ps_enemy_shot"
-	/// @DnDSaveInfo : "partsys" "ps_enemy_shot"
-	particle_sys = part_system_create_layer("Explosions", 0, ps_enemy_shot);
+	/// @DnDArgument : "partsys" "ps_character_defeat"
+	/// @DnDSaveInfo : "partsys" "ps_character_defeat"
+	particle_sys = part_system_create_layer("Explosions", 0, ps_character_defeat);
 
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
@@ -288,13 +288,24 @@ function set_character_defeat()
 	/// @DnDArgument : "arg_1" "x"
 	/// @DnDArgument : "arg_2" "y"
 	part_system_position(particle_sys, x, y);
+
+	/// @DnDAction : YoYo Games.Audio.Play_Audio
+	/// @DnDVersion : 1.1
+	/// @DnDHash : 50C405F2
+	/// @DnDParent : 3573E6D9
+	/// @DnDArgument : "soundid" "snd_explosion"
+	/// @DnDArgument : "gain" "0.8"
+	/// @DnDArgument : "offset" "0"
+	/// @DnDSaveInfo : "soundid" "snd_explosion"
+	audio_play_sound(snd_explosion, 0, 0, 0.8, 0, 1.0);
 }
 
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 1004A3DE
 /// @DnDArgument : "funcName" "set_angle"
-function set_angle() 
+/// @DnDArgument : "arg" "_new_angle"
+function set_angle(_new_angle) 
 {
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
@@ -303,8 +314,8 @@ function set_angle()
 	/// @DnDParent : 1004A3DE
 	/// @DnDArgument : "function" "part_system_angle"
 	/// @DnDArgument : "arg" "particle_sys"
-	/// @DnDArgument : "arg_1" "owner.direction + 180"
-	part_system_angle(particle_sys, owner.direction + 180);
+	/// @DnDArgument : "arg_1" "_new_angle"
+	part_system_angle(particle_sys, _new_angle);
 }
 
 /// @DnDAction : YoYo Games.Common.Function

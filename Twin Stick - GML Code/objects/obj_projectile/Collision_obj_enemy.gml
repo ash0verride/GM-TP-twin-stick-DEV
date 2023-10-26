@@ -1,7 +1,7 @@
 // Checks if the owner is a player
 if (owner.object_index == obj_player)
 {
-	// Checks if the enemy not falshed and able to take damage
+	// Checks if the enemy not flashed and able to take damage
 	if (!other.is_flashed)
 	{
 		// Sets player id

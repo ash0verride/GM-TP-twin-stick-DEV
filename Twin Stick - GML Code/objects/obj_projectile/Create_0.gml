@@ -10,7 +10,7 @@ speed = 20;
 // Variable used for storing the speed when the game is paused
 last_speed = speed;
 
-// Function called when the projectile is fired from a players
+// Function called when the projectile is fired from a player
 correct_player = function()
 {
 	// Sets sprite to player fireball

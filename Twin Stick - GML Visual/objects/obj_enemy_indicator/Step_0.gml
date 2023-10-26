@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.If_Variable
 /// @DnDVersion : 1
 /// @DnDHash : 2DC3382A
+/// @DnDComment : // Checks if game is playing
 /// @DnDArgument : "var" "obj_game_manager.curr_game_state"
 /// @DnDArgument : "value" "GAME_STATE.PLAYING"
 if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
@@ -8,6 +9,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	/// @DnDAction : YoYo Games.Instances.If_Instance_Exists
 	/// @DnDVersion : 1
 	/// @DnDHash : 6F3F51CD
+	/// @DnDComment : // Checks if the enemy target exists
 	/// @DnDParent : 2DC3382A
 	/// @DnDArgument : "obj" "target"
 	var l6F3F51CD_0 = false;
@@ -17,6 +19,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 3731C842
+		/// @DnDComment : // Sets the clamped x position to the target position 
 		/// @DnDInput : 2
 		/// @DnDParent : 6F3F51CD
 		/// @DnDArgument : "expr" "target.x - x"
@@ -29,6 +32,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 4B8B08A2
+		/// @DnDComment : // Clamps the positions from the buffer and room size
 		/// @DnDInput : 2
 		/// @DnDParent : 6F3F51CD
 		/// @DnDArgument : "expr" "clamp(clamped_x, wall_buffer, room_width - wall_buffer)"
@@ -41,6 +45,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 58447E53
+		/// @DnDComment : // Sets the direction from the room center and the clamped x and y positions
 		/// @DnDParent : 6F3F51CD
 		/// @DnDArgument : "expr" "point_direction(room_width / 2, room_height / 2, clamped_x, clamped_y)"
 		/// @DnDArgument : "var" "target_direction"
@@ -49,6 +54,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 796B94B5
+		/// @DnDComment : // Sets the alpha target to the distance devided by a cell with a maximum value of 0.9
 		/// @DnDParent : 6F3F51CD
 		/// @DnDArgument : "expr" "min(point_distance(x + clamped_x, y + clamped_y, target.x, target.y) / (obj_game_manager.cell_width + obj_game_manager.cell_height), 0.9)"
 		/// @DnDArgument : "var" "target_alpha"
@@ -57,6 +63,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.If_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 2FC8723A
+		/// @DnDComment : // Checks if the target alpha is above the current alpha
 		/// @DnDParent : 6F3F51CD
 		/// @DnDArgument : "var" "target_alpha"
 		/// @DnDArgument : "op" "2"
@@ -66,6 +73,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 			/// @DnDAction : YoYo Games.Common.Variable
 			/// @DnDVersion : 1
 			/// @DnDHash : 36190E47
+			/// @DnDComment : // Lerps slowly
 			/// @DnDParent : 2FC8723A
 			/// @DnDArgument : "expr" "lerp(curr_alpha, target_alpha, 0.05)"
 			/// @DnDArgument : "var" "curr_alpha"
@@ -75,6 +83,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Else
 		/// @DnDVersion : 1
 		/// @DnDHash : 4C2535F6
+		/// @DnDComment : // Lerps fast
 		/// @DnDParent : 6F3F51CD
 		else
 		{
@@ -97,6 +106,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 502434CB
+		/// @DnDComment : // Sets the target alpha to 0
 		/// @DnDParent : 71639BF7
 		/// @DnDArgument : "var" "target_alpha"
 		target_alpha = 0;
@@ -104,6 +114,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 2061AB4C
+		/// @DnDComment : // Lerps alpha to target fast
 		/// @DnDParent : 71639BF7
 		/// @DnDArgument : "expr" "lerp(curr_alpha, target_alpha, 0.5)"
 		/// @DnDArgument : "var" "curr_alpha"
@@ -112,6 +123,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 		/// @DnDAction : YoYo Games.Common.If_Variable
 		/// @DnDVersion : 1
 		/// @DnDHash : 6ED4680A
+		/// @DnDComment : // Checks if the alpha is now invisible
 		/// @DnDParent : 71639BF7
 		/// @DnDArgument : "var" "curr_alpha"
 		/// @DnDArgument : "op" "3"
@@ -120,6 +132,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 			/// @DnDAction : YoYo Games.Instances.Destroy_Instance
 			/// @DnDVersion : 1
 			/// @DnDHash : 5C7F0CF4
+			/// @DnDComment : // Destroys the object
 			/// @DnDParent : 6ED4680A
 			instance_destroy();
 		}

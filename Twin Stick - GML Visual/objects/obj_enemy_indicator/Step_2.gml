@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.If_Variable
 /// @DnDVersion : 1
 /// @DnDHash : 135999D6
+/// @DnDComment : // Checks if the game is currently playing
 /// @DnDArgument : "var" "obj_game_manager.curr_game_state"
 /// @DnDArgument : "value" "GAME_STATE.PLAYING"
 if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
@@ -8,6 +9,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PLAYING)
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 77157EF4
+	/// @DnDComment : // Updates the object position by the cameras position
 	/// @DnDParent : 135999D6
 	/// @DnDArgument : "var" "_view_x"
 	/// @DnDArgument : "var_temp" "1"
