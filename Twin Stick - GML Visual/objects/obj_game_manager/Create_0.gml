@@ -1009,7 +1009,7 @@ var _flower_count = round(arena_grid_width * arena_grid_height * _flower_rate);
 /// @DnDAction : YoYo Games.Loops.For_Loop
 /// @DnDVersion : 1
 /// @DnDHash : 478CF26A
-/// @DnDComment : // Loop for creation of flowers 
+/// @DnDComment : // Loop for creation of flowers
 /// @DnDArgument : "init" "_i = 0"
 /// @DnDArgument : "init_temp" "1"
 /// @DnDArgument : "cond" "_i < _flower_count"
@@ -1786,8 +1786,9 @@ function wave_new_spawners()
 				/// @DnDComment : // Adds and enemy to its spawn queue
 				/// @DnDParent : 735D859C
 				/// @DnDArgument : "expr" "1"
+				/// @DnDArgument : "expr_relative" "1"
 				/// @DnDArgument : "var" "spawn_queue"
-				spawn_queue = 1;
+				spawn_queue += 1;
 			}
 		
 			/// @DnDAction : YoYo Games.Common.Variable
