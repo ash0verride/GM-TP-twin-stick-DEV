@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Common.If_Variable
 /// @DnDVersion : 1
 /// @DnDHash : 2ACB8D8E
+/// @DnDComment : // Checks if game is not paused
 /// @DnDArgument : "var" "obj_game_manager.curr_game_state"
 /// @DnDArgument : "not" "1"
 /// @DnDArgument : "value" "GAME_STATE.PAUSED"
@@ -9,6 +10,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 722E6985
+	/// @DnDComment : // Calculates distance to obstacles center$(13_10)// Calculates direction to obstacle
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
 	/// @DnDArgument : "var" "_obs_dist"
@@ -21,6 +23,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 03C79B13
+	/// @DnDComment : // Sets buffer from sprite dimentions
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
 	/// @DnDArgument : "var" "_x_buff"
@@ -33,6 +36,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 593F6F15
+	/// @DnDComment : // Calculates the repulse speed from the distance and direction
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
 	/// @DnDArgument : "var" "_repulse_x"
@@ -45,6 +49,7 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 	/// @DnDVersion : 1
 	/// @DnDHash : 6372F5CD
+	/// @DnDComment : // Adds the new speed to the existing speed$(13_10)// Clamps the speed to maximum speed
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
 	/// @DnDArgument : "value" "clamp(hspeed + _repulse_x, -max_speed, max_speed)"

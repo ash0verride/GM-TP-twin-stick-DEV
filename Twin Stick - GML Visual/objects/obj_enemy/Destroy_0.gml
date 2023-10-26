@@ -1,6 +1,7 @@
 /// @DnDAction : YoYo Games.Instances.Create_Instance
 /// @DnDVersion : 1
 /// @DnDHash : 7AD5724D
+/// @DnDComment : // Creates a new instance of a dead state of the enemy
 /// @DnDArgument : "xpos_relative" "1"
 /// @DnDArgument : "ypos_relative" "1"
 /// @DnDArgument : "var" "_body"
@@ -13,6 +14,7 @@ var _body = instance_create_layer(x + 0, y + 0, "Bodies", obj_enemy_dead);
 /// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 /// @DnDVersion : 1
 /// @DnDHash : 33E8EA80
+/// @DnDComment : // Sets the angle of the dead enemy to match the enemy
 /// @DnDApplyTo : _body
 /// @DnDArgument : "value" "other.image_angle"
 /// @DnDArgument : "instvar" "12"

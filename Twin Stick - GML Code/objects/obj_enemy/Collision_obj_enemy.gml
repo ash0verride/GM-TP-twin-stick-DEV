@@ -15,7 +15,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 		// Recalculates path to target
 		find_path();
 	
-		// Calcuates distance to enemy
+		// Calculates distance to enemy
 		var _enemy_dist = point_distance(x, y, other.x, other.y);
 		// Calculates direction of enemy
 		var _enemy_dir = point_direction(other.x, other.y, x, y);

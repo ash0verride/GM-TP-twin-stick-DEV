@@ -20,19 +20,6 @@ layer_sequence_create("Instances", room_width / 2, room_height / 2, seq_splash);
 
 /// @DnDAction : YoYo Games.Common.Variable
 /// @DnDVersion : 1
-/// @DnDHash : 5DA42F2B
-/// @DnDComment : // Sets variables used for the highscore table visible state
-/// @DnDInput : 3
-/// @DnDArgument : "expr" "false"
-/// @DnDArgument : "var" "is_highscore_table"
-/// @DnDArgument : "var_1" "highscores_alpha"
-/// @DnDArgument : "var_2" "highscores_alpha_target"
-is_highscore_table = false;
-highscores_alpha = 0;
-highscores_alpha_target = 0;
-
-/// @DnDAction : YoYo Games.Common.Variable
-/// @DnDVersion : 1
 /// @DnDHash : 67499787
 /// @DnDComment : // Array used for storing the high scores within
 /// @DnDArgument : "expr" "[]"

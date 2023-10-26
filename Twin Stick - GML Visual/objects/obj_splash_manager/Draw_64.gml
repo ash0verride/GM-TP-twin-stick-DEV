@@ -84,6 +84,7 @@ if(!(highscores_alpha == 0))
 	/// @DnDAction : YoYo Games.Drawing.Set_Font
 	/// @DnDVersion : 1
 	/// @DnDHash : 386DD4A3
+	/// @DnDComment : // Sets the highscore heading text
 	/// @DnDParent : 03949314
 	/// @DnDArgument : "font" "font_1"
 	draw_set_font(font_1);

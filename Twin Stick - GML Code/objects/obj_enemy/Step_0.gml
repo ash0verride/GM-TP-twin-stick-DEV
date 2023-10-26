@@ -167,10 +167,6 @@ switch(obj_game_manager.curr_game_state)
 			}
 		}
 		break;
-	// Case for if the game is paused
-	case GAME_STATE.PAUSED:
-		// Does nothing
-		break;
 }
 
 // Checks if the enemy is flashed and the game is not paused

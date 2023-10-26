@@ -141,7 +141,7 @@ if (obj_game_manager.curr_game_state != GAME_STATE.PAUSED)
 			var _look_x = gamepad_axis_value(player_local_id, gp_axisrv);
 			var _look_y = -gamepad_axis_value(player_local_id, gp_axisrh);
 			
-			// Checks the look positions arnt 0
+			// Checks the look positions arent 0
 			if (_look_x != 0 || _look_y != 0)
 			{
 				// Sets a new direction from the look positions
