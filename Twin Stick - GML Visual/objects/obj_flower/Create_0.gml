@@ -36,10 +36,3 @@ image_yscale = _scale;
 /// @DnDArgument : "value" "random(360)"
 /// @DnDArgument : "instvar" "12"
 image_angle = random(360);
-
-/// @DnDAction : YoYo Games.Common.Variable
-/// @DnDVersion : 1
-/// @DnDHash : 274B15C3
-/// @DnDArgument : "expr" "speed"
-/// @DnDArgument : "var" "last_speed"
-last_speed = speed;

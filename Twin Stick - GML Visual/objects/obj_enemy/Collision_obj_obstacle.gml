@@ -76,6 +76,18 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 	
 		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 		/// @DnDVersion : 1
+		/// @DnDHash : 08C26828
+		/// @DnDInput : 2
+		/// @DnDParent : 632D163E
+		/// @DnDArgument : "value" "lerp(hspeed, hspeed + _repulse_x, repulse_rate)"
+		/// @DnDArgument : "value_1" "lerp(vspeed, vspeed + _repulse_y, repulse_rate)"
+		/// @DnDArgument : "instvar" "4"
+		/// @DnDArgument : "instvar_1" "5"
+		hspeed = lerp(hspeed, hspeed + _repulse_x, repulse_rate);
+		vspeed = lerp(vspeed, vspeed + _repulse_y, repulse_rate);
+	
+		/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
+		/// @DnDVersion : 1
 		/// @DnDHash : 61C1254C
 		/// @DnDInput : 2
 		/// @DnDParent : 632D163E
