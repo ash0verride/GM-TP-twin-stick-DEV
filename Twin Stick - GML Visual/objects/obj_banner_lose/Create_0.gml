@@ -178,123 +178,118 @@ else
 		/// @DnDArgument : "arg_2" "highscores[_i]"
 		buffer_write(high_score_buffer, buffer_u64, highscores[_i]);
 	}
-
-	/// @DnDAction : YoYo Games.Common.Temp_Variable
-	/// @DnDVersion : 1
-	/// @DnDHash : 07FB759B
-	/// @DnDComment : // Creates varaibles used for sorting the highscore table
-	/// @DnDInput : 2
-	/// @DnDParent : 60B37F4B
-	/// @DnDArgument : "var" "_is_swapping"
-	/// @DnDArgument : "value" "false"
-	/// @DnDArgument : "var_1" "_stored_score"
-	/// @DnDArgument : "value_1" "-1"
-	var _is_swapping = false;
-	var _stored_score = -1;
-
-	/// @DnDAction : YoYo Games.Loops.For_Loop
-	/// @DnDVersion : 1
-	/// @DnDHash : 70AA94C7
-	/// @DnDComment : // Loops 10 times
-	/// @DnDParent : 60B37F4B
-	/// @DnDArgument : "init" "_i = 0"
-	/// @DnDArgument : "init_temp" "1"
-	/// @DnDArgument : "cond" "_i < 10"
-	/// @DnDArgument : "expr" "_i ++"
-	for(var _i = 0; _i < 10; _i ++) {
-		/// @DnDAction : YoYo Games.Common.If_Expression
-		/// @DnDVersion : 1
-		/// @DnDHash : 7101D0CD
-		/// @DnDComment : // Checks if the players score is more than the highscore and it hasnt started swapping
-		/// @DnDParent : 70AA94C7
-		/// @DnDArgument : "expr" "highscores[_i] < player_score && !_is_swapping"
-		if(highscores[_i] < player_score && !_is_swapping)
-		{
-			/// @DnDAction : YoYo Games.Common.Variable
-			/// @DnDVersion : 1
-			/// @DnDHash : 32CDA286
-			/// @DnDComment : // Changes the swapping state$(13_10)// Stores the players score
-			/// @DnDInput : 2
-			/// @DnDParent : 7101D0CD
-			/// @DnDArgument : "expr" "true"
-			/// @DnDArgument : "expr_1" "player_score"
-			/// @DnDArgument : "var" "_is_swapping"
-			/// @DnDArgument : "var_1" "_stored_score"
-			_is_swapping = true;
-			_stored_score = player_score;
-		}
-	
-		/// @DnDAction : YoYo Games.Common.If_Variable
-		/// @DnDVersion : 1
-		/// @DnDHash : 2EBA96B2
-		/// @DnDComment : // Checks if the table has started swapping
-		/// @DnDParent : 70AA94C7
-		/// @DnDArgument : "var" "_is_swapping"
-		/// @DnDArgument : "value" "true"
-		if(_is_swapping == true)
-		{
-			/// @DnDAction : YoYo Games.Common.Temp_Variable
-			/// @DnDVersion : 1
-			/// @DnDHash : 24CF5757
-			/// @DnDComment : // Stores the current highscore
-			/// @DnDParent : 2EBA96B2
-			/// @DnDArgument : "var" "_next_swap"
-			/// @DnDArgument : "value" "highscores[_i]"
-			var _next_swap = highscores[_i];
-		
-			/// @DnDAction : YoYo Games.Common.Variable
-			/// @DnDVersion : 1
-			/// @DnDHash : 29873F62
-			/// @DnDComment : // Swaps the stored score into the highscore$(13_10)// Stores the last highscore
-			/// @DnDInput : 2
-			/// @DnDParent : 2EBA96B2
-			/// @DnDArgument : "expr" "_stored_score"
-			/// @DnDArgument : "expr_1" "_next_swap"
-			/// @DnDArgument : "var" "highscores[_i]	"
-			/// @DnDArgument : "var_1" "_stored_score"
-			highscores[_i]	 = _stored_score;
-			_stored_score = _next_swap;
-		}
-	}
-
-	/// @DnDAction : YoYo Games.Buffers.Buffer_Seek
-	/// @DnDVersion : 1.1
-	/// @DnDHash : 7C0B4DFA
-	/// @DnDComment : // Goes to the start of the buffer
-	/// @DnDParent : 60B37F4B
-	/// @DnDArgument : "buffer" "high_score_buffer"
-	/// @DnDArgument : "seek" "0"
-	buffer_seek(high_score_buffer, buffer_seek_start, 0);
-
-	/// @DnDAction : YoYo Games.Loops.For_Loop
-	/// @DnDVersion : 1
-	/// @DnDHash : 7585F463
-	/// @DnDComment : // Loops 10 times
-	/// @DnDParent : 60B37F4B
-	/// @DnDArgument : "init" "_i = 0"
-	/// @DnDArgument : "init_temp" "1"
-	/// @DnDArgument : "cond" "_i < 10"
-	/// @DnDArgument : "expr" "_i++"
-	for(var _i = 0; _i < 10; _i++) {
-		/// @DnDAction : YoYo Games.Common.Function_Call
-		/// @DnDVersion : 1
-		/// @DnDHash : 314BC08D
-		/// @DnDComment : // Writes the highscores to the buffer
-		/// @DnDInput : 3
-		/// @DnDParent : 7585F463
-		/// @DnDArgument : "function" "buffer_write"
-		/// @DnDArgument : "arg" "high_score_buffer"
-		/// @DnDArgument : "arg_1" "buffer_u64"
-		/// @DnDArgument : "arg_2" "highscores[_i]"
-		buffer_write(high_score_buffer, buffer_u64, highscores[_i]);
-	}
-
-	/// @DnDAction : YoYo Games.Files.Buffer_Save
-	/// @DnDVersion : 1
-	/// @DnDHash : 002E4360
-	/// @DnDComment : // Saves the highscore buffer
-	/// @DnDParent : 60B37F4B
-	/// @DnDArgument : "buffer" "high_score_buffer"
-	/// @DnDArgument : "filename" ""TWIN_STICK_HS.sav""
-	buffer_save(high_score_buffer, "TWIN_STICK_HS.sav");
 }
+
+/// @DnDAction : YoYo Games.Common.Temp_Variable
+/// @DnDVersion : 1
+/// @DnDHash : 07FB759B
+/// @DnDComment : // Creates varaibles used for sorting the highscore table
+/// @DnDInput : 2
+/// @DnDArgument : "var" "_is_swapping"
+/// @DnDArgument : "value" "false"
+/// @DnDArgument : "var_1" "_stored_score"
+/// @DnDArgument : "value_1" "-1"
+var _is_swapping = false;
+var _stored_score = -1;
+
+/// @DnDAction : YoYo Games.Loops.For_Loop
+/// @DnDVersion : 1
+/// @DnDHash : 70AA94C7
+/// @DnDComment : // Loops 10 times
+/// @DnDArgument : "init" "_i = 0"
+/// @DnDArgument : "init_temp" "1"
+/// @DnDArgument : "cond" "_i < 10"
+/// @DnDArgument : "expr" "_i ++"
+for(var _i = 0; _i < 10; _i ++) {
+	/// @DnDAction : YoYo Games.Common.If_Expression
+	/// @DnDVersion : 1
+	/// @DnDHash : 7101D0CD
+	/// @DnDComment : // Checks if the players score is more than the highscore and it hasnt started swapping
+	/// @DnDParent : 70AA94C7
+	/// @DnDArgument : "expr" "highscores[_i] < player_score && !_is_swapping"
+	if(highscores[_i] < player_score && !_is_swapping)
+	{
+		/// @DnDAction : YoYo Games.Common.Variable
+		/// @DnDVersion : 1
+		/// @DnDHash : 32CDA286
+		/// @DnDComment : // Changes the swapping state$(13_10)// Stores the players score
+		/// @DnDInput : 2
+		/// @DnDParent : 7101D0CD
+		/// @DnDArgument : "expr" "true"
+		/// @DnDArgument : "expr_1" "player_score"
+		/// @DnDArgument : "var" "_is_swapping"
+		/// @DnDArgument : "var_1" "_stored_score"
+		_is_swapping = true;
+		_stored_score = player_score;
+	}
+
+	/// @DnDAction : YoYo Games.Common.If_Variable
+	/// @DnDVersion : 1
+	/// @DnDHash : 2EBA96B2
+	/// @DnDComment : // Checks if the table has started swapping
+	/// @DnDParent : 70AA94C7
+	/// @DnDArgument : "var" "_is_swapping"
+	/// @DnDArgument : "value" "true"
+	if(_is_swapping == true)
+	{
+		/// @DnDAction : YoYo Games.Common.Temp_Variable
+		/// @DnDVersion : 1
+		/// @DnDHash : 24CF5757
+		/// @DnDComment : // Stores the current highscore
+		/// @DnDParent : 2EBA96B2
+		/// @DnDArgument : "var" "_next_swap"
+		/// @DnDArgument : "value" "highscores[_i]"
+		var _next_swap = highscores[_i];
+	
+		/// @DnDAction : YoYo Games.Common.Variable
+		/// @DnDVersion : 1
+		/// @DnDHash : 29873F62
+		/// @DnDComment : // Swaps the stored score into the highscore$(13_10)// Stores the last highscore
+		/// @DnDInput : 2
+		/// @DnDParent : 2EBA96B2
+		/// @DnDArgument : "expr" "_stored_score"
+		/// @DnDArgument : "expr_1" "_next_swap"
+		/// @DnDArgument : "var" "highscores[_i]	"
+		/// @DnDArgument : "var_1" "_stored_score"
+		highscores[_i]	 = _stored_score;
+		_stored_score = _next_swap;
+	}
+}
+
+/// @DnDAction : YoYo Games.Buffers.Buffer_Seek
+/// @DnDVersion : 1.1
+/// @DnDHash : 7C0B4DFA
+/// @DnDComment : // Goes to the start of the buffer
+/// @DnDArgument : "buffer" "high_score_buffer"
+/// @DnDArgument : "seek" "0"
+buffer_seek(high_score_buffer, buffer_seek_start, 0);
+
+/// @DnDAction : YoYo Games.Loops.For_Loop
+/// @DnDVersion : 1
+/// @DnDHash : 7585F463
+/// @DnDComment : // Loops 10 times
+/// @DnDArgument : "init" "_i = 0"
+/// @DnDArgument : "init_temp" "1"
+/// @DnDArgument : "cond" "_i < 10"
+/// @DnDArgument : "expr" "_i++"
+for(var _i = 0; _i < 10; _i++) {
+	/// @DnDAction : YoYo Games.Common.Function_Call
+	/// @DnDVersion : 1
+	/// @DnDHash : 314BC08D
+	/// @DnDComment : // Writes the highscores to the buffer
+	/// @DnDInput : 3
+	/// @DnDParent : 7585F463
+	/// @DnDArgument : "function" "buffer_write"
+	/// @DnDArgument : "arg" "high_score_buffer"
+	/// @DnDArgument : "arg_1" "buffer_u64"
+	/// @DnDArgument : "arg_2" "highscores[_i]"
+	buffer_write(high_score_buffer, buffer_u64, highscores[_i]);
+}
+
+/// @DnDAction : YoYo Games.Files.Buffer_Save
+/// @DnDVersion : 1
+/// @DnDHash : 002E4360
+/// @DnDComment : // Saves the highscore buffer
+/// @DnDArgument : "buffer" "high_score_buffer"
+/// @DnDArgument : "filename" ""TWIN_STICK_HS.sav""
+buffer_save(high_score_buffer, "TWIN_STICK_HS.sav");

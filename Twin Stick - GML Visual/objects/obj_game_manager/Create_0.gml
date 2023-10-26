@@ -23,9 +23,9 @@ curr_wave	 = 0;
 /// @DnDVersion : 1
 /// @DnDHash : 15D543A0
 /// @DnDComment : // Variable for storing the maximum waves a player can go through
-/// @DnDArgument : "expr" "10"
+/// @DnDArgument : "expr" "1"
 /// @DnDArgument : "var" "max_levels"
-max_levels = 10;
+max_levels = 1;
 
 /// @DnDAction : YoYo Games.Common.Variable
 /// @DnDVersion : 1
