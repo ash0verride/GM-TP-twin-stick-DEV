@@ -81,7 +81,7 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PAUSED)
 				/// @DnDAction : YoYo Games.Common.If_Expression
 				/// @DnDVersion : 1
 				/// @DnDHash : 383C1A21
-				/// @DnDComment : // Checks if the A or start button has been pressed 
+				/// @DnDComment : // Checks if the A or start button has been pressed
 				/// @DnDParent : 083773AD
 				/// @DnDArgument : "expr" "(gamepad_button_check_pressed(_i, gp_face1) || gamepad_button_check_pressed(_i, gp_start))"
 				if((gamepad_button_check_pressed(_i, gp_face1) || gamepad_button_check_pressed(_i, gp_start)))
@@ -173,8 +173,8 @@ if(obj_game_manager.curr_game_state == GAME_STATE.PAUSED)
 				/// @DnDVersion : 1
 				/// @DnDHash : 40AFBCF1
 				/// @DnDParent : 10656809
-				/// @DnDArgument : "function" "resume_game"
-				resume_game();
+				/// @DnDArgument : "function" "obj_game_manager.resume_game"
+				obj_game_manager.resume_game();
 			}
 		
 			/// @DnDAction : YoYo Games.Common.Else
