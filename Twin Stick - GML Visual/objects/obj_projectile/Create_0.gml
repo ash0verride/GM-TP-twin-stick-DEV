@@ -234,8 +234,9 @@ function spark_projectile()
 	/// @DnDApplyTo : _new_hit
 	/// @DnDParent : 019A489F
 	/// @DnDArgument : "function" "set_angle"
+	/// @DnDArgument : "arg" "other.direction + 180"
 	with(_new_hit) {
-		set_angle();
+		set_angle(other.direction + 180);
 	}
 
 	/// @DnDAction : YoYo Games.Instances.Destroy_Instance

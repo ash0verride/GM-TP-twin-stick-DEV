@@ -20,27 +20,37 @@ if(!(obj_game_manager.curr_game_state == GAME_STATE.PAUSED))
 
 	/// @DnDAction : YoYo Games.Common.Temp_Variable
 	/// @DnDVersion : 1
+	/// @DnDHash : 03C79B13
+	/// @DnDInput : 2
+	/// @DnDParent : 2ACB8D8E
+	/// @DnDArgument : "var" "_x_buff"
+	/// @DnDArgument : "value" "other.sprite_width * 0.75"
+	/// @DnDArgument : "var_1" "_y_buff"
+	/// @DnDArgument : "value_1" "other.sprite_height * 0.75"
+	var _x_buff = other.sprite_width * 0.75;
+	var _y_buff = other.sprite_height * 0.75;
+
+	/// @DnDAction : YoYo Games.Common.Temp_Variable
+	/// @DnDVersion : 1
 	/// @DnDHash : 593F6F15
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
 	/// @DnDArgument : "var" "_repulse_x"
-	/// @DnDArgument : "value" "lengthdir_x(clamp(1 - _obs_dist / (other.sprite_width / 2), 0, 1), _obs_dir)"
+	/// @DnDArgument : "value" "lengthdir_x(clamp(1 - _obs_dist / _x_buff, 0, 1), _obs_dir) * _x_buff * 1.5"
 	/// @DnDArgument : "var_1" "_repulse_y"
-	/// @DnDArgument : "value_1" "lengthdir_y(clamp(1 - _obs_dist / (other.sprite_height / 2), 0, 1), _obs_dir)"
-	var _repulse_x = lengthdir_x(clamp(1 - _obs_dist / (other.sprite_width / 2), 0, 1), _obs_dir);
-	var _repulse_y = lengthdir_y(clamp(1 - _obs_dist / (other.sprite_height / 2), 0, 1), _obs_dir);
+	/// @DnDArgument : "value_1" "lengthdir_y(clamp(1 - _obs_dist / _y_buff, 0, 1), _obs_dir) * _y_buff * 1.5"
+	var _repulse_x = lengthdir_x(clamp(1 - _obs_dist / _x_buff, 0, 1), _obs_dir) * _x_buff * 1.5;
+	var _repulse_y = lengthdir_y(clamp(1 - _obs_dist / _y_buff, 0, 1), _obs_dir) * _y_buff * 1.5;
 
 	/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 	/// @DnDVersion : 1
 	/// @DnDHash : 6372F5CD
 	/// @DnDInput : 2
 	/// @DnDParent : 2ACB8D8E
-	/// @DnDArgument : "value" "clamp(_repulse_x * 200, -max_speed, max_speed)"
-	/// @DnDArgument : "value_relative" "1"
-	/// @DnDArgument : "value_1" "clamp(_repulse_y * 200, -max_speed, max_speed)"
-	/// @DnDArgument : "value_relative_1" "1"
+	/// @DnDArgument : "value" "clamp(hspeed + _repulse_x, -max_speed, max_speed)"
+	/// @DnDArgument : "value_1" "clamp(vspeed + _repulse_y, -max_speed, max_speed)"
 	/// @DnDArgument : "instvar" "4"
 	/// @DnDArgument : "instvar_1" "5"
-	hspeed += clamp(_repulse_x * 200, -max_speed, max_speed);
-	vspeed += clamp(_repulse_y * 200, -max_speed, max_speed);
+	hspeed = clamp(hspeed + _repulse_x, -max_speed, max_speed);
+	vspeed = clamp(vspeed + _repulse_y, -max_speed, max_speed);
 }
