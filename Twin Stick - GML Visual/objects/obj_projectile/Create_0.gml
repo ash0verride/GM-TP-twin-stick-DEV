@@ -1,12 +1,14 @@
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 18610843
+/// @DnDComment : // Function called when the projectile is fired from a player
 /// @DnDArgument : "funcName" "correct_player"
 function correct_player() 
 {
 	/// @DnDAction : YoYo Games.Movement.Set_Direction_Free
 	/// @DnDVersion : 1
 	/// @DnDHash : 7444EB67
+	/// @DnDComment : // Sets direction of projectile to the players gun angle
 	/// @DnDParent : 18610843
 	/// @DnDArgument : "direction" "owner.gun_angle"
 	direction = owner.gun_angle;
@@ -14,6 +16,7 @@ function correct_player()
 	/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 	/// @DnDVersion : 1
 	/// @DnDHash : 5C501965
+	/// @DnDComment : // Sets sprite to player fireball$(13_10)// Sets the angle of the projectile to the direction$(13_10)// Adjusts the projectiles speed to factor the players speed
 	/// @DnDInput : 4
 	/// @DnDParent : 18610843
 	/// @DnDArgument : "value" "spr_player_fireball"
@@ -34,6 +37,7 @@ function correct_player()
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 5182194E
+	/// @DnDComment : // Creates a gun flash animation from the muzzel of the players gun
 	/// @DnDInput : 4
 	/// @DnDParent : 18610843
 	/// @DnDArgument : "var" "_new_gun_flash"
@@ -64,6 +68,7 @@ function correct_player()
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 7F16BF6E
+	/// @DnDComment : // Creates a smoke particle system that will follow the projectile
 	/// @DnDInput : 4
 	/// @DnDParent : 18610843
 	/// @DnDArgument : "var" "_new_smoke"
@@ -101,12 +106,14 @@ function correct_player()
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 4A4E0AAA
+/// @DnDComment : // Function called when the projectile is fired from an enemy
 /// @DnDArgument : "funcName" "correct_enemy"
 function correct_enemy() 
 {
 	/// @DnDAction : YoYo Games.Instances.Set_Instance_Var
 	/// @DnDVersion : 1
 	/// @DnDHash : 1076062C
+	/// @DnDComment : // Sets the sprite to enemy fireball$(13_10)// Sets the direction to the fire from the enemy postion towards its targets position$(13_10)// Sets the image angle to this direction$(13_10)// Adjusts the projectile speed to the enemies speed
 	/// @DnDInput : 5
 	/// @DnDParent : 4A4E0AAA
 	/// @DnDArgument : "value" "spr_enemy_fireball"
@@ -130,6 +137,7 @@ function correct_enemy()
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 639CDA86
+	/// @DnDComment : // Creates a smoke particle system that will follow the projectile
 	/// @DnDInput : 4
 	/// @DnDParent : 4A4E0AAA
 	/// @DnDArgument : "var" "_new_smoke"
@@ -167,12 +175,14 @@ function correct_enemy()
 /// @DnDAction : YoYo Games.Common.Function
 /// @DnDVersion : 1
 /// @DnDHash : 019A489F
+/// @DnDComment : // Function called when the projectile is sparked and destroyed
 /// @DnDArgument : "funcName" "spark_projectile"
 function spark_projectile() 
 {
 	/// @DnDAction : YoYo Games.Common.Function_Call
 	/// @DnDVersion : 1
 	/// @DnDHash : 09C79617
+	/// @DnDComment : // Creates a particle system of player fireball sparks
 	/// @DnDInput : 4
 	/// @DnDParent : 019A489F
 	/// @DnDArgument : "var" "_new_hit"
@@ -187,6 +197,7 @@ function spark_projectile()
 	/// @DnDAction : YoYo Games.Common.If_Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 3F205E29
+	/// @DnDComment : // Checks if the owner is a player
 	/// @DnDParent : 019A489F
 	/// @DnDArgument : "var" "owner.object_index"
 	/// @DnDArgument : "value" "obj_player"
@@ -195,6 +206,7 @@ function spark_projectile()
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 619751C7
+		/// @DnDComment : Sets it to a player's fireball
 		/// @DnDApplyTo : _new_hit
 		/// @DnDParent : 3F205E29
 		/// @DnDArgument : "function" "set_player_shot"
@@ -212,6 +224,7 @@ function spark_projectile()
 		/// @DnDAction : YoYo Games.Common.Function_Call
 		/// @DnDVersion : 1
 		/// @DnDHash : 06AC8311
+		/// @DnDComment : Sets it to an enemy's fireball
 		/// @DnDApplyTo : _new_hit
 		/// @DnDParent : 3FEEE8AC
 		/// @DnDArgument : "function" "set_enemy_shot"
@@ -223,6 +236,7 @@ function spark_projectile()
 	/// @DnDAction : YoYo Games.Common.Variable
 	/// @DnDVersion : 1
 	/// @DnDHash : 0383F4A5
+	/// @DnDComment : // Sets the owner$(13_10)// Sets the direction to spark in
 	/// @DnDParent : 019A489F
 	/// @DnDArgument : "expr" "self"
 	/// @DnDArgument : "var" "_new_hit.owner"
@@ -242,6 +256,7 @@ function spark_projectile()
 	/// @DnDAction : YoYo Games.Instances.Destroy_Instance
 	/// @DnDVersion : 1
 	/// @DnDHash : 2B9603D6
+	/// @DnDComment : // Destroys the projectile
 	/// @DnDParent : 019A489F
 	instance_destroy();
 }
